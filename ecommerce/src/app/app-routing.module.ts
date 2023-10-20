@@ -11,7 +11,22 @@ const routes: Routes = [
   { 
     path: 'auth',
     loadChildren:() => import("./modules/auth-profile/auth-profile.module").then(m => m.AuthProfileModule)
-  }
+  },
+
+  {
+    path:'',
+    redirectTo:'/',
+    pathMatch:'full'
+
+  },
+
+  {
+    path:'**',
+    redirectTo:'error/404',
+
+  },
+
+
 
 
 ];
