@@ -5,11 +5,17 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ElementsModule } from 'src/app/elements/elements.module';
+import { LastCustomersComponent } from './last-customers/last-customers.component';
+import { ChartComponent } from './chart/chart.component';
+import { ShippingCustomersComponent } from './shipping-customers/shipping-customers.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    LastCustomersComponent,
+    ChartComponent,
+    ShippingCustomersComponent
   ],
   imports: [
     CommonModule,
