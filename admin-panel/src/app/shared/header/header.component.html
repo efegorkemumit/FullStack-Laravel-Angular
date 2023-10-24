@@ -43,7 +43,7 @@
            
                 <div class="relative">
                <!-------------User Menu Inbox-->
-               <button class="text-white" id="user-menu-bell-button"> 
+               <button (click)="toggleBellMenu()" class="text-white" id="user-menu-bell-button"> 
                 <i class="fa-solid fa-bell"></i>
 
                </button>
@@ -52,7 +52,7 @@
 
 
                   <!-------------User Menu  Inbox-->
-                  <div class="absolute right-0  mt-8 w-56 bg-white border border-primary-600 rounded-lg  hidden shadow-xl" id="user-menu-bell">
+                  <div  [ngClass]="{'hidden': !isBellMenuOpen}" class="absolute right-0  mt-8 w-56 bg-white border border-primary-600 rounded-lg  hidden shadow-xl" id="user-menu-bell">
                    
                     <div class="p-4 border-b border-second-900">
                         <div class="flex items-center">
@@ -142,7 +142,7 @@
            
             <div class="relative">
            <!-------------User Menu Inbox-->
-           <button class="text-white" id="user-menu-inbox-button"> 
+           <button (click)="toggleInboxMenu()" class="text-white" id="user-menu-inbox-button"> 
             <i class="fa-solid fa-inbox"></i>
 
            </button>
@@ -151,7 +151,7 @@
 
 
               <!-------------User Menu  Inbox-->
-              <div class="absolute right-0  mt-8 w-56 bg-white border border-primary-600 rounded-lg  hidden shadow-xl" id="user-menu-Inbox">
+              <div [ngClass]="{'hidden': !isInboxMenuOpen}" class="absolute right-0  mt-8 w-56 bg-white border border-primary-600 rounded-lg  hidden shadow-xl" id="user-menu-Inbox">
                
                 <div class="p-4 border-b border-second-900">
                     <div class="flex items-center">
@@ -239,7 +239,7 @@
            
              <div class="relative">
             <!-------------User Menu-->
-            <button class="text-white" id="user-menu-button"> 
+            <button (click)="toggleProfileMenu()" class="text-white" id="user-menu-button"> 
                 <img src="assets/img/profile.jpg" class="w-9 h-9 ml-2 rounded-full" />
 
             </button>
@@ -248,7 +248,7 @@
 
 
                <!-------------User Menu -->
-               <div class="absolute right-0  mt-8 w-56 bg-white border border-primary-600 rounded-lg hidden shadow-xl" id="user-menu">
+               <div  [ngClass]="{'hidden': !isProfileMenuOpen}" class="absolute right-0  mt-8 w-56 bg-white border border-primary-600 rounded-lg hidden shadow-xl" id="user-menu">
                 <div class="px-4 py-2">
                     <p class="text-gray-600">Efe görkem Ümit</p>
                     <p class="text-gray-600">Youtube@gmail.com</p>

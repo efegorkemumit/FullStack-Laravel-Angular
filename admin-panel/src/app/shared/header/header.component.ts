@@ -7,4 +7,25 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  isBellMenuOpen = false;
+  isInboxMenuOpen = false;
+  isProfileMenuOpen= false;
+
+  toggleBellMenu(){
+    this.isBellMenuOpen = !this.isBellMenuOpen;
+    this.isInboxMenuOpen = false;
+    this.isProfileMenuOpen= false;
+  }
+  toggleInboxMenu(){
+    this.isInboxMenuOpen = !this.isInboxMenuOpen;
+    this.isBellMenuOpen = false;
+    this.isProfileMenuOpen= false;
+  }
+
+  toggleProfileMenu(){
+    this.isProfileMenuOpen = !this.isProfileMenuOpen;
+    this.isBellMenuOpen = false;
+    this.isInboxMenuOpen = false;
+  }
+
 }
