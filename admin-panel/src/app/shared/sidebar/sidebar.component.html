@@ -12,14 +12,14 @@
                     </li>
                     <!------------- Dropdown Menu-->
                      <li>
-                            <a href="javascript:void(0)" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 toggle-menu">
+                            <a (click)="toggleAuthenticationMenu()" href="javascript:void(0)" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 toggle-menu">
                                 <i class="fa-solid fa-lock"></i>
                                 <span class="ml-4">Authentication</span>
                                 <i class="fa-solid fa-chevron-down ml-auto"></i>
                             </a>
 
                     
-                            <ul class="ml-6 submenu hidden">
+                            <ul [ngClass]="{'hidden': !authenticationMenuOpen}" class="ml-6 submenu hidden">
                                 <li>
                                     <a href="index.html" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 ">
                                         <span class="ml-3">Sign in</span>
@@ -48,7 +48,7 @@
 
                          <!------------- Dropdown Menu-->
                      <li>
-                        <a href="javascript:void(0)" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 toggle-menu">
+                        <a (click)="toggleECommerce()" href="javascript:void(0)" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 toggle-menu">
                             <i class="fa-solid fa-cart-plus"></i>
                             <span class="ml-3">E-Commerce</span>
                             <i class="fa-solid fa-chevron-down ml-auto"></i>
@@ -56,7 +56,7 @@
 
                         
                     
-                        <ul class="ml-6 submenu hidden">
+                        <ul [ngClass]="{'hidden': !eCommerceMenuOpen}" class="ml-6 submenu hidden">
                             <li>
                                 <a href="products.html" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 ">
                                     <span class="ml-3">Products</span>
@@ -76,7 +76,7 @@
 
                      <!------------- Dropdown Menu-->
                      <li>
-                        <a href="javascript:void(0)" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 toggle-menu">
+                        <a (click)="toggleusers()" href="javascript:void(0)" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 toggle-menu">
                             <i class="fa-solid fa-users"></i><span class="ml-4">Users</span>
                             <i class="fa-solid fa-chevron-down ml-auto"></i>
                         </a>
@@ -85,7 +85,7 @@
                         
                         
                         
-                        <ul class="ml-6 submenu hidden">
+                        <ul [ngClass]="{'hidden': !usersOpen}" class="ml-6 submenu hidden">
                             <li>
                                 <a href="userlist.html" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900">
                                     <span class="ml-3">UserList</span>

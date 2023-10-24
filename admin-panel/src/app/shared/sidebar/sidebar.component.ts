@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  
+
+  authenticationMenuOpen =false;
+
+  toggleAuthenticationMenu(){
+    this.authenticationMenuOpen = !this.authenticationMenuOpen
+  }
+
+  eCommerceMenuOpen =false;
+  
+  toggleECommerce(){
+    this.eCommerceMenuOpen = !this.eCommerceMenuOpen
+  }
+
+  usersOpen =false;
+  
+  toggleusers(){
+    this.usersOpen = !this.usersOpen
+  }
 
 }
