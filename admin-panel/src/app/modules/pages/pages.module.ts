@@ -6,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { MaintetanceComponent } from './maintetance/maintetance.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MaintetanceComponent } from './maintetance/maintetance.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    RouterModule
   ]
 })
 export class PagesModule { }
