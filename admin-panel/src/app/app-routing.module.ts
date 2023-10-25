@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'ecommerce', loadChildren:() =>
+    import('./modules/eccommerce/eccommerce.module').then((m)=> m.EccommerceModule) 
+  },
+  {
     path: 'auth', loadChildren:() =>
     import('./modules/auth/auth.module').then((m)=> m.AuthModule) 
   },
