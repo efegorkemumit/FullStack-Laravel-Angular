@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+  isLoading: boolean=true;
 
+  ngOnInit(){
+    setTimeout(()=>{
+      this.isLoading=false;
+    },500)
+  }
 }

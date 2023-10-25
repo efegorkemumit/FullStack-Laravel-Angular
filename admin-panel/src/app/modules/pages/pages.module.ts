@@ -7,6 +7,7 @@ import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { MaintetanceComponent } from './maintetance/maintetance.component';
 import { RouterModule } from '@angular/router';
+import { ElementsModule } from 'src/app/elements/elements.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    RouterModule
+    RouterModule,
+    ElementsModule
   ]
 })
 export class PagesModule { }

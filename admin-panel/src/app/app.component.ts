@@ -6,12 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  isLoading: boolean=true;
-
-  ngOnInit(){
-    setTimeout(()=>{
-      this.isLoading=false;
-    },2000)
-  }
+ 
 }

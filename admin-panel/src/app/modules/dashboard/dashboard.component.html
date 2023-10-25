@@ -1,3 +1,7 @@
+<app-loader [loading]="isLoading"></app-loader>
+
+<div *ngIf="!isLoading">
+
 <app-header></app-header>
 
 <div class="flex">
@@ -51,4 +55,6 @@
 <app-footer></app-footer>
 
 <app-sidebar></app-sidebar>
+
+</div>
 

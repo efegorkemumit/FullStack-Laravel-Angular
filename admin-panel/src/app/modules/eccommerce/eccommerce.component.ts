@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./eccommerce.component.css']
 })
 export class EccommerceComponent {
+  isLoading: boolean=true;
 
+  ngOnInit(){
+    setTimeout(()=>{
+      this.isLoading=false;
+    },500)
+  }
 }

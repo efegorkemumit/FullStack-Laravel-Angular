@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent {
+  isLoading: boolean=true;
 
+  ngOnInit(){
+    setTimeout(()=>{
+      this.isLoading=false;
+    },500)
+  }
 }

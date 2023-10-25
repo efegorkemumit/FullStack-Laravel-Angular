@@ -1,5 +1,10 @@
-<body class="bg-primary-900">
+<app-loader [loading]="isLoading"></app-loader>
 
-    <router-outlet></router-outlet>
+<div *ngIf="!isLoading">
+       <body class="bg-primary-900">
 
-</body>
+            <router-outlet></router-outlet>
+
+        </body>
+
+</div>

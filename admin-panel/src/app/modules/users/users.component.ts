@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
+  isLoading: boolean=true;
 
+  ngOnInit(){
+    setTimeout(()=>{
+      this.isLoading=false;
+    },500)
+  }
 }

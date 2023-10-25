@@ -8,6 +8,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ProfileLockComponent } from './profile-lock/profile-lock.component';
 import { AuthComponent } from './auth.component';
+import { ElementsModule } from 'src/app/elements/elements.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AuthComponent } from './auth.component';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ElementsModule
   ]
 })
 export class AuthModule { }
