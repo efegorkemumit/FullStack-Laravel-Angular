@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { BillingComponent } from './billing/billing.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ElementsModule } from 'src/app/elements/elements.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     EccommerceRoutingModule,
-    SharedModule
+    SharedModule,
+    ElementsModule
   ]
 })
 export class EccommerceModule { }

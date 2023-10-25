@@ -1,0 +1,115 @@
+<div class="container  mx-auto lg:p-4 p-0">
+
+    <div class="bg-primary-900 text-white p-6">
+
+     <div class="p-4 bg-primary-900 block sm:flex items-center justify-between border-b border-second-900 mt-2">
+         <div class=" mb-1 w-full">
+             <div class="block sm:flex items-center md:divide-x md:divide-second-900">
+                 <form class="sm:pr-3 mb-4 sm:mb-0">
+                     <label for="products-search" class="sr-only">Search</label>
+                     <div class="mt-1 sm:w-64 xl:w-96 relative">
+                         <input class="bg-gray-50 border border-primary-800 text-primary-900 rounded-lg w-full
+                          p-2 focus:ring-second-900 focus:ring-2 focus:border-second-900" id="products-search" type="text" placeholder="Search For Products ....">
+                     </div>
+
+
+                 </form>
+                 <div class="flex items-center sm:justify-end w-full">
+                     <div class="md:flex pl-2 space-x-1">
+                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
+                         <i class="fa-solid fa-gear"></i>
+                     </a>
+                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
+                         <i class="fa-solid fa-trash"></i>
+                     </a>
+                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
+                         <i class="fa-solid fa-circle-info"></i>
+                     </a>
+                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
+                         <i class="fa-solid fa-ellipsis-vertical"></i>
+                     </a>
+
+                     </div>
+                 
+                     <a   href="addproduct.html" class="ml-auto text-primary-900 bg-second-900 focus:ring-4
+                      focus:ring-second-800 font-medium px-3 py-2 text-center rounded-lg">Add Product</a>
+
+                   
+                 </div>
+
+
+             </div>
+
+
+         </div>
+         
+
+     </div>
+
+     <div class="flex flex-col">
+         <div class="overflow-x-auto">
+             <div class="align-middle inline-block min-w-full">
+                 <div class="overflow-hidden">
+                     <table class="table-fixed min-w-full divide-y divide-second-900">
+                         <thead class="bg-primary-500">
+                             <tr>
+                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">ID</th>
+                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">Product Name</th>
+                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">Price</th>
+                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">Size</th>
+                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">Category</th>
+                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">Stock</th>
+                                 <th class="p-4 text-right text-xs font-medium uppercase text-white ml-auto"></th>
+
+
+                             </tr>
+
+
+                         </thead>
+                         <tbody>
+                             <tr class="hover:bg-primary-800 hover:text-second-800" *ngFor="let product of products; let i =index">
+                                 <td class="p-4 w-4">
+                                  {{product.ID}}
+                                 </td>
+                                 <td class="p-4 w-4">
+                                    {{product.PRODUCT_NAME}}
+                                 </td>
+                                 <td class="p-4 w-4">
+                                    {{product.PRICE }}
+                                 </td>
+                                 <td class="p-4 w-4">
+                                    {{product.SIZE }}
+                                 </td>
+                                 <td class="p-4 w-4">
+                                    {{product.CATEGORY}}
+                                 </td>
+                                 <td class="p-4 w-4">
+                                    {{product.STOCK }}
+                                 </td>
+                                 <td class="p-4 w-4 ml-auto text-right">
+                                    <button class="px-2 py-2  bg-second-900 rounded-xl text-primary-900"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    <button class="px-2 py-2  bg-red-950 rounded-xl text-white"><i class="fa-solid fa-pen-to-square"></i> Remove</button>
+
+                                 </td>
+
+                             </tr>
+                           
+                             
+
+                         </tbody>
+
+
+                     </table>
+                 </div>
+             </div>
+
+         </div>
+     </div>
+
+     
+
+
+
+    </div>
+
+ </div>
