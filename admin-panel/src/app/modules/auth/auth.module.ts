@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ProfileLockComponent } from './profile-lock/profile-lock.component';
+import { AuthComponent } from './auth.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProfileLockComponent } from './profile-lock/profile-lock.component';
     RegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-    ProfileLockComponent
+    ProfileLockComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,
