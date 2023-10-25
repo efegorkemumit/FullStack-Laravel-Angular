@@ -8,6 +8,7 @@ import { ElementsModule } from 'src/app/elements/elements.module';
 import { LastCustomersComponent } from './last-customers/last-customers.component';
 import { ChartComponent } from './chart/chart.component';
 import { ShippingCustomersComponent } from './shipping-customers/shipping-customers.component';
+import { TableListComponent } from './table-list/table-list.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ShippingCustomersComponent } from './shipping-customers/shipping-custom
     DashboardComponent,
     LastCustomersComponent,
     ChartComponent,
-    ShippingCustomersComponent
+    ShippingCustomersComponent,
+    TableListComponent
   ],
   imports: [
     CommonModule,
