@@ -8,6 +8,7 @@ import { BillingComponent } from './billing/billing.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ElementsModule } from 'src/app/elements/elements.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ElementsModule } from 'src/app/elements/elements.module';
     CommonModule,
     EccommerceRoutingModule,
     SharedModule,
-    ElementsModule
+    ElementsModule,
+    RouterModule
   ]
 })
 export class EccommerceModule { }

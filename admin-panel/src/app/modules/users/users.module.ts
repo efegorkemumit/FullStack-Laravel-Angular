@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ElementsModule } from 'src/app/elements/elements.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ElementsModule } from 'src/app/elements/elements.module';
     CommonModule,
     UsersRoutingModule,
     SharedModule,
-    ElementsModule
+    ElementsModule,
+    RouterModule
   ]
 })
 export class UsersModule { }
