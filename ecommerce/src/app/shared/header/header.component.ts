@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  mobileMenuVisible: boolean =false;
+
+  toggleMenuOpen(){
+    this.mobileMenuVisible =true;
+  }
+
+  toggleMenuClose(){
+    this.mobileMenuVisible =false;
+  }
+
 }
