@@ -45,4 +45,23 @@ export class HeaderComponent {
     this.isInboxMenuOpen = false;
   }
 
+  authenticationMenuOpen =false;
+
+  toggleAuthenticationMenu(){
+    this.authenticationMenuOpen = !this.authenticationMenuOpen
+  }
+
+  eCommerceMenuOpen =false;
+  
+  toggleECommerce(){
+    this.eCommerceMenuOpen = !this.eCommerceMenuOpen
+  }
+
+  usersOpen =false;
+  
+  toggleusers(){
+    this.usersOpen = !this.usersOpen
+  }
+
+
 }
