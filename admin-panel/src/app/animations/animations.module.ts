@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import {trigger, transition, style, animate} from '@angular/animations'
+import {trigger, transition, style, animate, keyframes} from '@angular/animations'
 
 
 @NgModule({
@@ -24,6 +24,17 @@ export class AnimationsModule {
       animate('500ms ease-out', style({transform: 'translateX(100%)'}))
     ]),
 
+  ]);
+
+  static shake = trigger('shake', [
+    transition('* => *', [
+      animate('300ms', keyframes([
+        style({ transform: 'translateX(0)' }),
+        style({ transform: 'translateX(-10px)' }),
+        style({ transform: 'translateX(10px)' }),
+        style({ transform: 'translateX(0)' }),
+      ])),
+    ]),
   ]);
 
 
