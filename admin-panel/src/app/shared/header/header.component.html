@@ -304,15 +304,15 @@
 <!-------------Mobile MENU Start-->
     <div class="lg:hidden flex fixed z-50 w-full border-t border-second-900 shadow-xl
  bg-primary-900 py-3 px-6 bottom-0 justify-around items-start">
- <a href="#" class="block relative text-center text-second-900">
-         <div class="text-3xl" id="menuBar">
+ <a href="#" class="block relative text-center text-second-900" (click)="toggleMobileMenu()">
+         <div class="text-3xl" #menuBar>
             <i class="fa-solid fa-bars"></i>
         </div>
 
  </a>
 
  <a href="#" class="block relative text-center text-second-900">
-    <div class="text-3xl" id="menuBar">
+    <div class="text-3xl">
         <i class="fa-solid fa-magnifying-glass"></i>
    </div>
 
@@ -324,9 +324,9 @@
 
 <!-------------Mobile MENU Start-->
 
-<div class="fixed left-0 top-0 w-full h-full z-50 bg-primary-900 bg-opacity-30 shadow hidden"  id="mobileMenu">
+<div class="fixed left-0 top-0 w-full h-full z-50 bg-primary-900 bg-opacity-30 shadow hidden"  #mobileMenu>
     <div class="absolute left-0 top-0 w-72 h-full z-50 bg-primary-900 text-white shadow-md">
-        <div class="text-gray-50 text-lg absolute right-3 top-3 cursor-pointer" id="closeMenu">
+        <div class="text-gray-50 text-lg absolute right-3 top-3 cursor-pointer" (click)="closeMobileMenu()" #closeMenu>
             <i class="fa-solid fa-xmark"></i>
         </div>
 

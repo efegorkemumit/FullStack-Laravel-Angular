@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,23 @@ export class HeaderComponent {
   isBellMenuOpen = false;
   isInboxMenuOpen = false;
   isProfileMenuOpen= false;
+
+  @ViewChild('menuBar') menuBar:ElementRef | undefined;
+  @ViewChild('mobileMenu') mobileMenu:ElementRef | undefined;
+  @ViewChild('closeMenu') closeMenu:ElementRef | undefined;
+
+  toggleMobileMenu(){
+    if(this.mobileMenu && this.menuBar){
+      this.mobileMenu.nativeElement.classList.remove('hidden');
+    }
+  }
+
+  closeMobileMenu(){
+    if(this.mobileMenu){
+      this.mobileMenu.nativeElement.classList.add('hidden');
+    }
+  }
+
 
   toggleBellMenu(){
     this.isBellMenuOpen = !this.isBellMenuOpen;
