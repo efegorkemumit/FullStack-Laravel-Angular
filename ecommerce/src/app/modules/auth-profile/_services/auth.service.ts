@@ -9,6 +9,9 @@ import { URL_SERVICE } from 'src/config/config';
 })
 export class AuthService {
 
+  user:any;
+  token:any='';
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -20,7 +23,7 @@ export class AuthService {
   }
 
   loadStorage(){
-    if(this.loadStorage.getItem("token"))
+    if(localStorage.getItem("token"))
     {
       this.token= localStorage.getItem("token");
       this.user = JSON.parse(localStorage.getItem("user") ?? '');
@@ -38,7 +41,7 @@ export class AuthService {
     return this.http.post(URL, {email,password}).pipe(
       map((resp:any)=>{
         if(resp.access_token){
-           return.this.saveLocalStorageResponse(resp);
+           return this.saveLocalStorageResponse(resp);
         }
         else{
           return resp;
