@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs';
+import { map, catchError } from 'rxjs';
 import { URL_SERVICE } from 'src/config/config';
+import {of} from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -55,10 +56,10 @@ export class AuthService {
     )
   }
 
-  saveLocalStorageResponse(resp.any){
+  saveLocalStorageResponse(resp:any){
     if(resp.access_token && resp.user){
-      this.loadStorage.setItem("token", resp.access_token);
-      this.loadStorage.setItem("user", JSON.stringify(resp.user));
+      localStorage.setItem("token", resp.access_token);
+      localStorage.setItem("user", JSON.stringify(resp.user));
       this.user = resp.user;
       this.token = resp.access_token
       return true;
