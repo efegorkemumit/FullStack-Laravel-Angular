@@ -51,10 +51,12 @@ class ApiController extends Controller
 
         if(!empty($token)){
 
+            $userdata = auth()->user();
             return response()->json([
                 "status" => true,
                 "message" => "User logged in succcessfully",
-                "token" => $token
+                "access_token" => $token,
+                "user"=>  $userdata
             ]);
         }
 

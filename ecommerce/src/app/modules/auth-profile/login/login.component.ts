@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password).subscribe((resp:any)=>{
 
       if(!resp.error && resp){
-        console.log(resp);
+        document.location.reload();
       }
       else{
         if(resp.error.error == 'Unauthorized'){
