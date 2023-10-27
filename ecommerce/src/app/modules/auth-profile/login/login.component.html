@@ -4,16 +4,16 @@
         <h2 class="text-3xl uppercase font-medium mb-1">Login</h2>
         <p class="text-gray-600 mb-6 text-sm">Lorem ipsum dolor sit amet.</p>
 
-        <form method="" action="">
+        <form  action="">
 
             <div class="space-y-5">
                 <div>
                     <label class="text-gray-600 mb-3 block"> Email Adress <span class="text-primary" > * </span></label>
-                    <input type="email" class="input-box" placeholder="example@example.com">
+                    <input type="email" [(ngModel)]="email" name="email" class="input-box" placeholder="example@example.com">
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Password <span class="text-primary" > * </span></label>
-                    <input type="password" class="input-box" placeholder="Enter Password">
+                    <input type="password" [(ngModel)]="password" name="password"  class="input-box" placeholder="Enter Password">
                 </div>
 
 
@@ -30,7 +30,7 @@
 
             </div>
             <div class="mt-4">
-                <button type="submit" class="block w-full py-2 text-center text-white bg-primary border
+                <button type="submit" (click)="login()" class="block w-full py-2 text-center text-white bg-primary border
                  border-primary rounded-xl uppercase hover:bg-transparent hover:text-primary transition ">Login</button>
 
 
