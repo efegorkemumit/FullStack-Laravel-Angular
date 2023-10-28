@@ -39,12 +39,22 @@
                     </div>
                 </a>
 
-                <a href="#" class="block text-center text-gray-700 hover:text-primary transition relative">
+          
+                <a  routerLink="/auth/login"  *ngIf="!(authService.user && authService.token)" class="block text-center text-gray-700 hover:text-primary transition relative">
                         
                     <div class="text-2xl">
                         <i class="fa-solid fa-user"></i>
                     </div>
                 </a>
+
+                <a  routerLink="/"  *ngIf="(authService.user && authService.token)" class="block text-center text-gray-700 hover:text-primary transition relative">
+                        
+                    <div class="text-2xl">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </a>
+
+
                </div>
                         
        
@@ -115,10 +125,16 @@
                         <a class="text-white font-semibold hover:text-gray-200 transition" href="#"> <i class="fa-solid fa-address-card"></i> About</a>
                         <a class="text-white font-semibold hover:text-gray-200 transition" href="#"> <i class="fa-solid fa-phone"></i> Contact</a>
                     </div>
-                    <div class="space-x-4">
-                    <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/auth/login"> <i class="fa-solid fa-user"></i> Login</a>
-                    <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/auth/register"> <i class="fa-solid fa-user-plus"></i>  Register</a>
-                </div>
+                    <div class="space-x-4" *ngIf="!(authService.user && authService.token)">
+                        <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/auth/login"> <i class="fa-solid fa-user"></i> Login</a>
+                        <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/auth/register"> <i class="fa-solid fa-user-plus"></i>  Register</a>
+                     </div>
+                     <div class="space-x-4" *ngIf="(authService.user && authService.token)">
+                        <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/"> <i class="fa-solid fa-user"></i> Profile</a>
+                        <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/auth/logout"> <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                     </div>
+
+
                 </div>
 
 
