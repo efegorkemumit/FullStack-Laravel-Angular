@@ -131,7 +131,7 @@
                      </div>
                      <div class="space-x-4" *ngIf="(authService.user && authService.token)">
                         <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/"> <i class="fa-solid fa-user"></i> Profile</a>
-                        <a class="text-white font-semibold hover:text-gray-200 transition" routerLink="/auth/logout"> <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        <a class="text-white font-semibold hover:text-gray-200 transition" (click)="logout()"> <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                      </div>
 
 

@@ -23,5 +23,9 @@ export class HeaderComponent {
   toggleMenuClose(){
     this.mobileMenuVisible =false;
   }
+  logout(){
+    this.authService.logout();
+
+  }
 
 }
