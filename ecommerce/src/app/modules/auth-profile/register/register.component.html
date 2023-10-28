@@ -11,19 +11,19 @@
             <div class="space-y-5">
                 <div>
                     <label class="text-gray-600 mb-3 block"> Full Name <span class="text-primary" > * </span></label>
-                    <input type="email" class="input-box" placeholder="example@example.com">
+                    <input type="email" [(ngModel)]="name" name="name"  class="input-box" placeholder="example@example.com">
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Email Adress <span class="text-primary" > * </span></label>
-                    <input type="email" class="input-box" placeholder="example@example.com">
+                    <input type="email" [(ngModel)]="email" name="email" class="input-box" placeholder="example@example.com">
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Password <span class="text-primary" > * </span></label>
-                    <input type="password" class="input-box" placeholder="Enter Password">
+                    <input type="password" [(ngModel)]="password" name="password"  class="input-box" placeholder="Enter Password">
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Confirm Password <span class="text-primary" > * </span></label>
-                    <input type="password" class="input-box" placeholder="Enter Password">
+                    <input type="password" [(ngModel)]="password_confirmation" name="password_confirmation"  class="input-box" placeholder="Enter Password">
                 </div>
 
 
@@ -42,7 +42,7 @@
 
             </div>
             <div class="mt-4">
-                <button type="submit" class="block w-full py-2 text-center text-white bg-primary border
+                <button type="submit" (click)="register()"  class="block w-full py-2 text-center text-white bg-primary border
                  border-primary rounded-xl uppercase hover:bg-transparent hover:text-primary transition ">Register</button>
 
 
