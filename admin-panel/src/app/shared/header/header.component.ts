@@ -1,4 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,14 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+
+  constructor(
+    public authService:AuthService,
+    public router:Router
+  ){}
+
+
 
   isBellMenuOpen = false;
   isInboxMenuOpen = false;
@@ -63,5 +73,11 @@ export class HeaderComponent {
     this.usersOpen = !this.usersOpen
   }
 
+
+ 
+  logout(){
+    this.authService.logout();
+
+  }
 
 }
