@@ -66,6 +66,42 @@ class ApiController extends Controller
         ]);
     }
 
+    public function adminlogin(Request $request){
+        
+        // data validation
+        $request->validate([
+            "email" => "required|email",
+            "password" => "required"
+        ]);
+
+        // JWTAuth
+        $token = JWTAuth::attempt([
+            "email" => $request->email,
+            "password" => $request->password
+        ]);
+
+        if(!empty($token)){
+
+            $userdata = auth()->user();
+
+            if($userdata->is_admin == "1"){
+                return response()->json([
+                    "status" => true,
+                    "message" => "User logged in succcessfully",
+                    "access_token" => $token,
+                    "user"=>  $userdata
+                ]);
+
+            }
+           
+        }
+
+        return response()->json([
+            "status" => false,
+            "message" => "Invalid details"
+        ]);
+    }
+
     // User Profile (GET)
     public function profile(){
 
