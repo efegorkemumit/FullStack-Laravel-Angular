@@ -8,6 +8,31 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
+
+        // List All Users (GET)
+    public function listUsers()
+    {
+        $userdata = auth()->user();
+
+        if($userdata->is_admin == "1"){
+            $users = User::all();
+
+            return response()->json([
+                "status"=> true,
+                "messages"=> "All users",
+                "data" => $users
+            ]);
+        }
+        else{
+            return response()->json([
+                "status"=> false,
+                "messages"=> "Unauthorized",
+            ], 401);
+
+        }
+
+
+    }
    
     public function getLastUsers()
     {
