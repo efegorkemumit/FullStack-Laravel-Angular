@@ -19,5 +19,6 @@ Route::group(["middleware" => ["auth:api"]], function(){
 Route::group(["middleware" => ["auth:api"]], function(){
 
     Route::get("admin/users/latest", [AdminController::class, "getLastUsers"]);
+    Route::get("admin/users/count", [AdminController::class, "getUsersCount"]);
   
 });

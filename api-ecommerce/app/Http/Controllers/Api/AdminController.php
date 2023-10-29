@@ -19,7 +19,17 @@ class AdminController extends Controller
             return response()->json(['latest_user'=>$latestUsers]);
         }
 
+    }
 
+    public function getUsersCount(){
+
+        $userdata = auth()->user();
+
+        if($userdata->is_admin == "1"){
+           
+            $userCount = User::count();
+            return response()->json(['userCount'=>$userCount]);
+        }
         
     }
 }
