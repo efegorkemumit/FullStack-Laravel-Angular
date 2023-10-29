@@ -33,6 +33,42 @@ class AdminController extends Controller
 
 
     }
+
+    public function getUser($userId)
+    {
+        $userdata = auth()->user();
+
+        if($userdata->is_admin == "1"){
+            $user = User::find($userId);
+            if($user){
+                return response()->json([
+                    "status"=> true,
+                    "messages"=> "Users Profile",
+                    "data" => $user
+                ]);
+
+            }else
+            {
+                return response()->json([
+                    "status"=> false,
+                    "messages"=> "User not found",
+                ], 404);
+
+            }
+
+           
+        }
+        else{
+            return response()->json([
+                "status"=> false,
+                "messages"=> "Unauthorized",
+            ], 401);
+
+        }
+
+
+    }
+   
    
     public function getLastUsers()
     {
