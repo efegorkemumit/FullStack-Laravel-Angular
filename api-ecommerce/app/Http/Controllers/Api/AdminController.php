@@ -68,6 +68,53 @@ class AdminController extends Controller
 
 
     }
+
+    public function updateUser(Request $request, $id)
+    {
+        $userdata = auth()->user();
+
+        if($userdata->is_admin == "1"){
+            $user = User::find($id);
+            if(!$user){
+                return response()->json([
+                    "status"=> false,
+                    "messages"=> "user not found",
+                ], 404);
+            }
+
+            $request->validate([
+                "name"=>"required",
+                "email"=>"required|email|unique:users,email," . $user->id,
+                "is_admin"=>"required|boolean"
+
+            ]);
+
+            $user->name = $request->name;
+            $user->email= $request->email;
+            $user->is_admin= $request->is_admin;
+            $user->save();
+
+            return response()->json([
+                "status"=> false,
+                "messages"=> "user update",
+                "data"=> $user
+            ]);
+
+
+            
+
+           
+        }
+        else{
+            return response()->json([
+                "status"=> false,
+                "messages"=> "Unauthorized",
+            ], 401);
+
+        }
+
+
+    }
    
    
     public function getLastUsers()
