@@ -9,6 +9,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ProfileLockComponent } from './profile-lock/profile-lock.component';
 import { AuthComponent } from './auth.component';
 import { ElementsModule } from 'src/app/elements/elements.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -23,7 +26,12 @@ import { ElementsModule } from 'src/app/elements/elements.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ElementsModule
+    ElementsModule,
+       //
+       HttpClientModule,
+       FormsModule,
+       ReactiveFormsModule,
+       RouterModule,
   ]
 })
 export class AuthModule { }

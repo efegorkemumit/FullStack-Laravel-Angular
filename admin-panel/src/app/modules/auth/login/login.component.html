@@ -10,7 +10,7 @@
             <form  action="dashboard.html" method="post" class="mt-8 space-y-7">
                 <div>
                     <label class="text-sm font-medium text-white block">Your Email</label>
-                    <input type="email" class="bg-gray-50 border border-primary-600
+                    <input type="email"  [(ngModel)]="email" name="email" class="bg-gray-50 border border-primary-600
                      text-primary-900 sm:text-sm rounded-lg focus:ring-primary-700 focus:border-primary-700 block w-full p-2"  />
 
 
@@ -18,7 +18,7 @@
 
                 <div>
                     <label class="text-sm font-medium text-white block">Password</label>
-                    <input type="password" class="bg-gray-50 border border-primary-600
+                    <input type="password"  [(ngModel)]="password" name="password" class="bg-gray-50 border border-primary-600
                      text-primary-900 sm:text-sm rounded-lg focus:ring-primary-700 focus:border-primary-700 block w-full p-2"  />
 
 
