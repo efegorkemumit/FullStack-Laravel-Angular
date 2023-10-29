@@ -70,13 +70,6 @@ export class AuthService {
   }
 
 
-  register(data:any){
-    let URL = URL_SERVICE+ '/register';
-    return this.http.post(URL,data);
-  }
-
-
-
   logout(){
     this.user=null;
     this.token = '';
