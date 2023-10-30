@@ -41,20 +41,30 @@
  </div>
  
  <div class="container mx-auto lg:p-4 p-0">
-    <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
+    <div *ngIf="userDetails" class="grid grid-cols-1 sm:grid-cols-1 gap-4">
 
 
         <div class=" shadow-md">
           
             <div class="bg-primary-900 text-white mt-5 lg:mt-0 rounded-lg p-4">
 
-                    <h1 class="text-3xl font-bold"> Efe Görkem Ümit</h1>
-                    <p class="text-xl"> Full Stack Developer & Cyber Security </p>
-                    <p class="mb-4">Turkey</p>
-                    <p class="">Youtube Efe Görkem Ümit</p>
-                    <p>Home Address: Lorem, ipsum dolor.</p>
-                    <p>Phone : +90 555 666 3333</p>
-                    <img src="assets/img/skills.png"/>
+                    <h1 class="text-3xl font-bold"> {{userDetails.name}}</h1>
+                    <p class="text-xl"> {{userDetails.email}} </p>
+                    <p class="mb-4 mt-6">
+
+                        <span *ngIf="userDetails.is_admin==1; else notAdmin">  
+                            <a class="px-2 py-2  bg-green-900 rounded-xl text-white"><i class="fa-solid fa-star"></i> Admin</a>
+                                  </span>
+                                  <ng-template #notAdmin>               
+                           <a class="px-2 py-2  bg-white rounded-xl text-black"><i class="fa-solid fa-clipboard-user"></i> User</a>
+                                  </ng-template>
+
+
+
+
+
+                    </p>
+                  
             </div>
 
     
@@ -75,17 +85,17 @@
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Name</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" value="{{userDetails.name}}" class="w-full p-2 rounded-lg text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Email</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" value="{{userDetails.email}}"  class="w-full p-2 rounded-lg  text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Is Admin</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" value="{{userDetails.is_admin}}" class="w-full p-2 rounded-lg  text-black">
                 </div>
                 
                 
