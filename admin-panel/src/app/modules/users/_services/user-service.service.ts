@@ -43,4 +43,21 @@ export class UserServiceService {
     return this.http.get<any>(URL, {headers});
       
   }
+
+  updateUserDetail(userId:number, userData:any):Observable<any>{
+    let URL = URL_SERVICE + '/admin/users/update/' +userId;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.put<any>(URL, userData, {headers});
+      
+  }
 }

@@ -85,23 +85,26 @@
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Name</label>
-                    <input type="text" value="{{userDetails.name}}" class="w-full p-2 rounded-lg text-black">
+                    <input type="text" [(ngModel)]="userDetails.name" class="w-full p-2 rounded-lg text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Email</label>
-                    <input type="text" value="{{userDetails.email}}"  class="w-full p-2 rounded-lg  text-black">
+                    <input type="text" [(ngModel)]="userDetails.email"  class="w-full p-2 rounded-lg  text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Is Admin</label>
-                    <input type="text" value="{{userDetails.is_admin}}" class="w-full p-2 rounded-lg  text-black">
+                    <select [(ngModel)]="userDetails.is_admin" class="w-full p-2 rounded-lg  text-black"> 
+                        <option value="1">Admin</option>
+                        <option value="0">User</option>
+                    </select>
                 </div>
                 
                 
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
-                    <button type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                    <button (click)="updateUserDetail()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
                         Save All
                     </button>
                 </div>

@@ -19,14 +19,29 @@ export class DetailComponent {
 
   ngOnInit(){
     this.route.params.subscribe(params => {
-      const userId = +params['id'];
-      console.log(userId);
+      this.userId = +params['id'];
+      console.log(this.userId);
   
-      if (userId) {
-        this.userServices.getUserDetail(userId).subscribe(data => {
+      if (this.userId) {
+        this.userServices.getUserDetail(this.userId).subscribe(data => {
           this.userDetails = data['data'];
         });
       }
     });
+    this.updateUserDetail();
   }
+  updateUserDetail(){
+    if(this.userId){
+
+      this.userServices.updateUserDetail(this.userId, this.userDetails).subscribe(response=>{
+        console.log("User Update", response);
+      }, error =>{
+        console.error("Update Error:", error);
+      })
+    };
+
+
+  }
+
+ 
 }
