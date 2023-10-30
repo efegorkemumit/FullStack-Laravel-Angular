@@ -17,23 +17,11 @@
                  </form>
                  <div class="flex items-center sm:justify-end w-full">
                      <div class="md:flex pl-2 space-x-1">
-                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
-                         <i class="fa-solid fa-gear"></i>
-                     </a>
-                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
-                         <i class="fa-solid fa-trash"></i>
-                     </a>
-                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
-                         <i class="fa-solid fa-circle-info"></i>
-                     </a>
-                     <a class="text-second-900 hover:text-second-600 cursor-pointer p-1 rounded-xl inline-flex justify-center">
-                         <i class="fa-solid fa-ellipsis-vertical"></i>
-                     </a>
+                    
 
                      </div>
                  
-                     <a   href="addproduct.html" class="ml-auto text-primary-900 bg-second-900 focus:ring-4
-                      focus:ring-second-800 font-medium px-3 py-2 text-center rounded-lg">Add Product</a>
+                    
 
                    
                  </div>
@@ -97,7 +85,7 @@
                                      <i class="fa-solid fa-pen-to-square"></i>
                                       Edit
                                     </a>
-                                    <button class="px-2 py-2  bg-red-950 rounded-xl text-white"><i class="fa-solid fa-pen-to-square"></i> Remove</button>
+                                    <button  (click)="deleteUser(user.id)" class="px-2 py-2  bg-red-950 rounded-xl text-white"><i class="fa-solid  fa-trash"></i> Remove</button>
 
                                  </td>
 

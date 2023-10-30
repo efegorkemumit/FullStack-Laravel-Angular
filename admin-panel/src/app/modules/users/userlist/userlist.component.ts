@@ -10,6 +10,7 @@ export class UserlistComponent {
   users:any[] =[];
   orginalUsers:any[] =[];
   searchText:string = '';
+  userId:number|undefined;
   
 
   constructor(
@@ -33,5 +34,17 @@ export class UserlistComponent {
                user.email.toLowerCase().includes(this.searchText.toLowerCase());
       })
     }
+  }
+  deleteUser(userId:number){
+    this.userServices.deleteUser(userId).subscribe(response=>{
+
+      this.userServices.getUsers().subscribe((data:any)=>{
+        this.users = data['data'];
+        this.orginalUsers= data['data'];
+      });
+
+    },error=>{
+      console.error("User Delete Failed", error);
+    })
   }
 }

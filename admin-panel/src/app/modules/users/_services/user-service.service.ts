@@ -60,4 +60,21 @@ export class UserServiceService {
     return this.http.put<any>(URL, userData, {headers});
       
   }
+
+  deleteUser(userId:number):Observable<any>{
+    let URL = URL_SERVICE + '/admin/users/delete/' +userId;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.delete<any>(URL, {headers});
+      
+  }
 }

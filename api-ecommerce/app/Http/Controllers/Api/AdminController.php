@@ -76,6 +76,37 @@ class AdminController extends Controller
         }
 
 
+
+        
+    }
+
+    public function deleteUser($userId)
+    {
+        $userdata = auth()->user();
+
+        if($userdata->is_admin == "1"){
+            $user = User::find($userId);
+            if(!$user){
+                return response()->json([
+                    "status"=> true,
+                    "messages"=> "User not found",
+                ]);
+
+            }
+
+            $user->delete();
+
+           
+        }
+        else{
+            return response()->json([
+                "status"=> false,
+                "messages"=> "Unauthorized",
+            ], 401);
+
+        }
+
+
     }
 
     public function updateUser(Request $request, $id)
