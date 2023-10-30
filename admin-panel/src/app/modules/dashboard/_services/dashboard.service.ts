@@ -26,4 +26,21 @@ export class DashboardService {
     return this.http.get<any>(URL, {headers});
       
   }
+
+  getLastUsers():Observable<any>{
+    let URL = URL_SERVICE + '/admin/users/latest';
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.get<any>(URL, {headers});
+      
+  }
 }
