@@ -10,16 +10,25 @@ class AdminController extends Controller
 {
 
         // List All Users (GET)
-    public function listUsers()
+    public function listUsers(Request $request)
     {
         $userdata = auth()->user();
 
         if($userdata->is_admin == "1"){
-            $users = User::all();
+          
+            $search = $request ->input('search');
+            $query = User::query();
 
+            if($search)
+            {
+                $query->where('name','like', '%' .$search. '%')
+                ->orWhere('email','like', '%' .$search. '%');
+            }
+            $users = $query->get();
+            
             return response()->json([
                 "status"=> true,
-                "messages"=> "All users",
+                "messages"=> "Users",
                 "data" => $users
             ]);
         }

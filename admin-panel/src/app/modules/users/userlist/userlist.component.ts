@@ -8,6 +8,9 @@ import { UserServiceService } from '../_services/user-service.service';
 })
 export class UserlistComponent {
   users:any[] =[];
+  orginalUsers:any[] =[];
+  searchText:string = '';
+  
 
   constructor(
     public userServices:UserServiceService
@@ -16,6 +19,19 @@ export class UserlistComponent {
   ngOnInit(){
     this.userServices.getUsers().subscribe((data:any)=>{
       this.users = data['data'];
+      this.orginalUsers= data['data'];
     })
+  }
+
+  onSearch(){
+    if(this.searchText===''){
+      this.users = this.orginalUsers;
+    }
+    else{
+      this.users=this.orginalUsers.filter(user=>{
+        return user.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+               user.email.toLowerCase().includes(this.searchText.toLowerCase());
+      })
+    }
   }
 }

@@ -9,7 +9,8 @@
                      <label for="products-search" class="sr-only">Search</label>
                      <div class="mt-1 sm:w-64 xl:w-96 relative">
                          <input class="bg-gray-50 border border-primary-800 text-primary-900 rounded-lg w-full
-                          p-2 focus:ring-second-900 focus:ring-2 focus:border-second-900" id="products-search" type="text" placeholder="Search For Products ....">
+                          p-2 focus:ring-second-900 focus:ring-2 focus:border-second-900" id="products-search" 
+                          [(ngModel)]="searchText" name="searchText" (input)="onSearch()" type="text" placeholder="Search For Products ....">
                      </div>
 
 

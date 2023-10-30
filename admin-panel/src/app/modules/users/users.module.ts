@@ -9,6 +9,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ElementsModule } from 'src/app/elements/elements.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     UsersRoutingModule,
     SharedModule,
     ElementsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class UsersModule { }
