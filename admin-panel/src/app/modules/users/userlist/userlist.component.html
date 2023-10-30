@@ -80,8 +80,15 @@
                                     {{user.created_at}}
                                  </td>
                                  <td class="p-4 w-4">
-                                    {{user.is_admin}}
-                                 </td>
+
+                                    <span *ngIf="user.is_admin==1; else notAdmin">  
+                              <a class="px-2 py-2  bg-green-900 rounded-xl text-white"><i class="fa-solid fa-star"></i> Admin</a>
+                                    </span>
+                                    <ng-template #notAdmin>               
+                             <a class="px-2 py-2  bg-white rounded-xl text-black"><i class="fa-solid fa-clipboard-user"></i> User</a>
+                                    </ng-template>
+                               
+                                </td>
                                
                                  <td class="p-4 w-4 ml-auto text-right">
                                     <button class="px-2 py-2  bg-second-900 rounded-xl text-primary-900"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
