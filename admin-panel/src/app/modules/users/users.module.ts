@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ElementsModule } from 'src/app/elements/elements.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     UserlistComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

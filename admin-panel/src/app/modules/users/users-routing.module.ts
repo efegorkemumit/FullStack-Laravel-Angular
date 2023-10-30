@@ -4,6 +4,7 @@ import { UsersComponent } from './users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { UserlistComponent } from './userlist/userlist.component';
+import { DetailComponent } from './detail/detail.component';
 
  const routes: Routes = [
   {
@@ -19,6 +20,10 @@ import { UserlistComponent } from './userlist/userlist.component';
       },
       {
         path:'userlist', component:UserlistComponent
+      },
+      
+      {
+        path:'detail/:id', component:DetailComponent
       }
      
 
