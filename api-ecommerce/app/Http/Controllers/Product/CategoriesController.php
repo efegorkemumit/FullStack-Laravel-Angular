@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product\Categories;
 
 class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->search;
+        $categories = Categories::where("name","like","%".$search."%")->orderBy("id","desc")->get();
+        return response()->json([
+            "categories"=>$categories,
+        ]);
     }
 
     /**
