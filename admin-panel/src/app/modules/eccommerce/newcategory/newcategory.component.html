@@ -58,12 +58,12 @@
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Name</label>
-                    <input type="text" class="w-full p-2 rounded-lg  text-black">
+                    <input type="text" [(ngModel)]="name" name="name" class="w-full p-2 rounded-lg  text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">icon</label>
-                    <input type="text" class="w-full p-2 rounded-lg text-black">
+                    <input type="text" [(ngModel)]="icon" name="icon"  class="w-full p-2 rounded-lg text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
@@ -79,7 +79,7 @@
                 
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
-                    <button type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                    <button type="submit" (click)="save()" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
                         Save All
                     </button>
                 </div>
