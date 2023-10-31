@@ -5,6 +5,7 @@ import { BillingComponent } from './billing/billing.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
+import { NewcategoryComponent } from './newcategory/newcategory.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
       },
       {
         path:'categories', component:CategoryComponent
+      },
+      {
+        path:'new/category', component:NewcategoryComponent
       }
      
 

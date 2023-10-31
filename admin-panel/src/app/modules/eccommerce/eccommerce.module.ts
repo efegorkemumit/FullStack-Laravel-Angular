@@ -11,6 +11,7 @@ import { ElementsModule } from 'src/app/elements/elements.module';
 import { RouterModule } from '@angular/router';
 import { CategoryComponent } from './category/category.component';
 import { FormsModule } from '@angular/forms';
+import { NewcategoryComponent } from './newcategory/newcategory.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     ProductsComponent,
     BillingComponent,
     InvoiceComponent,
-    CategoryComponent
+    CategoryComponent,
+    NewcategoryComponent
   ],
   imports: [
     CommonModule,
