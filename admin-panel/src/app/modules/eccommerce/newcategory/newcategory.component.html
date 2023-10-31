@@ -58,17 +58,22 @@
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Name</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" class="w-full p-2 rounded-lg  text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">icon</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" class="w-full p-2 rounded-lg text-black">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">images</label>
-                    <input type="file" class="w-full p-2 rounded-lg">
+                    <input type="file" class="w-full p-2 rounded-lg" accept=".jpeg, .bmp, .jpg, .png, .gif"
+                    (change)="processFile($event)" >
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                  <img [src]="images_preview" class="w-40">
                 </div>
                 
                 
@@ -78,6 +83,16 @@
                         Save All
                     </button>
                 </div>
+
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                    <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{successMessage}}
+                    </div>
+
+                </div>
+
+
 
 
             </div>
