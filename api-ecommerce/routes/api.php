@@ -30,3 +30,7 @@ Route::group(["middleware" => ["auth:api"]], function(){
 Route::group(["middleware" => ["api"]], function(){
     Route::get("category/all", [CategoriesController::class, "index"]);
 });
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::delete("category/{id}", [CategoriesController::class, "destroy"]);
+});

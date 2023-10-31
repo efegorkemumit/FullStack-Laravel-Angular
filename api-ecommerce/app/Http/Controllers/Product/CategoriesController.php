@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product\Categories;
+use App\Models\User;
 
 class CategoriesController extends Controller
 {
@@ -63,8 +64,25 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $userdata = auth()->user();
+
+        if($userdata->is_admin == "1"){
+            $categories = Categories::findOrFail($id);
+            $categories->delete();
+
+            return response()->json(["message"=>200]);
+
+           
+        }
+        else{
+            return response()->json([
+                "status"=> false,
+                "messages"=> "Unauthorized",
+            ], 401);
+
+        }
+
     }
 }
