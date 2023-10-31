@@ -7,20 +7,26 @@
              <div class="block sm:flex items-center md:divide-x md:divide-second-900">
                  <form class="sm:pr-3 mb-4 sm:mb-0">
                      <label for="products-search" class="sr-only">Search</label>
+                     <div class="mt-1 sm:w-64 xl:w-96 relative">
+                        <input class="bg-gray-50 border border-primary-800 text-primary-900 rounded-lg w-full
+                         p-2 focus:ring-second-900 focus:ring-2 focus:border-second-900" id="products-search" 
+                         [(ngModel)]="searchText" name="searchText" (input)="onSearch()" type="text" placeholder="Search For Products ....">
+                    </div>
+
                     
 
                  </form>
                  <div class="flex items-center sm:justify-end w-full">
-                     <div class="md:flex pl-2 space-x-1">
-                    
+                    <div class="md:flex pl-2 space-x-1">
+                  
 
-                     </div>
-                 
-                    
+                    </div>
+                
+                    <a   href="addproduct.html" class="ml-auto text-primary-900 bg-second-900 focus:ring-4
+                     focus:ring-second-800 font-medium px-3 py-2 text-center rounded-lg">Add Category</a>
 
-                   
-                 </div>
-
+                  
+                </div>
 
              </div>
 

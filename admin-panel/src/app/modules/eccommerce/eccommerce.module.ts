@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ElementsModule } from 'src/app/elements/elements.module';
 import { RouterModule } from '@angular/router';
 import { CategoryComponent } from './category/category.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CategoryComponent } from './category/category.component';
     EccommerceRoutingModule,
     SharedModule,
     ElementsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class EccommerceModule { }

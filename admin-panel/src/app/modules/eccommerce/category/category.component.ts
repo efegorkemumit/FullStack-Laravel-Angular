@@ -8,7 +8,7 @@ import { EccomerceService } from '../_services/eccomerce.service';
 })
 export class CategoryComponent {
   categories:any[] =[];
-  orginalUsers:any[] =[];
+  orginalcategories:any[] =[];
   searchText:string = '';
   userId:number|undefined;
   
@@ -20,8 +20,21 @@ export class CategoryComponent {
   ngOnInit(){
     this.EccommerceService.getCategory().subscribe((data:any)=>{
       this.categories = data['categories'];
+      this.orginalcategories= data['categories'];
     })
   }
+  onSearch(){
+    if(this.searchText===''){
+      this.categories = this.orginalcategories;
+    }
+    else{
+      this.categories=this.orginalcategories.filter(category=>{
+        return category.name.toLowerCase().includes(this.searchText.toLowerCase()) 
+            
+      })
+    }
+  }
+  
 
   
 }
