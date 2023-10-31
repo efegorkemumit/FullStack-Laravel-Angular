@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product\Categories;
 use App\Models\User;
+use Illuminate\Support\Facedes\Storage;
 
 class CategoriesController extends Controller
 {
@@ -34,7 +35,14 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       if($request->hasFile("images_file")){
+            $path= Storage::putFile("categories", $request->file("images_file"));
+            $request->request->add(["images"=>$path]);
+       }
+       $categories = Categories::create($request->all());
+       return response()->json([
+            "categories"=>$categories,
+       ]);
     }
 
     /**
@@ -58,7 +66,22 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categories= Categories::findOrFail($id);
+        if($request->hasFile("images_file"))
+         {
+            if($categories->images)
+            {
+                Storage::delete($categories->images);
+                
+            }
+
+            $path= Storage::putFile("categories", $request->file("images_file"));
+            $request->request->add(["images"=>$path]);
+         }
+       $categories = update($request->all());
+       return response()->json([
+            "categories"=>$categories,
+       ]);
     }
 
     /**
