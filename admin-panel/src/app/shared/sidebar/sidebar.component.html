@@ -58,12 +58,13 @@
                     
                         <ul [ngClass]="{'hidden': !eCommerceMenuOpen}" class="ml-6 submenu hidden">
                             <li>
+                                <a  routerLink="/ecommerce/categories"  class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900  ">
+                                    <span class="ml-3">Categories</span>
+                                </a>
                                 <a routerLink="/ecommerce/products" class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 ">
                                     <span class="ml-3">Products</span>
                                 </a>
-                                <a  routerLink="/ecommerce/billing"  class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900  ">
-                                    <span class="ml-3">Billing</span>
-                                </a>
+                               
                                 <a routerLink="/ecommerce/invoice"  class="text-white hover:bg-primary-800 font-poppins text-lg px-1 py-2 items-center flex rounded-lg font-normal  hover:text-second-900 ">
                                     <span class="ml-3">Invoice</span>
                                 </a>
