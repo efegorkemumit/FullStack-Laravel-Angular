@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EccomerceService } from '../_services/eccomerce.service';
+import { URL_BACKEND } from 'src/config/config';
 
 @Component({
   selector: 'app-category',
@@ -11,6 +12,7 @@ export class CategoryComponent {
   orginalcategories:any[] =[];
   searchText:string = '';
   userId:number|undefined;
+  URL=URL_BACKEND
   
 
   constructor(

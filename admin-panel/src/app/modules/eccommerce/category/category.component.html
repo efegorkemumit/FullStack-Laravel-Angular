@@ -68,12 +68,12 @@
                                  </td>
 
                                  <td class="p-4 w-4">
-                                    {{category.images}}
+                                   <img src="{{URL}}storage/{{category.images}}" class="w-20 rounded-full"/>
                                  </td>
                                  
                                
                                  <td class="p-4 w-4 ml-auto text-right">
-                                    <a [routerLink]="['/users/detail',category.id]"
+                                    <a [routerLink]="['/ecommerce/category/update',category.id]"
                                      class="px-2 py-2  bg-second-900 rounded-xl text-primary-900">
                                      <i class="fa-solid fa-pen-to-square"></i>
                                       Edit

@@ -1,0 +1,114 @@
+<div class="container  mx-auto lg:p-4 p-0">
+
+    <div class="bg-primary-900 text-white p-4 rounded-xl">
+
+        <nav class="text-base mb-1 rounded-xl p-0">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="dashboard.html">          <i class="fa-solid fa-gauge"></i> 
+                       <span class="ml-1 mr-4">Dashboard</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">         <i class="fa-solid fa-users"></i>
+                       <span class="ml-1 mr-4">Eccomerce</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">       
+                       <span class="ml-1 mr-4">New Category</span> 
+                    </a>
+                 
+                </li>
+
+            </ol>
+
+
+
+
+        </nav>
+
+     
+
+
+
+    </div>
+
+ </div>
+ 
+ <div class="container mx-auto lg:p-4 p-0">
+    <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
+
+
+      
+
+
+
+
+
+
+        <div class=" shadow-md">
+        <div class="bg-primary-900 rounded-lg text-white lg p-4">
+            <div class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+          
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Name</label>
+                    <input type="text" [(ngModel)]="name" name="name" class="w-full p-2 rounded-lg  text-black">
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">icon</label>
+                    <input type="text" [(ngModel)]="icon" name="icon"  class="w-full p-2 rounded-lg text-black">
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">images</label>
+                    <input type="file" class="w-full p-2 rounded-lg" accept=".jpeg, .bmp, .jpg, .png, .gif"
+                    (change)="processFile($event)" >
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                  <img [src]="images_preview" class="w-40">
+                </div>
+                
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <button type="submit" (click)="save()" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Save All
+                    </button>
+                </div>
+
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                    <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{successMessage}}
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+       
+
+
+
+
+        </div>
+     
+
+       
+    </div>
+
+       
+
+
+    </div>
+</div>

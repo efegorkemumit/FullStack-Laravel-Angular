@@ -6,6 +6,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
 import { NewcategoryComponent } from './newcategory/newcategory.component';
+import { CategoryupdateComponent } from './categoryupdate/categoryupdate.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       },
       {
         path:'new/category', component:NewcategoryComponent
+      },
+
+      {
+        path:'category/update/:id', component:CategoryupdateComponent
       }
      
 
