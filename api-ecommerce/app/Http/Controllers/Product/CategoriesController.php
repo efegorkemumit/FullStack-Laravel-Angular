@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product\Categories;
 use App\Models\User;
-use Illuminate\Support\Facedes\Storage;
+use Illuminate\Support\Facades\Storage;
+
 
 class CategoriesController extends Controller
 {
