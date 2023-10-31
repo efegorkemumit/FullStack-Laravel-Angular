@@ -34,6 +34,18 @@ export class CategoryComponent {
       })
     }
   }
+  deleteCategory(id:number){
+    this.EccommerceService.deletecategory(id).subscribe(response=>{
+
+      this.EccommerceService.getCategory().subscribe((data:any)=>{
+        this.categories = data['categories'];
+        this.orginalcategories= data['categories'];
+      });
+
+    },error=>{
+      console.error("User Delete Failed", error);
+    })
+  }
   
 
   

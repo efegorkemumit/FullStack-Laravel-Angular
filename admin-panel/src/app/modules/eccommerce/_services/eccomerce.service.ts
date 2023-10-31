@@ -18,4 +18,21 @@ export class EccomerceService {
     return this.http.get<any>(URL,);
       
   }
+
+  deletecategory(userId:number):Observable<any>{
+    let URL = URL_SERVICE + '/category/' +userId;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.delete<any>(URL, {headers});
+      
+  }
 }
