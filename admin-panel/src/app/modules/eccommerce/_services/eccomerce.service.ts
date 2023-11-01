@@ -83,7 +83,7 @@ export class EccomerceService {
         'Authorization': `Bearer ${token}`,}
     );
 
-    return this.http.put<any>(URL, data,  {headers});
+    return this.http.post<any>(URL, data,  {headers});
       
   }
 }

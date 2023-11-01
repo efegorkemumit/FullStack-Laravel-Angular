@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EccomerceService } from '../_services/eccomerce.service';
 import { ActivatedRoute } from '@angular/router';
+import { URL_BACKEND } from 'src/config/config';
 
 @Component({
   selector: 'app-categoryupdate',
@@ -33,7 +34,10 @@ export class CategoryupdateComponent {
       console.log(this.id);
       if(this.id){
         this.eccommerceService.getCategoryDetail(this.id).subscribe(data=>{
-          this.categoryDetail= data['data'];
+          this.name= data['data']["name"];
+          this.icon= data['data']["icon"];
+          this.images_file= data['data']["images"];
+          this.images_preview= URL_BACKEND+'storage/'+data['data']["images"];
           console.log(this.categoryDetail)
         })
         
@@ -61,6 +65,29 @@ export class CategoryupdateComponent {
     
   }
   save(){
+    if(this.id){
+      if(this.images_file){
+
+        let formData =  new FormData();
+        formData.append("images_file", this.images_file);
+        formData.append("name", this.name);
+        formData.append("icon", this.icon);
+        this.eccommerceService.update(this.id, formData).subscribe((resp:any)=>{
+          this.registrationSuccess=true;
+    
+          setTimeout(()=>{
+            this.registrationSuccess=false;
+          }, 5000);
+        })
+        
+      }
+    
+
+    }
+
+   
+
+
    
 
 

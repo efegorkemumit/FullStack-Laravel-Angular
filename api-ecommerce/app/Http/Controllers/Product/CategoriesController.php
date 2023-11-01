@@ -94,7 +94,7 @@ class CategoriesController extends Controller
             $path= Storage::putFile("categories", $request->file("images_file"));
             $request->request->add(["images"=>$path]);
          }
-       $categories = update($request->all());
+       $categories -> update($request->all());
        return response()->json([
             "categories"=>$categories,
        ]);
