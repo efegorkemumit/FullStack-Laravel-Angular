@@ -13,7 +13,7 @@ class SliderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $search = $request->search;
         $slider = Slider::where("title","like","%".$search."%")->orderBy("id","desc")->get();

@@ -12,7 +12,7 @@ export class SliderService {
  
   constructor(private http: HttpClient) { }
 
-  getCategory():Observable<any>{
+  getSlider():Observable<any>{
     let URL = URL_SERVICE + '/slider/all';
 
    
@@ -21,7 +21,7 @@ export class SliderService {
       
   }
 
-  deletecategory(userId:number):Observable<any>{
+  deleteSlider(userId:number):Observable<any>{
     let URL = URL_SERVICE + '/slider/' +userId;
 
     const token = localStorage.getItem('token');
