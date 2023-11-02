@@ -5,13 +5,14 @@
         <i class="fa-solid fa-arrow-left"></i>
     </button>
 
-    <div *ngFor="let slide of slides; let i = index" [style.background-image]="'url('+slide.imageSrc+')'" class="slide w-full h-full bg-repeat-round object-cover" [hidden]="i !==currenSlide" >
+    <div *ngFor="let slide of slides; let i = index"   [style.background-image]="'url(' + URL +  slide.images + ')'" 
+    class="slide w-full h-full bg-repeat-round object-cover" [hidden]="i !==currenSlide" >
         <div class="container pt-28 pb-24 md:pb-36 lg:pb-54 xl:pb-70">
            <h1 class="text-4xl xl:text-6xl md:text-5xl text-gray-900 font-semibold mb-4"> {{slide.title}} </h1>
            <p class="text-base text-gray-700 leading-7">{{slide.description}}</p>
            <div class="mt-12">
             <a class="bg-primary border border-primary
-             text-white px-8 py-3 font-medium rounded-xl uppercase hover:bg-red-950 transition " href="shop.html">Shop now
+             text-white px-8 py-3 font-medium rounded-xl uppercase hover:bg-red-950 transition " routerLink="{{slide.urlLink}}">Shop now
 
             </a>
 
