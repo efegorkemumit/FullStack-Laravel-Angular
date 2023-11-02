@@ -1,0 +1,29 @@
+<app-loader [loading]="isLoading"></app-loader>
+
+<div *ngIf="!isLoading"> 
+      
+      <app-header></app-header>
+
+        <div class="flex">
+
+            <!-------------Main start-->
+                    <main class="flex lg:ml-60 xl:ml-44 2xl:ml-60 mt-16 lg:mt-16 w-full p-6 " >
+                        <div class=" mt-6 lg:mt-0 w-full lg:p-6 p-0">
+            <!-------------Main start-->
+                    <router-outlet></router-outlet>
+
+                    
+                    
+                        <app-footer></app-footer>
+                
+                
+                    </div>
+                    </main>
+                
+        </div>
+
+            
+
+        <app-sidebar></app-sidebar>
+
+</div>

@@ -9,6 +9,11 @@ const routes: Routes = [
     import('./modules/eccommerce/eccommerce.module').then((m)=> m.EccommerceModule) 
   },
   {
+    path: 'slider', loadChildren:() =>
+    import('./modules/slider/slider.module').then((m)=> m.SliderModule) 
+  },
+
+  {
     path: 'users', loadChildren:() =>
     import('./modules/users/users.module').then((m)=> m.UsersModule) 
   },
