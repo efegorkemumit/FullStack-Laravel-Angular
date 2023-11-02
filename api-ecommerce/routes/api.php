@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Product\CategoriesController;
+use App\Http\Controllers\Extra\SliderController;
 
 Route::post("register", [ApiController::class, "register"]);
 Route::post("login", [ApiController::class, "login"]);
@@ -36,5 +37,18 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("category/add", [CategoriesController::class, "store"]);
     Route::post("category/update/{id}", [CategoriesController::class, "update"]);
     Route::get("category/detail/{id}", [CategoriesController::class, "getCategory"]);
+
+});
+
+
+Route::group(["middleware" => ["api"]], function(){
+    Route::get("slider/all", [SliderController::class, "index"]);
+});
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::delete("slider/{id}", [SliderController::class, "destroy"]);
+    Route::post("slider/add", [SliderController::class, "store"]);
+    Route::post("slider/update/{id}", [SliderController::class, "update"]);
+    Route::get("slider/detail/{id}", [SliderController::class, "getSlider"]);
 
 });
