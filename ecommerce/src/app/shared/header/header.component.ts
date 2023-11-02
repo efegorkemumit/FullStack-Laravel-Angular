@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/auth-profile/_services/auth.service';
+import { SharedService } from '../_services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,12 @@ import { AuthService } from 'src/app/modules/auth-profile/_services/auth.service
 })
 export class HeaderComponent {
 
+  categories:any[] =[];
+  
   constructor(
     public authService:AuthService,
-    public router:Router
+    public router:Router,
+    public sharedService:SharedService
   ){}
 
   mobileMenuVisible: boolean =false;
@@ -26,6 +30,12 @@ export class HeaderComponent {
   logout(){
     this.authService.logout();
 
+  }
+
+  ngOnInit(){
+    this.sharedService.getCategory().subscribe((data:any)=>{
+      this.categories = data['categories'];
+    })
   }
 
 }

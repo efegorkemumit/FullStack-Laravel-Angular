@@ -64,65 +64,16 @@
         <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-3">
 
              <!------Single Categorys Start-->
-            <div class="overflow-hidden relative group rounded-xl">
-                <img src="assets/img/category/1.jpg" class="w-full"/>
+            <div *ngFor="let category of categories" class="overflow-hidden relative group rounded-xl">
+                <img src="{{URL}}storage/{{category.images}}" class="w-full"/>
                 <a href="#" class="absolute inset-0 flex items-center justify-center text-xl
-                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Shoes</a>
+                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">{{category.name}}</a>
 
 
             </div>
              <!------Single Categorys END-->
 
-              <!------Single Categorys Start-->
-            <div class="overflow-hidden relative group rounded-xl">
-                <img src="assets/img/category/2.jpg" class="w-full"/>
-                <a href="#" class="absolute inset-0 flex items-center justify-center text-xl
-                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Dress</a>
-
-
-            </div>
-             <!------Single Categorys END-->
-
-
-              <!------Single Categorys Start-->
-            <div class="overflow-hidden relative group rounded-xl">
-                <img src="assets/img/category/3.jpg" class="w-full"/>
-                <a href="#" class="absolute inset-0 flex items-center justify-center text-xl
-                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Watch</a>
-
-
-            </div>
-             <!------Single Categorys END-->
-
-
-              <!------Single Categorys Start-->
-            <div class="overflow-hidden relative group rounded-xl">
-                <img src="assets/img/category/4.jpg" class="w-full"/>
-                <a href="#" class="absolute inset-0 flex items-center justify-center text-xl
-                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Computer</a>
-
-
-            </div>
-             <!------Single Categorys END-->
-
-              <!------Single Categorys Start-->
-            <div class="overflow-hidden relative group rounded-xl">
-                <img src="assets/img/category/5.jpg" class="w-full"/>
-                <a href="#" class="absolute inset-0 flex items-center justify-center text-xl
-                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Mobile Phone</a>
-
-
-            </div>
-             <!------Single Categorys END-->
-
-              <!------Single Categorys Start-->
-            <div class="overflow-hidden relative group rounded-xl">
-                <img src="assets/img/category/6.jpg" class="w-full"/>
-                <a href="#" class="absolute inset-0 flex items-center justify-center text-xl
-                 text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Sport</a>
-
-
-            </div>
+           
              <!------Single Categorys END-->
 
         </div>
