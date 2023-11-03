@@ -1,0 +1,62 @@
+-- Table structure for the `products` table
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `slug` varchar(250) NOT NULL,
+  `sku` varchar(50) NOT NULL,
+  `price_dsc` double NOT NULL,
+  `price_usd` double NOT NULL,
+  `tags` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`tags`)),
+  `description` longtext CHARACTER SET utf8 NOT NULL,
+  `summary` text NOT NULL,
+  `state` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 in demo, 2 public, 3 blocked',
+  `image` varchar(250) NOT NULL,
+  `stock` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table structure for the `product_colors` table
+CREATE TABLE `product_colors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `code` varchar(250) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table structure for the `product_color_sizes` table
+CREATE TABLE `product_color_sizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_color_id` bigint(20) UNSIGNED NOT NULL,
+  `product_size_id` bigint(20) UNSIGNED NOT NULL,
+  `stock` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table structure for the `product_images` table
+CREATE TABLE `product_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(250) NOT NULL,
+  `type` varchar(35) NOT NULL,
+  `size` varchar(50) NOT NULL,
+  `file_name` varchar(250) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table structure for the `product_sizes` table
+CREATE TABLE `product_sizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
