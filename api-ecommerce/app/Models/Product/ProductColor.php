@@ -6,19 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Categories extends Model
+class ProductColor extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'name',
-        'icon',
-        'images',
+       'name', 
+       'code', 
+      
+     
     ];
 
-    public function products()
+    public function product_color_sizes()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(ProductColorSize::class);
     }
 
-   
+
 }
