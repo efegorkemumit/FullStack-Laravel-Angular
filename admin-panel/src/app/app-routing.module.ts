@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'product', loadChildren:() =>
+    import('./modules/product/product.module').then((m)=> m.ProductModule) 
+  },
+  {
     path: 'ecommerce', loadChildren:() =>
     import('./modules/eccommerce/eccommerce.module').then((m)=> m.EccommerceModule) 
   },
