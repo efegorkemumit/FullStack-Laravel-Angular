@@ -22,9 +22,7 @@ class Product extends Model
        'state', 
        'image', 
        'stock', 
-       'created_at', 
-       'updated_at', 
-       'deleted_at'
+      
     ];
 
     public function categories()
