@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Product\CategoriesController;
+use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Extra\SliderController;
 
 Route::post("register", [ApiController::class, "register"]);
@@ -38,6 +39,10 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("category/update/{id}", [CategoriesController::class, "update"]);
     Route::get("category/detail/{id}", [CategoriesController::class, "getCategory"]);
 
+});
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::post("product/add", [ProductController::class, "store"]);
 });
 
 

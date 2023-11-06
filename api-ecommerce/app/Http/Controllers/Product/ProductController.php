@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product\Product;
+use App\Models\Product\Categories;
+use App\Models\Product\ProductColor;
+use App\Models\Product\ProductColorSize;
+use App\Models\Product\ProductSize;
+use App\Models\Product\ProductImages;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -28,7 +35,39 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $is_product = Product::where("title", $request->title)->first();
+        if($is_product){
+            return response()->json(["message"=>403]);
+        }
+
+        $request->request->add(["slug"=>Str::slug($request->title)]);
+        if($request->hasFile("images_file"))
+        {
+            $path = Storage::putFile("products", $request->file("images_file"));
+            $request->request->add(["images"=>$path]);
+
+        }
+        $product = Product::create($request->all());
+
+        foreach ($request->file("files") as $key=> $file){
+            $extension=$file->getClientOrginalExtension();
+            $size=$file->getSize();
+            $oname=$file->getClientOrginalName();
+
+            $path = Storage::putFile("products", $file);
+            ProductImages::create([
+                "product_id"=> $product->id,
+                "file_name"=> $oname,
+                "images"=>$path,
+                "size"=>$size,
+                "type"=>$extension,
+            ]);
+
+
+        }
+
+        return response()->json(["message"=>200]);
+
     }
 
     /**
