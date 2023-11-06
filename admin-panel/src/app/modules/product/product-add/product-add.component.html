@@ -81,73 +81,37 @@
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Images</label>
-                    <input type="file" class="w-full p-2 rounded-lg">
+                    <input type="file" (change)="addFiles($event)" class="w-full p-2 rounded-lg">
                 </div>
                 
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col mt-3">
-                    <button type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                    <button (click)="addImages()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
                         Add Image
                     </button>
                 </div>
 
                 <div class="bg-primary-900 mt-5 lg:mt-0 rounded-lg p-4 shadow-md">
-                    <h2 class="text-2xl font-semibold text-white">Reference</h2>
+                    <h2 class="text-2xl font-semibold text-white">Images</h2>
                     <div class="mt-4 space-y-3">
                         <!-------------Customers Single Start-->
-                        <div class="flex items-center">
-                            <img src="assets/img/users/1.png" class="w-10 h-10 rounded-full"/>
+
+                        <div *ngFor="let image_ of images_files; let i=index" class="flex items-center">
+                            <img [src]="image_.show" class="w-10 h-10 rounded-full"/>
                             <div class="ml-4">
-                                <p class="text-lg font-semibold text-second-900">Efe Görkem Ümit</p>
-                                <p class="text-white">email@youtube.com</p>
+                                <p class="text-lg font-semibold text-second-900">{{image_.file.name}}</p>
+                            
                             </div>
+                           
                             <div class="ml-auto">
-                                <p class="text-white"> <a class="px-3 py-3 hover:bg-second-700 text-primary-900 bg-second-900 rounded-xl" href="#">Delete</a></p>
+                                <p class="text-white"> 
+                                    <button (click)="removeImages(i)" class="px-3 py-3 hover:bg-second-700 text-primary-900 bg-second-900 rounded-xl"><i class="fa-solid fa-xmark"></i></button>
+                                </p>
                             </div>
                         </div>
                         <!-------------Customers Single end-->
 
-                        <!-------------Customers Single Start-->
-                        <div class="flex items-center">
-                            <img src="assets/img/users/2.png" class="w-10 h-10 rounded-full"/>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-second-900">Kate Jack</p>
-                                <p class="text-white">email@youtube.com</p>
-                                <p class="text-white">email@youtube.com</p>
-                            </div>
-                            <div class="ml-auto">
-                                <p class="text-white"> <a class="px-3 py-3 hover:bg-second-700 text-primary-900 bg-second-900 rounded-xl" href="#">Contact</a></p>
-                            </div>
-                        </div>
-                        <!-------------Customers Single end-->
-
-                        <!-------------Customers Single Start-->
-                        <div class="flex items-center">
-                            <img src="assets/img/users/3.png" class="w-10 h-10 rounded-full"/>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-second-900">John Wich</p>
-                                <p class="text-white">email@youtube.com</p>
-                                <p class="text-white">email@youtube.com</p>
-                            </div>
-                            <div class="ml-auto">
-                                <p class="text-white"> <a class="px-3 py-3 hover:bg-second-700 text-primary-900 bg-second-900 rounded-xl" href="#">Contact</a></p>
-                            </div>
-                        </div>
-                        <!-------------Customers Single end-->
-
-                        <!-------------Customers Single Start-->
-                        <div class="flex items-center">
-                            <img src="assets/img/users/4.png" class="w-10 h-10 rounded-full"/>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-second-900">Sam Winchester</p>
-                                <p class="text-white">email@youtube.com</p>
-                                <p class="text-white">email@youtube.com</p>
-                            </div>
-                            <div class="ml-auto">
-                                <p class="text-white"> <a class="px-3 py-3 hover:bg-second-700 text-primary-900 bg-second-900 rounded-xl" href="#">Contact</a></p>
-                            </div>
-                        </div>
-                        <!-------------Customers Single end-->
+                      
 
 
 
