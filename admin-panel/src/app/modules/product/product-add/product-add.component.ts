@@ -13,6 +13,26 @@ export class ProductAddComponent {
   img_files:any=null;
   img_previews:any=null;
 
+
+  images_file:any=null;
+
+  images_preview:any =null;
+
+  processFile(event : Event){
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+      if (target.files[0].type.indexOf("image") < 0) {
+        console.log("Resim dosyası değil");
+        return;
+      }
+      this.images_file = target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(this.images_file);
+      reader.onloadend = () => (this.images_preview = reader.result);
+    }
+    
+  }
+
   addFiles(event:Event)
   {
     const target  = event.target as HTMLInputElement;

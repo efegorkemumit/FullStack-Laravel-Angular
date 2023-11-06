@@ -134,6 +134,17 @@
         <div class="col-span-3 shadow-md">
         <div class="bg-primary-900 rounded-lg text-white lg p-4">
             <div class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Cover Photo</label>
+                    <input type="file" class="w-full p-2 rounded-lg" accept=".jpeg, .bmp, .jpg, .png, .gif"
+                    (change)="processFile($event)" >
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                  <img [src]="images_preview" class="w-40">
+                </div>
+
           
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Categories</label>
