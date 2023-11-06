@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EccomerceService } from '../../eccommerce/_services/eccomerce.service';
 
 @Component({
   selector: 'app-product-add',
@@ -17,6 +18,20 @@ export class ProductAddComponent {
   images_file:any=null;
 
   images_preview:any =null;
+
+  categories:any=[];
+  categorie_id:any='';
+
+  constructor(
+    public eccommerceService: EccomerceService
+  ){}
+
+  ngOnInit():void{
+    this.eccommerceService.getCategory().subscribe((resp:any)=>{
+      this.categories = resp.categories;
+    })
+  }
+
 
   processFile(event : Event){
     const target = event.target as HTMLInputElement;

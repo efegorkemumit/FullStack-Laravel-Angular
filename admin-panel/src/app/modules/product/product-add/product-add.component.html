@@ -148,7 +148,13 @@
           
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Categories</label>
-                    <select class="w-full p-2 rounded-lg"></select>
+                    <select [(ngModel)]="categorie_id" name="categorie_id" class="w-full p-2 rounded-lg text-black">
+                        
+                        <ng-container *ngFor="let categorie of categories">
+                        <option [value]="categorie.id">{{categorie.name}}</option>
+                        </ng-container>
+
+                    </select>
                   
                 </div>
 
