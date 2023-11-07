@@ -41,6 +41,10 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
 });
 
+Route::group(["middleware" => ["api"]], function(){
+    Route::get("product/all", [ProductController::class, "index"]);
+});
+
 Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("product/add", [ProductController::class, "store"]);
 });

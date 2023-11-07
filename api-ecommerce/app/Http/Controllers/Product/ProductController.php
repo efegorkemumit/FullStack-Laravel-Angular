@@ -12,15 +12,29 @@ use App\Models\Product\ProductSize;
 use App\Models\Product\ProductImages;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+         /**
+     * /api/product/all?page=2
+     */
+
+      $search= $request->search;
+      $category_id = $request->category_id;
+      $products = Product::filterProduct($search, $category_id)->orderBy("id", "desc")->paginate(3);
+
+      return response()->json([
+        "message"=>200,
+        "total"=>$products->total(),
+        "products"=>ProductCollection::make($products)
+      ]);
     }
 
     /**

@@ -41,4 +41,16 @@ class Product extends Model
         return $this->hasMany(ProductSize::class);
     }
 
+    public function scopeFilterProduct($query, $search, $category_id)
+    {
+        if($search){
+            $query->where('title', 'like', "%$search%");
+        }
+        if($category_id){
+            $query->where('category_id', $category_id);
+
+        }
+        return $query;
+    }
+
 }
