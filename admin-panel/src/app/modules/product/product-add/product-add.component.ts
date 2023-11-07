@@ -122,7 +122,7 @@ export class ProductAddComponent {
     formData.append("summary", this.summary);
     formData.append("stock", this.stock);
     formData.append("category_id", this.category_id);
-    formData.append("tags", this.	tags);
+    formData.append("tags", this.tags);
     formData.append("images_file", this.images_file);
 
     this.productService.create(formData).subscribe((resp:any)=>{
