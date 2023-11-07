@@ -30,8 +30,12 @@ export class ProductAddComponent {
   description:any=null;
   summary:any=null;
   stock:any='';
+
+
   registrationSuccess = false;
-  successMessage= "Registtration Successful"
+  successMessage= "Registtration Successful";
+  registrationError=false;
+  errorMessage="Error ";
 
   constructor(
     public eccommerceService: EccomerceService,
@@ -112,6 +116,18 @@ export class ProductAddComponent {
   }
   crateProduct(){
 
+    if(!this.title || !this.sku || !this.pricedsc || !this.priceusd || !this.description || !this.summary
+       || !this.stock || !this.category_id || !this.images_file )
+    {
+      this.errorMessage="All input required";
+      this.registrationError=true;
+
+      setTimeout(()=>{
+        this.registrationError=false;
+      }, 5000);
+      return;
+    }
+
       
     let formData =  new FormData();
     formData.append("title", this.title);
@@ -125,13 +141,33 @@ export class ProductAddComponent {
     formData.append("tags", this.tags);
     formData.append("images_file", this.images_file);
 
+    let index = 0;
+    for(const images of this.images_files){
+      formData.append("files["+index+"]", this.images_file);
+      index++;
+    }
+
     this.productService.create(formData).subscribe((resp:any)=>{
-      console.log(resp);
       this.registrationSuccess=true;
 
       setTimeout(()=>{
         this.registrationSuccess=false;
       }, 5000);
+
+
+      this.title=null;
+      this.sku=null;
+      this.pricedsc=null;
+      this.priceusd=null;
+      this.description=null;
+      this.summary=null;
+      this.stock=null;
+      this.tags=[];
+      this.images_files=[];
+      this.images_file=null;
+      this.img_previews=null;
+      
+
     })
 
 

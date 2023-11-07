@@ -202,6 +202,21 @@
                     </button>
                 </div>
 
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                    <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{successMessage}}
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationError">
+                    <div class="bg-red-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{errorMessage}}
+                    </div>
+
+                </div>
+
+
 
             </div>
        

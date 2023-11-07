@@ -51,9 +51,9 @@ class ProductController extends Controller
         $product = Product::create($request->all());
 
         foreach ($request->file("files") as $key=> $file){
-            $extension=$file->getClientOrginalExtension();
+            $extension=$file->getClientOriginalExtension();
             $size=$file->getSize();
-            $oname=$file->getClientOrginalName();
+            $oname=$file->getClientOriginalName();
 
             $path = Storage::putFile("products", $file);
             ProductImages::create([

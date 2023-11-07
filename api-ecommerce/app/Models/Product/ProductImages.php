@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProductImages extends Model
 {
     protected $fillable = [
-        'image', 
+        'images', 
         'type', 
         'size', 
         'file_name',
+        'product_id'
         
         
       
