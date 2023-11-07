@@ -21,7 +21,7 @@ export class ProductAddComponent {
   images_preview:any =null;
 
   categories:any=[];
-  categorie_id:any='';
+  category_id:any='';
 
   title:any=null;
   sku:any = null;
@@ -116,12 +116,15 @@ export class ProductAddComponent {
     let formData =  new FormData();
     formData.append("title", this.title);
     formData.append("sku", this.sku);
-    formData.append("pricedsc", this.pricedsc);
-    formData.append("priceusd", this.priceusd);
+    formData.append("price_dsc", this.pricedsc);
+    formData.append("price_usd", this.priceusd);
     formData.append("description", this.description);
     formData.append("summary", this.summary);
     formData.append("stock", this.stock);
-    formData.append("categorie_id", this.categorie_id);
+    formData.append("category_id", this.category_id);
+    formData.append("tags", this.	tags);
+    formData.append("images_file", this.images_file);
+
     this.productService.create(formData).subscribe((resp:any)=>{
       console.log(resp);
       this.registrationSuccess=true;

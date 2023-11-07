@@ -11,6 +11,7 @@ use App\Models\Product\ProductColorSize;
 use App\Models\Product\ProductSize;
 use App\Models\Product\ProductImages;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {

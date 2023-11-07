@@ -148,7 +148,7 @@
           
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Categories</label>
-                    <select [(ngModel)]="categorie_id" name="categorie_id" class="w-full p-2 rounded-lg text-black">
+                    <select [(ngModel)]="category_id" name="category_id" class="w-full p-2 rounded-lg text-black">
                         
                         <ng-container *ngFor="let categorie of categories">
                         <option [value]="categorie.id">{{categorie.name}}</option>
@@ -160,37 +160,37 @@
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Title</label>
-                    <input type="text" [(ngModel)]="title" name="title" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="title"  name="title" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
 
                
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Price Disccount</label>
-                    <input type="text" [(ngModel)]="pricedsc" name="pricedsc" class="w-full p-2 rounded-lg">
+                    <input type="number" [(ngModel)]="pricedsc" name="pricedsc" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Price USD </label>
-                    <input type="text" [(ngModel)]="priceusd" name="priceusd" class="w-full p-2 rounded-lg">
+                    <input type="number" [(ngModel)]="priceusd" name="priceusd" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Sku</label>
-                    <input type="text" [(ngModel)]="sku" name="sku" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="sku" name="sku" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Stock</label>
-                    <input type="text" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg">
+                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Summary</label>
-                    <input type="text"  [(ngModel)]="summary" name="summary" class="w-full p-2 rounded-lg">
+                    <input type="text"  [(ngModel)]="summary" name="summary" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Description</label>
-                    <textarea rows="20" [(ngModel)]="description" name="description" class="w-full p-2 rounded-lg"></textarea>
+                    <textarea rows="20" [(ngModel)]="description" name="description" class="w-full p-2 rounded-lg text-primary-900"></textarea>
                 </div>
 
               
