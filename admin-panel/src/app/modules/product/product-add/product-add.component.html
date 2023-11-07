@@ -160,44 +160,44 @@
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Title</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="title" name="title" class="w-full p-2 rounded-lg">
                 </div>
 
                
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Price Disccount</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="pricedsc" name="pricedsc" class="w-full p-2 rounded-lg">
                 </div>
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Price USD </label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="priceusd" name="priceusd" class="w-full p-2 rounded-lg">
                 </div>
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Sku</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="sku" name="sku" class="w-full p-2 rounded-lg">
                 </div>
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col">
                     <label class="text-lg">Stock</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg">
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Summary</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <input type="text"  [(ngModel)]="summary" name="summary" class="w-full p-2 rounded-lg">
                 </div>
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Description</label>
-                    <textarea rows="20" class="w-full p-2 rounded-lg"></textarea>
+                    <textarea rows="20" [(ngModel)]="description" name="description" class="w-full p-2 rounded-lg"></textarea>
                 </div>
 
               
                 
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
-                    <button type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                    <button  (click)="crateProduct()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
                         Save All
                     </button>
                 </div>

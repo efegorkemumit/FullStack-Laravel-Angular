@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EccomerceService } from '../../eccommerce/_services/eccomerce.service';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product-add',
@@ -22,8 +23,19 @@ export class ProductAddComponent {
   categories:any=[];
   categorie_id:any='';
 
+  title:any=null;
+  sku:any = null;
+  pricedsc:any='';
+  priceusd:any='';
+  description:any=null;
+  summary:any=null;
+  stock:any='';
+  registrationSuccess = false;
+  successMessage= "Registtration Successful"
+
   constructor(
-    public eccommerceService: EccomerceService
+    public eccommerceService: EccomerceService,
+    public productService: ProductService
   ){}
 
   ngOnInit():void{
@@ -96,6 +108,29 @@ export class ProductAddComponent {
   removeTags(index:number)
   {
     this.tags.splice(index,1);
+
+  }
+  crateProduct(){
+
+      
+    let formData =  new FormData();
+    formData.append("title", this.title);
+    formData.append("sku", this.sku);
+    formData.append("pricedsc", this.pricedsc);
+    formData.append("priceusd", this.priceusd);
+    formData.append("description", this.description);
+    formData.append("summary", this.summary);
+    formData.append("stock", this.stock);
+    formData.append("categorie_id", this.categorie_id);
+    this.productService.create(formData).subscribe((resp:any)=>{
+      console.log(resp);
+      this.registrationSuccess=true;
+
+      setTimeout(()=>{
+        this.registrationSuccess=false;
+      }, 5000);
+    })
+
 
   }
 
