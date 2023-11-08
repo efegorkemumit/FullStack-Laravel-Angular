@@ -111,7 +111,7 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
 
-        $is_product = Product::where("id","<>",$id)::where("title", $request->title)->first();
+        $is_product = Product::where("id","<>",$id)->where("title", $request->title)->first();
         if($is_product){
             return response()->json(["message"=>403]);
         }

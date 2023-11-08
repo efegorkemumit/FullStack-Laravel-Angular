@@ -120,15 +120,58 @@ export class ProductUpdateComponent {
 
   addTags(){
 
-   
+    if(this.tagsName!=null){
+      this.tags.push(this.tagsName)
+      this.tagsName=null;
+    }
   
   }
 
   removeTags(index:number)
   {
+    this.tags.splice(index,1);
 
   }
-  crateProduct(){
+  updateProduct(){
+
+    if(this.product_id){
+
+      if(!this.title || !this.sku || !this.pricedsc || !this.priceusd || !this.description || !this.summary
+        || !this.stock || !this.category_id  )
+     {
+       this.errorMessage="All input required";
+       this.registrationError=true;
+  
+       setTimeout(()=>{
+         this.registrationError=false;
+       }, 5000);
+       return;
+     }
+  
+     let formData =  new FormData();
+      formData.append("title", this.title);
+      formData.append("sku", this.sku);
+      formData.append("price_dsc", this.pricedsc);
+      formData.append("price_usd", this.priceusd);
+      formData.append("description", this.description);
+      formData.append("summary", this.summary);
+      formData.append("stock", this.stock);
+      formData.append("category_id", this.category_id);
+      formData.append("tags", this.tags);
+      formData.append("images_file", this.images_file);
+
+      this.productService.update(this.product_id, formData).subscribe((resp:any)=>{
+        this.registrationSuccess=true;
+  
+        setTimeout(()=>{
+          this.registrationSuccess=false;
+        }, 5000);
+      })
+
+
+    }
+
+    
 
    
 
