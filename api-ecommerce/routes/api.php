@@ -47,6 +47,7 @@ Route::group(["middleware" => ["api"]], function(){
 
 Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("product/add", [ProductController::class, "store"]);
+    Route::post("product/update/{id}", [ProductController::class, "update"]);
 });
 
 

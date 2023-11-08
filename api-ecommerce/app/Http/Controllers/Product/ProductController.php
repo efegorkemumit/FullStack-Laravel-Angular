@@ -106,7 +106,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $is_product = Product::where("id","<>",$id)::where("title", $request->title)->first();
+        if($is_product){
+            return response()->json(["message"=>403]);
+        }
+
+        $product = Product::findOrFail($id);
+
+        $request->request->add(["slug"=>Str::slug($request->title)]);
+
+        if($request->hasFile("images_file"))
+        {
+            $path = Storage::putFile("products", $request->file("images_file"));
+            $request->request->add(["images"=>$path]);
+
+        }
+        $product->update($request->all());
+
+        return response()->json(["message"=>200]);
+
+
+
+       
+
     }
 
     /**
