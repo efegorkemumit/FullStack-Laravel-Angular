@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EccomerceService } from '../../eccommerce/_services/eccomerce.service';
 import { URL_BACKEND } from 'src/config/config';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,42 +11,35 @@ import { URL_BACKEND } from 'src/config/config';
 export class ProductListComponent {
 products:any[] =[];
   orginalproducts:any[] =[];
-  searchText:string = '';
+  searchText:any=null;
   userId:number|undefined;
   URL=URL_BACKEND
   
 
   constructor(
-    public EccommerceService:EccomerceService
+    public ProductService : ProductService
   ){}
 
-  ngOnInit(){
-    this.EccommerceService.getCategory().subscribe((data:any)=>{
-      this.products = data['categories'];
-      this.orginalproducts= data['categories'];
-    })
+  ngOnInit():void{
+   this.allproduct();
   }
-  onSearch(){
-    if(this.searchText===''){
-      this.products = this.orginalproducts;
+  allproduct(page=1){
+   
+    let LINK="";
+    if(this.searchText){
+      LINK = LINK+ "&search="+this.searchText;
     }
-    else{
-      this.products=this.orginalproducts.filter(category=>{
-        return category.name.toLowerCase().includes(this.searchText.toLowerCase()) 
-            
-      })
-    }
+    this.ProductService.getProduct(page, LINK).subscribe((resp:any)=>{
+      console.log(resp);
+      this.products = resp.products.data;
+    })
   }
   deleteCategory(id:number){
-    this.EccommerceService.deletecategory(id).subscribe(response=>{
-
-      this.EccommerceService.getCategory().subscribe((data:any)=>{
-        this.products = data['products'];
-        this.orginalproducts= data['products'];
-      });
-
-    },error=>{
-      console.error("User Delete Failed", error);
-    })
+   
+  }
+  reset(){
+    this.searchText=null;
+    this.allproduct();
+   
   }
 }
