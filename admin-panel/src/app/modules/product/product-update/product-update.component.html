@@ -1,1 +1,237 @@
-<p>product-update works!</p>
+<div class="container  mx-auto lg:p-4 p-0">
+
+    <div class="bg-primary-900 text-white p-4 rounded-xl">
+
+        <nav class="text-base mb-1 rounded-xl p-0">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="dashboard.html">          <i class="fa-solid fa-gauge"></i> 
+                       <span class="ml-1 mr-4">Dashboard</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">         <i class="fa-solid fa-users"></i>
+                       <span class="ml-1 mr-4">Users</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">       
+                       <span class="ml-1 mr-4">Settings</span> 
+                    </a>
+                 
+                </li>
+
+            </ol>
+
+
+
+
+        </nav>
+
+     
+
+
+
+    </div>
+
+ </div>
+ 
+ <div class="container mx-auto lg:p-4 p-0">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+
+
+        <div class=" col-span-1 shadow-md">
+          
+            <div class="bg-primary-900 text-white mt-5 lg:mt-2 rounded-lg p-4">
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Tag</label>
+                    <input type="text" [(ngModel)]="tagsName" name="tagsName" class="w-full p-2 rounded-lg text-black">
+                </div>
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mt-3">
+                    <button (click)="addTags()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Add Tag
+                    </button>
+                </div>
+
+                <div class="lg:text-left lg:p-4">
+                    <ul class="flex flex-wrap ">
+                        <li *ngFor="let tag of tags; let i=index" class="bg-second-900 px-3 py-3 rounded-xl hover:bg-second-700 m-2" >
+                            <button (click)="removeTags(i)" class="text-primary-900 font-semibold">
+                                {{tag}}
+                                <i class="fa-solid fa-xmark"></i>
+
+                            </button>
+                        
+                        </li>
+                        
+
+                    </ul>
+
+                </div>
+
+             </div>
+
+            <div class="bg-primary-900 text-white mt-5 lg:mt-2 rounded-lg p-4">
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Images</label>
+                    <input type="file" (change)="addFiles($event)" class="w-full p-2 rounded-lg">
+                </div>
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mt-3">
+                    <button (click)="addImages()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Add Image
+                    </button>
+                </div>
+
+                <div class="bg-primary-900 mt-5 lg:mt-0 rounded-lg p-4 shadow-md">
+                    <h2 class="text-2xl font-semibold text-white">Images</h2>
+                    <div class="mt-4 space-y-3">
+                        <!-------------Customers Single Start-->
+
+                        <div *ngFor="let image_ of images_files; let i=index" class="flex items-center">
+                            <img [src]="image_.show" class="w-10 h-10 rounded-full"/>
+                            <div class="ml-4">
+                                <p class="text-lg font-semibold text-second-900">{{image_.file.name}}</p>
+                            
+                            </div>
+                           
+                            <div class="ml-auto">
+                                <p class="text-white"> 
+                                    <button (click)="removeImages(i)" class="px-3 py-3 hover:bg-second-700 text-primary-900 bg-second-900 rounded-xl"><i class="fa-solid fa-xmark"></i></button>
+                                </p>
+                            </div>
+                        </div>
+                        <!-------------Customers Single end-->
+
+                      
+
+
+
+                    </div>
+
+                </div>
+
+             </div>
+
+            
+        
+
+        </div>
+
+
+
+
+
+
+        <div class="col-span-3 shadow-md">
+        <div class="bg-primary-900 rounded-lg text-white lg p-4">
+            <div class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Cover Photo</label>
+                    <input type="file" class="w-full p-2 rounded-lg" accept=".jpeg, .bmp, .jpg, .png, .gif"
+                    (change)="processFile($event)" >
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                  <img [src]="images_preview" class="w-40">
+                </div>
+
+          
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Categories</label>
+                    <select [(ngModel)]="category_id" name="category_id" class="w-full p-2 rounded-lg text-black">
+                        
+                        <ng-container *ngFor="let categorie of categories">
+                        <option [value]="categorie.id">{{categorie.name}}</option>
+                        </ng-container>
+
+                    </select>
+                  
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Title</label>
+                    <input type="text" [(ngModel)]="title"  name="title" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+
+               
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Price Disccount</label>
+                    <input type="number" [(ngModel)]="pricedsc" name="pricedsc" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Price USD </label>
+                    <input type="number" [(ngModel)]="priceusd" name="priceusd" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Sku</label>
+                    <input type="text" [(ngModel)]="sku" name="sku" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Stock</label>
+                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Summary</label>
+                    <input type="text"  [(ngModel)]="summary" name="summary" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">Description</label>
+                    <textarea rows="20" [(ngModel)]="description" name="description" class="w-full p-2 rounded-lg text-primary-900"></textarea>
+                </div>
+
+              
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <button  (click)="crateProduct()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Save All
+                    </button>
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                    <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{successMessage}}
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationError">
+                    <div class="bg-red-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{errorMessage}}
+                    </div>
+
+                </div>
+
+
+
+            </div>
+       
+
+
+
+
+        </div>
+      
+
+       
+    </div>
+
+       
+
+
+    </div>
+</div>

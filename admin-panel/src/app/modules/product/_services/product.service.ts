@@ -34,4 +34,21 @@ export class ProductService {
     return this.http.post<any>(URL, data, {headers});
       
   }
+
+  getShowDetail(id:number):Observable<any>{
+    let URL = URL_SERVICE + '/product/show_product/' +id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.get<any>(URL, {headers});
+      
+  }
 }
