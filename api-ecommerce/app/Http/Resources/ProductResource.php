@@ -34,6 +34,7 @@ class ProductResource extends JsonResource
             "price_dsc"=>$this->resource->price_dsc,
             "price_usd"=>$this->resource->price_usd,
             "tags"=>$this->resource->tags,
+            "tags_a"=>$this->resource->tags ? explode(",", $this->resource->tags): [],
             "stock"=>$this->resource->stock,
             "description"=>$this->resource->description,
             "summary"=>$this->resource->summary,
