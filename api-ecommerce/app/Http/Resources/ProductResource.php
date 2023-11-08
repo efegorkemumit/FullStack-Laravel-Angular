@@ -14,6 +14,11 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $imageCollection = collect(json_decode($this->resource->imagess, true));
+        $sizesCollection = collect(json_decode($this->resource->sizes, true));
+
+
+
         return[
             "id"=>$this->id,
             "title"=>$this->resource->title,
@@ -32,19 +37,19 @@ class ProductResource extends JsonResource
             "description"=>$this->resource->description,
             "summary"=>$this->resource->summary,
             "image"=>$this->resource->images,
-            "images"=>$this->resource->images->map(function($img){
+            "images"=> $imageCollection->map(function($img){
                 return[
-                    "id"=>$img->id,
-                    "file_name"=>$img->file_name,
-                    "size"=>$img->size,
-                    "type"=>$img->type,
-                    "images"=>env("APP_URL")."storage/".$img->images,
+                    "id"=>$img['id'],
+                    "file_name"=>$img['file_name'],
+                    "size"=>$img['size'],
+                    "type"=>$img['type'],
+                    "images"=>env("APP_URL")."storage/".$img['images']
                 ];
             }),
-           "sizes"=>$this->resource->size->map(function($size){
+           "sizes"=>$sizesCollection->map(function($size){
                 return[
-                    "id"=>$size->id,
-                    "name"=>$size->name,
+                    "id"=>$size['id'],
+                    "name"=>$size['name'],
 
                 ];
            }),
