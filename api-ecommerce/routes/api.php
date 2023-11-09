@@ -54,7 +54,7 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
 Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("product/img/add", [ProductImagesContoller::class, "store"]);
-    Route::post("product/img/update/{id}", [ProductImagesContoller::class, "update"]);
+    Route::delete("product/img/delete/{id}", [ProductImagesContoller::class, "destroy"]);
 });
 
 
