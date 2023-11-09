@@ -35,6 +35,40 @@ export class ProductService {
       
   }
 
+  imgAddimage(data:any):Observable<any>{
+    let URL = URL_SERVICE + '/product/img/add';
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.post<any>(URL, data, {headers});
+      
+  }
+
+  imgDelete(images_id:number):Observable<any>{
+    let URL = URL_SERVICE + '/product/img/delete/' +images_id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.delete<any>(URL, {headers});
+      
+  }
+
   getShowDetail(id:number):Observable<any>{
     let URL = URL_SERVICE + '/product/show_product/' +id;
 
