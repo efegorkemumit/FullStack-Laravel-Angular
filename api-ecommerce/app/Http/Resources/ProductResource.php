@@ -45,7 +45,7 @@ class ProductResource extends JsonResource
                     "file_name"=>$img['file_name'],
                     "size"=>$img['size'],
                     "type"=>$img['type'],
-                    "images"=>env("APP_URL")."storage/".$img['images']
+                    "images"=>env("APP_URL")."/storage/".$img['images']
                 ];
             }),
            "sizes"=>$sizesCollection->map(function($size){

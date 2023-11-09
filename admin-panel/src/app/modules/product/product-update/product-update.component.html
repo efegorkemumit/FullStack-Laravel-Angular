@@ -97,9 +97,9 @@
                         <!-------------Customers Single Start-->
 
                         <div *ngFor="let image_ of images_files; let i=index" class="flex items-center">
-                            <img [src]="image_.show" class="w-10 h-10 rounded-full"/>
+                            <img [src]="image_.images" class="w-10 h-10 rounded-full"/>
                             <div class="ml-4">
-                                <p class="text-lg font-semibold text-second-900">{{image_.file.name}}</p>
+                                <p class="text-lg font-semibold text-second-900">{{image_.file_name}}</p>
                             
                             </div>
                            

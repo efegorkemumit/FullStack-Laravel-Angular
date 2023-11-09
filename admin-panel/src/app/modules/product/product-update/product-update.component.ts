@@ -73,6 +73,7 @@ export class ProductUpdateComponent {
           this.summary = this.product.summary
           this.stock = this.product.stock
           this.category_id = this.product.category_id
+          this.images_files = this.product.images
           this.images_preview = URL_BACKEND+"storage/"+ this.product.image
           this.tags = this.product.tags_a
        
