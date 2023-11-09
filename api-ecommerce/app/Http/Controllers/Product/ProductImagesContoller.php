@@ -28,7 +28,41 @@ class ProductImagesContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file("file");
+        if($request->hasFile("file"))
+        {
+            $extension=$file->getClientOriginalExtension();
+            $size=$file->getSize();
+            $oname=$file->getClientOriginalName();
+
+            $path = Storage::putFile("products", $file);
+            $images = ProductImages::create([
+                "product_id"=> $request->product_id,
+                "file_name"=> $oname,
+                "images"=>$path,
+                "size"=>$size,
+                "type"=>$extension,
+            ]);
+
+            return response()->json([
+                "images"=>
+                [
+                    "id"=> $images->id,
+                    "file_name"=>$images->file_name,
+                    "images" =>env("APP_URL")."storage/".$images->images,
+                    "size"=>$images->size,
+                    "type"=>$images->type,
+
+
+
+                ]
+            
+            ]);
+            
+
+        }
+
+      
     }
 
     /**
@@ -60,6 +94,12 @@ class ProductImagesContoller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $images = ProductImages::findOrFail($id);
+       if($images->images){
+        
+            Storage::delete($images->images);
+       }
+       $images->delete();
+       return response()->json(["message"=>200]);
     }
 }
