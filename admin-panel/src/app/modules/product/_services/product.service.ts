@@ -69,6 +69,57 @@ export class ProductService {
       
   }
 
+  sizecolorAdd(data:any):Observable<any>{
+    let URL = URL_SERVICE + '/product/sizecolor/add';
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.post<any>(URL, data, {headers});
+      
+  }
+
+
+  sizeDelete(size_id:number):Observable<any>{
+    let URL = URL_SERVICE + '/product/size/delete/' +size_id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.delete<any>(URL, {headers});
+      
+  }
+  colorDelete(color_id:number):Observable<any>{
+    let URL = URL_SERVICE + '/product/color/delete/' +color_id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.delete<any>(URL, {headers});
+      
+  }
+
   getShowDetail(id:number):Observable<any>{
     let URL = URL_SERVICE + '/product/show_product/' +id;
 
