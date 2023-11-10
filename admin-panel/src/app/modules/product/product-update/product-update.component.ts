@@ -106,16 +106,49 @@ export class ProductUpdateComponent {
 
   addFiles(event:Event)
   {
-    
+    const target  = event.target as HTMLInputElement;
+    if(target.files && target.files[0]){
+      if(target.files[0].type.indexOf("image")<0){
+        return;
+      }
+      this.img_files =target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(this.img_files);
+      reader.onloadend =()=> (this.img_previews = reader.result);
+    }
 
   }
   addImages(){
 
+    if(!this.img_files)
+    {
+      return;
+    }
+
+    let formData = new FormData();
+    formData.append("product_id", this.product_id);
+    formData.append("file", this.img_files);
+    this.productService.imgAddimage(formData).subscribe((resp:any)=>{
+      this.img_files =null;
+      this.images_preview =null;
+      this.images_files.unshift(resp.images);
+    })
+
    
   }
 
-  removeImages(index:number)
+  
+
+  removeImages(id:number)
   {
+    this.productService.imgDelete(id).subscribe(response=>{
+
+      this.productService.getShowDetail(this.product_id).subscribe((resp:any)=>{
+        this.product = resp.product;
+        this.images_files = this.product.images;
+      })
+
+    })
 
   }
 

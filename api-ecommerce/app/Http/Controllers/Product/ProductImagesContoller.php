@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product\ProductImages;
+use Illuminate\Support\Facades\Storage;
 
 class ProductImagesContoller extends Controller
 {
@@ -49,7 +51,7 @@ class ProductImagesContoller extends Controller
                 [
                     "id"=> $images->id,
                     "file_name"=>$images->file_name,
-                    "images" =>env("APP_URL")."storage/".$images->images,
+                    "images" =>env("APP_URL")."/storage/".$images->images,
                     "size"=>$images->size,
                     "type"=>$images->type,
 
