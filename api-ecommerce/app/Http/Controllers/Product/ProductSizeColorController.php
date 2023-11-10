@@ -38,7 +38,60 @@ class ProductSizeColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!$request->product_size_id)
+        {
+            $product_size_color = ProductSize::where("name", $request->new_name)->first();
+            if($product_size_color){
+                return response()->json(
+                    ["message"=>403, 
+                    "text_message"=>"Product size name error"
+                ]);
+            }
+            $product_size = ProductSize::create([
+                "product_id"=>$request->product_id,
+                "name"=>$$request->new_name,
+            ]);
+        }
+        else
+        {
+            $product_size = ProductSize::findOrFail($request->product_size_id);
+        }
+
+        $product_size_color = ProductColorSize::create([
+            "product_color_id" => $request->product_color_id,
+            "product_size_id" => $request->product_size_id,
+            "stock" => $request->stock,
+
+        ]);
+
+        return response()->json(["message"=>200, "product_color_size"=>[
+            "id"=>$product_size->id,
+            "name"=>$product_size->name,
+            "total"=>$product_size->product_size_colors->sum("stock"),
+            "variant"=> $product_size->product_size_colors->map(function($var){
+                return[
+                    "id" => $var->id,
+                    "product_color_id" => $var->product_color_id,
+                    "product_color" => $var->product_color,
+                    "stock" => $var->stock,
+                    
+
+
+
+
+                ];
+
+
+            }),
+
+
+
+
+
+        ]]);
+
+
+
     }
 
     /**

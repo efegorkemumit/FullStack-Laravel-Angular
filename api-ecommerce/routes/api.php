@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Product\CategoriesController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\ProductImagesContoller;
+use App\Http\Controllers\Product\ProductSizeColorController;
 use App\Http\Controllers\Extra\SliderController;
 
 Route::post("register", [ApiController::class, "register"]);
@@ -55,6 +56,13 @@ Route::group(["middleware" => ["auth:api"]], function(){
 Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("product/img/add", [ProductImagesContoller::class, "store"]);
     Route::delete("product/img/delete/{id}", [ProductImagesContoller::class, "destroy"]);
+});
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::post("product/sizecolor/add", [ProductSizeColorController::class, "store"]);
+    Route::delete("product/size/delete/{id}", [ProductSizeColorController::class, "destroy_size"]);
+    Route::delete("product/color/delete/{id}", [ProductSizeColorController::class, "destroy"]);
+
 });
 
 
