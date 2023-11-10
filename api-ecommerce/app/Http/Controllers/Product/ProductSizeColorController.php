@@ -4,6 +4,16 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product\Product;
+use App\Models\Product\Categories;
+use App\Models\Product\ProductColor;
+use App\Models\Product\ProductColorSize;
+use App\Models\Product\ProductSize;
+use App\Models\Product\ProductImages;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
 
 class ProductSizeColorController extends Controller
 {
@@ -58,8 +68,17 @@ class ProductSizeColorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $product_size = ProductColorSize::findOrFail($id);
+        $product_size->delete();
+        return response()->json(["message"=>200]);
+    }
+
+    public function destroy_size($id)
+    {
+        $product_size = ProductSize::findOrFail($id);
+        $product_size->delete();
+        return response()->json(["message"=>200]);
     }
 }
