@@ -51,6 +51,11 @@ export class ProductUpdateComponent {
   product_colors:any=[];
   product_size:any=[];
 
+  product_size_id:any=null;
+  product_color_id:any =null;
+  new_name:any='';
+  stock_multi:any='';
+
   constructor(
     public productService: ProductService,
     public route :ActivatedRoute
@@ -225,6 +230,36 @@ export class ProductUpdateComponent {
 
   changeEnv(value:any){
     this.checked_interview=value;
+
+
+  }
+  updateEnv(){
+
+    if(!this.product_size_id)
+    {
+      if(!this.new_name){
+        return;
+      }
+    }
+    if(!this.product_color_id){
+      return;
+    }
+    if(!this.stock_multi){
+      return;
+    }
+
+
+    let data={
+      product_id : this.product_id,
+      product_color_id:this.product_color_id,
+      product_size_id:this.product_size_id,
+      new_name:this.new_name,
+      stock:this.stock_multi
+    }
+
+    this.productService.sizecolorAdd(data).subscribe((resp:any)=>{
+      console.log(resp);
+    })
 
 
   }

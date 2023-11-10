@@ -49,7 +49,7 @@ class ProductSizeColorController extends Controller
             }
             $product_size = ProductSize::create([
                 "product_id"=>$request->product_id,
-                "name"=>$$request->new_name,
+                "name"=>$request->new_name,
             ]);
         }
         else
@@ -57,9 +57,17 @@ class ProductSizeColorController extends Controller
             $product_size = ProductSize::findOrFail($request->product_size_id);
         }
 
+        $product_size_color =ProductColorSize::where("product_color_id", $request->product_color_id)->where("product_size_id",$product_size->id)->first();
+        if($product_size_color){
+            return response()->json(
+                ["message"=>403, 
+                "text_message"=>"name error"
+            ]);
+        }
+
         $product_size_color = ProductColorSize::create([
             "product_color_id" => $request->product_color_id,
-            "product_size_id" => $request->product_size_id,
+            "product_size_id" => $product_size->id,
             "stock" => $request->stock,
 
         ]);

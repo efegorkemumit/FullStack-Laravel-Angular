@@ -272,7 +272,7 @@
             <div *ngIf="checked_interview==2" class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
                 <div class="lg:col-span-1 col-span-1 flex flex-col">
                     <label class="text-lg">Colors</label>
-                    <select [(ngModel)]="category_id" name="category_id" class="w-full p-2 rounded-lg text-black">
+                    <select [(ngModel)]="product_color_id" name="category_id" class="w-full p-2 rounded-lg text-black">
                         
                         <ng-container *ngFor="let colors of product_colors">
                         <option [value]="colors.id">{{colors.name}}</option>
@@ -283,7 +283,8 @@
 
                 <div class="lg:col-span-1 col-span-1 flex flex-col">
                     <label class="text-lg">Size</label>
-                    <select [(ngModel)]="category_id" name="category_id" class="w-full p-2 rounded-lg text-black">
+                    <select [(ngModel)]="product_size_id" name="category_id" class="w-full p-2 rounded-lg text-black">
+                        <option value="">-></option>
                         
                         <ng-container *ngFor="let size of product_size">
                         <option [value]="size.id">{{size.name}}</option>
@@ -293,16 +294,16 @@
                 </div>
 
                 <div class="lg:col-span-1 col-span-1 flex flex-col">
-                    <label class="text-lg">Stock</label>
-                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                    <label class="text-lg">Name</label>
+                    <input type="text" [(ngModel)]="new_name" name="stock" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
                 <div class="lg:col-span-1 col-span-1 flex flex-col">
                     <label class="text-lg">Stock</label>
-                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                    <input type="number" [(ngModel)]="stock_multi" name="stock" class="w-full p-2 rounded-lg text-primary-900">
                 </div>
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg"></label>
-                    <button  (click)="updateProduct()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                    <button  (click)="updateEnv()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
                         Save All
                     </button>
                 </div>
