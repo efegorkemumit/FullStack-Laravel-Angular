@@ -20,6 +20,22 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function get_info()
+     {
+        $categories= Categories::orderBy("id", "desc")->get();
+        $product_colors= ProductColor::orderBy("id", "desc")->get();
+        $product_size= ProductSize::orderBy("id", "desc")->get();
+
+        return response()->json([
+            "categories"=>$categories,
+            "product_colors"=>$product_colors,
+            "product_size"=>$product_size,
+
+        ]);
+        
+
+     }
     public function index(Request $request)
     {
          /**

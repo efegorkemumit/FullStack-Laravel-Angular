@@ -10,6 +10,16 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
+  getinfo():Observable<any>{
+    let URL = URL_SERVICE + '/product/get_info';
+
+   
+
+    return this.http.get<any>(URL,);
+      
+  }
+
+
   getProduct(page=1, LINK=''):Observable<any>{
     let URL = URL_SERVICE + '/product/all?page='+page+LINK;
 

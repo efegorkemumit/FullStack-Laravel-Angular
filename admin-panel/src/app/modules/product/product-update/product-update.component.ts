@@ -47,16 +47,21 @@ export class ProductUpdateComponent {
   registrationError=false;
   errorMessage="Error ";
 
+
+  product_colors:any=[];
+  product_size:any=[];
+
   constructor(
-    public eccommerceService: EccomerceService,
     public productService: ProductService,
     public route :ActivatedRoute
 
   ){}
 
   ngOnInit():void{
-    this.eccommerceService.getCategory().subscribe((resp:any)=>{
+    this.productService.getinfo().subscribe((resp:any)=>{
       this.categories = resp.categories;
+      this.product_colors = resp.product_colors;
+      this.product_size = resp.product_size;
     })
 
     this.route.params.subscribe(params=>{
