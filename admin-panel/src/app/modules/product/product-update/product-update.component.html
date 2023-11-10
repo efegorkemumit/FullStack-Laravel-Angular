@@ -230,6 +230,120 @@
        
     </div>
 
+
+    
+    <div class="col-span-4 shadow-md">
+        <div class="bg-primary-900 rounded-lg text-white lg p-4">
+
+            <div class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4 mb-10">
+
+
+                            <div class="flex">
+                                <input type="radio" [checked]="checked_interview==1" name="radioSc" value="1" (click)="changeEnv(1)"> Single
+                            </div>
+
+                            <div class="flex">
+                                <input type="radio" [checked]="checked_interview==2" name="radioSc" value="2" (click)="changeEnv(2)"> Multiple
+                            </div>
+
+               </div>
+
+
+            <div *ngIf="checked_interview==1" class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+                <div class="lg:col-span-2 col-span-2 flex flex-col">
+                    <label class="text-lg">Stock</label>
+                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+
+            </div>
+
+            <div *ngIf="checked_interview==2" class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+                <div class="lg:col-span-1 col-span-1 flex flex-col">
+                    <label class="text-lg">Stock</label>
+                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+                <div class="lg:col-span-1 col-span-1 flex flex-col">
+                    <label class="text-lg">Stock</label>
+                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+                <div class="lg:col-span-1 col-span-1 flex flex-col">
+                    <label class="text-lg">Stock</label>
+                    <input type="number" [(ngModel)]="stock" name="stock" class="w-full p-2 rounded-lg text-primary-900">
+                </div>
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg"></label>
+                    <button  (click)="updateProduct()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Save All
+                    </button>
+                </div>
+
+
+                <table  class="lg:col-span-4 col-span-4 min-w-full divide-y divide-second-900 mt-4">
+                    <thead>
+                        <tr>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Name</th>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Email</th>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Country</th>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Role</th>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Status</th>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">#</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="bg-primary-400 divide-y divide-second-900">
+                        <tr>
+
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">Efe Görkem Ümit</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">youtube@gmail.com</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">Turkey</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">FS Developer</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-green-500">Active</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
+                                <button class="bg-second-900 border hover:text-second-900 border-second-900 hover:bg-transparent text-primary-900 px-3 py-3 rounded-xl "><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
+                            </th>
+                            
+                        </tr>
+
+                        <tr>
+
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">John Wick</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">youtube@gmail.com</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">USA</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">Artist</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-green-500">Active</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
+                                <button class="bg-second-900 border hover:text-second-900 border-second-900 hover:bg-transparent text-primary-900 px-3 py-3 rounded-xl "><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
+                            </th>
+                            
+                        </tr>
+
+                        <tr>
+
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">Katya</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">youtube@gmail.com</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">German</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">Frontend Dev</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-red-400">Pasive</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
+                                <button class="bg-second-900 border hover:text-second-900 border-second-900 hover:bg-transparent text-primary-900 px-3 py-3 rounded-xl "><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
+                            </th>
+                            
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+       
+
+
+        </div>
+      
+
+       
+    </div>
        
 
 

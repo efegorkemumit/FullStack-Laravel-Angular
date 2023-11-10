@@ -38,6 +38,7 @@ export class ProductUpdateComponent {
   description:any=null;
   summary:any=null;
   stock:any='';
+  checked_interview:any=1;
 
 
   registrationSuccess = false;
@@ -76,6 +77,8 @@ export class ProductUpdateComponent {
           this.images_files = this.product.images
           this.images_preview = URL_BACKEND+"storage/"+ this.product.image
           this.tags = this.product.tags_a
+
+          // checked_interview:any=1;
        
 
         })
@@ -208,6 +211,12 @@ export class ProductUpdateComponent {
     
 
    
+
+  }
+
+  changeEnv(value:any){
+    this.checked_interview=value;
+
 
   }
 }
