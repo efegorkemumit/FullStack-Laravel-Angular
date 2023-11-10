@@ -39,6 +39,7 @@ export class ProductUpdateComponent {
   summary:any=null;
   stock:any='';
   checked_interview:any=1;
+  state:any=1;
 
 
   registrationSuccess = false;
@@ -77,6 +78,8 @@ export class ProductUpdateComponent {
           this.images_files = this.product.images
           this.images_preview = URL_BACKEND+"storage/"+ this.product.image
           this.tags = this.product.tags_a
+          this.state = this.product.state
+          this.checked_interview = this.product.interview
 
           // checked_interview:any=1;
        
@@ -196,6 +199,7 @@ export class ProductUpdateComponent {
       formData.append("category_id", this.category_id);
       formData.append("tags", this.tags);
       formData.append("images_file", this.images_file);
+      formData.append("state", this.state);
 
       this.productService.update(this.product_id, formData).subscribe((resp:any)=>{
         this.registrationSuccess=true;

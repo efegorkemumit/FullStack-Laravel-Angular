@@ -159,6 +159,18 @@
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <label class="text-lg">State</label>
+
+                    <select class="w-full p-2 rounded-lg text-primary-900" [(ngModel)]="state" >
+                        <option value="1">Demo</option>
+                        <option value="2">Public</option>
+                        <option value="3">Blocked</option>
+
+                    </select>
+                </div>
+
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
                     <label class="text-lg">Title</label>
                     <input type="text" [(ngModel)]="title"  name="title" class="w-full p-2 rounded-lg text-primary-900">
                 </div>

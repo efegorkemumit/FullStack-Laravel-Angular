@@ -38,6 +38,8 @@ class ProductResource extends JsonResource
             "stock"=>$this->resource->stock,
             "description"=>$this->resource->description,
             "summary"=>$this->resource->summary,
+            "state"=>$this->resource->state,
+            "interview"=>$this->resource->interview,
             "image"=>$this->resource->images,
             "images"=> $imageCollection->map(function($img){
                 return[
