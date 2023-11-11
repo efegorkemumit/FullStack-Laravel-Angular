@@ -327,7 +327,7 @@
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-white">{{collection.total}}</td>
                             
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-white">
-                                <button class="bg-red-900 border hover:bg-red-900 border-red-900 hover:bg-transparent text-white px-3 py-3 rounded-xl "><i class="fa-solid fa-xmark"></i> Delete</button>
+                                <button (click)="deletecollection(collection.id)" class="bg-red-900 border hover:bg-red-900 border-red-900 hover:bg-transparent text-white px-3 py-3 rounded-xl "><i class="fa-solid fa-xmark"></i> Delete</button>
                             </td>
 
                          
@@ -338,7 +338,7 @@
                             <td>{{varT.product_color.name}}</td>
                             <td>{{varT.stock}}</td>
                             <td>                               
-                                 <button class="bg-red-900 border hover:bg-red-900 border-red-900 hover:bg-transparent text-white px-1 py-1 text-xs rounded-xl "><i class="fa-solid fa-xmark"></i> Delete</button>
+                                 <button (click)="deleteVariant(varT.id)" class="bg-red-900 border hover:bg-red-900 border-red-900 hover:bg-transparent text-white px-1 py-1 text-xs rounded-xl "><i class="fa-solid fa-xmark"></i> Delete</button>
                             </td>
 
                         </tr>

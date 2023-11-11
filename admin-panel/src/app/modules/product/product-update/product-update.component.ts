@@ -277,4 +277,36 @@ export class ProductUpdateComponent {
 
 
   }
+
+
+  deletecollection(id:number){
+    this.productService.sizeDelete(id).subscribe(response=>{
+
+      this.productService.getShowDetail(this.product_id).subscribe((resp:any)=>{
+        this.product = resp.product;
+        this.product_collection= this.product.sizes
+
+      })
+
+
+
+    })
+
+  }
+
+  deleteVariant(id:number){
+
+    this.productService.colorDelete(id).subscribe(response=>{
+
+      this.productService.getShowDetail(this.product_id).subscribe((resp:any)=>{
+        this.product = resp.product;
+        this.product_collection= this.product.sizes
+
+      })
+
+
+
+    })
+
+  }
 }
