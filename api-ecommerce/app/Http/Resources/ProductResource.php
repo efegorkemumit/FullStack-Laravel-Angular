@@ -15,7 +15,7 @@ class ProductResource extends JsonResource
     public function toArray(Request $request): array
     {
         $imageCollection = collect(json_decode($this->resource->imagess, true));
-        $sizesCollection = collect(json_decode($this->resource->sizes, true));
+        $sizesCollection =$this->resource->sizes;
 
 
 
@@ -54,6 +54,15 @@ class ProductResource extends JsonResource
                 return[
                     "id"=>$size['id'],
                     "name"=>$size['name'],
+                    "total"=>$size->product_size_colors->sum("stock"),
+                    "variant"=>$size->product_size_colors->map(function($var){
+                        return [
+                            "id"=>$var->id,
+                            "product_color_id"=>$var->product_color_id,
+                            "product_color"=>$var->product_color,
+                            "stock"=>$var->stock,
+                        ];
+                    }),
 
                 ];
            }),
