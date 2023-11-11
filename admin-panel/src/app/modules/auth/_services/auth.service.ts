@@ -23,6 +23,11 @@ export class AuthService {
     this.loadStorage()
   }
 
+  isLoggedIn():boolean{
+    let token = localStorage.getItem("token");
+    return (token !==null) ? true : false;
+  }
+
   loadStorage(){
     if(localStorage.getItem("token"))
     {

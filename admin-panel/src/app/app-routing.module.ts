@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './modules/auth/_services/auth.guard';
 
 
 const routes: Routes = [
@@ -13,12 +14,16 @@ const routes: Routes = [
     import('./modules/eccommerce/eccommerce.module').then((m)=> m.EccommerceModule) 
   },
   {
-    path: 'slider', loadChildren:() =>
+    path: 'slider', 
+    canActivate: [AuthGuard],
+    loadChildren:() =>
     import('./modules/slider/slider.module').then((m)=> m.SliderModule) 
   },
 
   {
-    path: 'users', loadChildren:() =>
+    path: 'users', 
+    canActivate: [AuthGuard],
+    loadChildren:() =>
     import('./modules/users/users.module').then((m)=> m.UsersModule) 
   },
   {
@@ -31,7 +36,9 @@ const routes: Routes = [
   },
 
   {
-    path: '', loadChildren:() =>
+    path: '', 
+    canActivate: [AuthGuard],
+    loadChildren:() =>
     import('./modules/dashboard/dashboard.module').then((m)=> m.DashboardModule) 
   }
 
