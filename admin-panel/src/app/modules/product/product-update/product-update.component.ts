@@ -236,6 +236,29 @@ export class ProductUpdateComponent {
 
 
   }
+  changeEnvSave(){
+    let value:number=1;
+    if(this.checked_interview===1){
+      value=1;
+    }
+    else if(this.checked_interview===2)
+    {
+      value=2;
+    }
+    let formData =  new FormData();
+    formData.append("interview", String(value));
+
+    this.productService.update(this.product_id, formData).subscribe((resp:any)=>{
+      this.registrationSuccess=true;
+
+      setTimeout(()=>{
+        this.registrationSuccess=false;
+      }, 5000);
+    })
+
+
+
+  }
   updateEnv(){
 
     if(!this.product_size_id)

@@ -22,7 +22,8 @@ class Product extends Model
        'state', 
        'images', 
        'stock', 
-       'category_id'
+       'category_id',
+       'interview'
       
     ];
 
