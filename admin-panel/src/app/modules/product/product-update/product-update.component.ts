@@ -56,6 +56,8 @@ export class ProductUpdateComponent {
   new_name:any='';
   stock_multi:any='';
 
+  product_collection:any=[];
+
   constructor(
     public productService: ProductService,
     public route :ActivatedRoute
@@ -90,6 +92,7 @@ export class ProductUpdateComponent {
           this.tags = this.product.tags_a
           this.state = this.product.state
           this.checked_interview = this.product.interview
+          this.product_collection= this.product.sizes
 
           // checked_interview:any=1;
        
