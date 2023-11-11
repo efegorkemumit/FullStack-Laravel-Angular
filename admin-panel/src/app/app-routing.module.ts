@@ -34,6 +34,13 @@ const routes: Routes = [
     path: 'pages', loadChildren:() =>
     import('./modules/pages/pages.module').then((m)=> m.PagesModule) 
   },
+  {
+    path: 'cupon', 
+    canActivate: [AuthGuard],
+    loadChildren:() =>
+    import('./modules/cupones/cupones.module').then((m)=> m.CuponesModule) 
+  },
+
 
   {
     path: '', 
