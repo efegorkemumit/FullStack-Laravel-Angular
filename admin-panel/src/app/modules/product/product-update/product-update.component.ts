@@ -262,6 +262,17 @@ export class ProductUpdateComponent {
 
     this.productService.sizecolorAdd(data).subscribe((resp:any)=>{
       console.log(resp);
+
+      this.productService.getShowDetail(this.product_id).subscribe((resp:any)=>{
+        this.product = resp.product;
+        this.product_collection= this.product.sizes
+
+      })
+
+      this.product_color_id=null;
+      this.product_size_id=null;
+      this.new_name=null;
+      this.stock_multi=null;
     })
 
 
