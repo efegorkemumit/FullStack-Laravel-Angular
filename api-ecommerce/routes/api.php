@@ -32,6 +32,9 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::delete("admin/users/delete/{id}", [AdminController::class, "deleteUser"]);
 });
 
+
+// CATEGORY
+
 Route::group(["middleware" => ["api"]], function(){
     Route::get("category/all", [CategoriesController::class, "index"]);
 });
@@ -43,6 +46,8 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::get("category/detail/{id}", [CategoriesController::class, "getCategory"]);
 
 });
+
+// PRODUCT
 
 Route::group(["middleware" => ["api"]], function(){
     Route::get("product/all", [ProductController::class, "index"]);
@@ -67,6 +72,7 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
 });
 
+// SLIDER
 
 Route::group(["middleware" => ["api"]], function(){
     Route::get("slider/all", [SliderController::class, "index"]);
@@ -81,8 +87,17 @@ Route::group(["middleware" => ["auth:api"]], function(){
 });
 
 
+// CUPON
+
 Route::group(["middleware" => ["api"]], function(){
     Route::get("cupons/all", [CuponController::class, "index"]);
     Route::get("cupons/config-all", [CuponController::class, "config_all"]);
     Route::get("cupons/show/{id}", [CuponController::class, "show"]);
+});
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::post("cupons/add", [CuponController::class, "store"]);
+    Route::delete("cupons/delete/{id}", [CuponController::class, "destroy"]);
+
+
 });

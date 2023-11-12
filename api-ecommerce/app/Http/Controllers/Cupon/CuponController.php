@@ -52,7 +52,35 @@ class CuponController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $IS_VALID = Cupon::where("code", $request->code)->first();
+            if($IS_VALID){
+                return response()->json(["message"=>403, "message_text"=>"Cupon dont use "]);
+            }
+
+        if($request->type_cupon==1)
+        {
+            $products=[];
+            foreach($request->products_selected as $key =>$product){
+                array_push($products,$product["id"]);
+            }
+            // [2,3,4 ] => 2,3,4
+            $request->request->add(["products"=>implode(",",$products)]);
+
+        }
+
+        if($request->type_cupon==2)
+        {
+            $categories=[];
+            foreach($request->categories_selected as $key =>$categorie){
+                array_push($categories,$categorie["id"]);
+            }
+            // [2,3,4 ] => 2,3,4
+            $request->request->add(["categories"=>implode(",",$categories)]);
+
+        }
+        Cupon::create($request->all());
+        return response()->json(["message"=>200]);
+        
     }
 
     /**
@@ -89,6 +117,10 @@ class CuponController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cupon = Cupon::findOrFail($id);
+        $cupon->delete();
+        return response()->json([
+            "message"=>200,
+        ]);
     }
 }
