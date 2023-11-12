@@ -190,6 +190,8 @@
 
             <div class="overflow-x-auto">
 
+                <div>
+                <div>Product</div>
                 <table class="min-w-full divide-y divide-second-900">
                     <thead>
                         <tr>
@@ -203,7 +205,9 @@
 
                             <th class="px-6 py-3 whitespace-nowrap text-sm text-white">{{productS.name}}</th>
                             <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
-                                <button class="bg-second-900 border hover:text-second-900 border-second-900 hover:bg-transparent text-primary-900 px-3 py-3 rounded-xl "><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
+                                <button (click)="productD(productS)" class="bg-red-900 border border-red-900  text-primary-900 px-1 py-1 rounded-xl ">
+                                   Remove
+                                </button>
                             </th>
                             
                         </tr>
@@ -212,8 +216,10 @@
                     </tbody>
 
                 </table>
+            </div>
 
-
+            <div>
+                <div>Categories</div>
                 <table class="min-w-full divide-y divide-second-900">
                     <thead>
                         <tr>
@@ -227,7 +233,12 @@
 
                             <th class="px-6 py-3 whitespace-nowrap text-sm text-white">{{categorieS.name}}</th>
                             <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
-                                <button class="bg-second-900 border hover:text-second-900 border-second-900 hover:bg-transparent text-primary-900 px-3 py-3 rounded-xl "><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
+
+                                <button (click)="categorieD(categorieS)" class="bg-red-900 border border-red-900  text-primary-900 px-1 py-1 rounded-xl ">
+                                    Remove
+                                 </button>
+
+
                             </th>
                             
                         </tr>
@@ -236,7 +247,7 @@
                     </tbody>
 
                 </table>
-
+            </div>
 
             </div>
          

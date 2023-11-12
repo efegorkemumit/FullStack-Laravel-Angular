@@ -44,6 +44,11 @@ export class AddNewCuponComponent {
  checkedType(value:any)
  {
   this.type_cupon =value;
+  this.products_selected=[];
+  this.categories_selected=[];
+  this.product_id=null;
+  this.category_id=null;
+
 
  }
 
@@ -99,5 +104,17 @@ export class AddNewCuponComponent {
   }
 
  }
+ productD(productS: number) {
+  let INDEX = this.products_selected.indexOf(productS);
+  if (INDEX !== -1) {
+    this.products_selected.splice(INDEX, 1);
+  }
+}
 
+categorieD(categorieS: number) {
+  let INDEX = this.categories_selected.indexOf(categorieS);
+  if (INDEX !== -1) {
+    this.categories_selected.splice(INDEX, 1);
+  }
+}
 }
