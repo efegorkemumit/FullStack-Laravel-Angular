@@ -21,6 +21,9 @@ export class AddNewCuponComponent {
   categories:any = [];
   products:any=[];
 
+  products_selected:any = [];
+  categories_selected:any = [];
+
   constructor(
     public cuponService: CuponService
   ){}
@@ -51,6 +54,50 @@ export class AddNewCuponComponent {
 
  checkTypeC(value:any){
   this.type_count=value;
+ }
+ addObject()
+ {
+
+  if(this.type_cupon==1)
+  {
+    let PRODUCT = this.products.find((item : {id:number})=>item.id == this.product_id);
+    let INDEX = this.products_selected.findIndex((item: {id:number} )=>item.id == this.product_id);
+
+    if(INDEX != -1)
+    {
+      console.log("it is danger")
+      return;
+
+    }
+    else{
+      this.product_id=null;
+      this.products_selected.push({
+        name: PRODUCT.title,
+        id: PRODUCT.id
+      });
+    }
+  }
+  else{
+
+    let CATEGORIA = this.categories.find((item : {id:number})=>item.id == this.category_id);
+    let INDEX = this.categories_selected.findIndex((item: {id:number} )=>item.id == this.category_id);
+
+    if(INDEX != -1)
+    {
+      console.log("it is danger")
+      return;
+
+    }
+    else{
+      this.category_id=null;
+      this.categories_selected.push({
+        name: CATEGORIA.name,
+        id: CATEGORIA.id
+      });
+    }
+
+  }
+
  }
 
 }
