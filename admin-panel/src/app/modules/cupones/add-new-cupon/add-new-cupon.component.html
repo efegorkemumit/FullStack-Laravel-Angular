@@ -1,1 +1,162 @@
-<p>add-new-cupon works!</p>
+<div class="container  mx-auto lg:p-4 p-0">
+
+    <div class="bg-primary-900 text-white p-4 rounded-xl">
+
+        <nav class="text-base mb-1 rounded-xl p-0">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="dashboard.html">          <i class="fa-solid fa-gauge"></i> 
+                       <span class="ml-1 mr-4">Dashboard</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">         <i class="fa-solid fa-users"></i>
+                       <span class="ml-1 mr-4">Users</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">       
+                       <span class="ml-1 mr-4">Settings</span> 
+                    </a>
+                 
+                </li>
+
+            </ol>
+
+
+
+
+        </nav>
+
+     
+
+
+
+    </div>
+
+ </div>
+ 
+ <div class="container mx-auto lg:p-4 p-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
+     
+
+
+
+
+        <div class=" shadow-md">
+        <div class="bg-primary-900 rounded-lg text-white lg p-4">
+            <div class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+          
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <label class="text-lg">Code</label>
+                    <input type="text" class="w-full p-2 rounded-lg">
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Percent</label>
+                        <input type="radio" name="radiosC" class="w-full p-2 rounded-lg">
+                    </div>
+                   
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Money</label>
+                        <input type="radio" name="radiosC" class="w-full p-2 rounded-lg">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <label class="text-lg">Discount</label>
+                    <input type="number" class="w-full p-2 rounded-lg">
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Limited</label>
+                        <input type="radio" name="radiosT" class="w-full p-2 rounded-lg">
+                    </div>
+                   
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Unlimited</label>
+                        <input type="radio" name="radiosT" class="w-full p-2 rounded-lg">
+                    </div>
+                </div>
+
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <label class="text-lg">Numuse</label>
+                    <input type="number" class="w-full p-2 rounded-lg">
+                </div>
+
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Product</label>
+                        <input type="radio" [checked]="type_cupon==1" name="radiosPc" (click)="checkedType(1)" class="w-full p-2 rounded-lg">
+                    </div>
+                   
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Category</label>
+                        <input type="radio" [checked]="type_cupon==2" name="radiosPc" (click)="checkedType(2)" class="w-full p-2 rounded-lg">
+                    </div>
+                </div>
+
+                <div *ngIf="type_cupon==2"  class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Category</label>
+                       <select  class="w-full p-2 rounded-lg">
+                        <option value="">Select</option>
+                       </select>
+                    </div>
+                </div>
+
+                <div *ngIf="type_cupon==1" class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="text-lg">Product</label>
+                       <select  class="w-full p-2 rounded-lg">
+                        <option value="">Select</option>
+                       </select>
+                    </div>
+                </div>
+
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col">
+                    <button type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Save All
+                    </button>
+                </div>
+
+
+            </div>
+       
+
+
+
+
+        </div>
+      
+       
+    </div>
+
+       
+
+
+    </div>
+</div>

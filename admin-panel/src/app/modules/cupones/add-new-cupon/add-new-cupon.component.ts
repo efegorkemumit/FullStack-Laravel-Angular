@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AddNewCuponComponent {
 
+  type_cupon:any=1;
+
+
+ checkedType(value:any)
+ {
+  this.type_cupon =value;
+
+ }
+
 }
