@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { URL_SERVICE } from 'src/config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,7 @@ export class CuponService {
 
     
 
-    return this.http.get<any>(URL, {headers});
+    return this.http.get<any>(URL);
       
   }
 

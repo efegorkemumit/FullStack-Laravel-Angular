@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CuponService } from '../_services/cupon.service';
 
 @Component({
   selector: 'app-add-new-cupon',
@@ -19,6 +20,23 @@ export class AddNewCuponComponent {
 
   categories:any = [];
   products:any=[];
+
+  constructor(
+    public cuponService: CuponService
+  ){}
+
+
+  ngOnInit(): void{
+    this.configall();
+
+  }
+
+  configall(){
+    this.cuponService.configall().subscribe((resp:any)=>{
+      this.categories = resp.categories,
+      this.products = resp.products
+    })
+  }
 
  checkedType(value:any)
  {
