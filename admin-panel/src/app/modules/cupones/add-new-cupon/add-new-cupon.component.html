@@ -55,14 +55,16 @@
           
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
-                    <label class="text-lg">Code</label>
-                    <input type="text" class="w-full p-2 rounded-lg">
+                    <div class="flex">
+                        <label class="w-1/4 text-lg">Code</label>
+                        <input type="text" [(ngModel)]="code" class="w-3/4 p-2 rounded-lg">
+                    </div>
                 </div>
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
                     <div class="flex">
                         <label class="text-lg">Percent</label>
-                        <input type="radio" name="radiosC" class="w-full p-2 rounded-lg">
+                        <input type="radio" name="radiosC" [checked]="type_discount == 1" value="1" (click)="checkTypeD(1)" class="w-full p-2 rounded-lg">
                     </div>
                    
                 </div>
@@ -70,19 +72,21 @@
                 <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
                     <div class="flex">
                         <label class="text-lg">Money</label>
-                        <input type="radio" name="radiosC" class="w-full p-2 rounded-lg">
+                        <input type="radio" name="radiosC" [checked]="type_discount==2" value="2" (click)="checkTypeD(2)"  class="w-full p-2 rounded-lg">
                     </div>
                 </div>
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
-                    <label class="text-lg">Discount</label>
-                    <input type="number" class="w-full p-2 rounded-lg">
+                    <div class="flex">
+                        <label class="w-1/4 text-lg">Discount</label>
+                        <input type="number" [(ngModel)]="discount" class="w-3/4 p-2 rounded-lg">
+                    </div>
                 </div>
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
                     <div class="flex">
                         <label class="text-lg">Limited</label>
-                        <input type="radio" name="radiosT" class="w-full p-2 rounded-lg">
+                        <input type="radio" name="radiosT" [checked]="type_count==1" (click)="checkTypeC(1)" class="w-full p-2 rounded-lg">
                     </div>
                    
                 </div>
@@ -90,15 +94,17 @@
                 <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
                     <div class="flex">
                         <label class="text-lg">Unlimited</label>
-                        <input type="radio" name="radiosT" class="w-full p-2 rounded-lg">
+                        <input type="radio" name="radiosT" [checked]="type_count==2" (click)="checkTypeC(2)" class="w-full p-2 rounded-lg">
                     </div>
                 </div>
 
                 
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
-                    <label class="text-lg">Numuse</label>
-                    <input type="number" class="w-full p-2 rounded-lg">
+                    <div class="flex">
+                    <label class="w-1/4 text-lg">Num use</label>
+                    <input type="number" [(ngModel)]="num_use" class="w-3/4 p-2 rounded-lg">
+                </div>
                 </div>
 
 
@@ -119,8 +125,8 @@
 
                 <div *ngIf="type_cupon==2"  class="lg:col-span-4 col-span-4 flex flex-col mb-8">
                     <div class="flex">
-                        <label class="text-lg">Category</label>
-                       <select  class="w-full p-2 rounded-lg">
+                        <label class="w-1/4 text-lg">Category</label>
+                       <select  class="w-3/4 p-2 rounded-lg" [(ngModel)]="category_id">
                         <option value="">Select</option>
                        </select>
                     </div>
@@ -128,8 +134,8 @@
 
                 <div *ngIf="type_cupon==1" class="lg:col-span-4 col-span-4 flex flex-col mb-8">
                     <div class="flex">
-                        <label class="text-lg">Product</label>
-                       <select  class="w-full p-2 rounded-lg">
+                        <label class="w-1/4 text-lg">Product</label>
+                       <select  class="w-3/4 p-2 rounded-lg" [(ngModel)]="product_id">
                         <option value="">Select</option>
                        </select>
                     </div>
