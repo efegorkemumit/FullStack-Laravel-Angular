@@ -4,15 +4,23 @@ namespace App\Http\Controllers\Cupon;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Cupon\Cupon;
+use App\Models\Product\Categories;
+use App\Models\Product\Product;
 
 class CuponController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->search;
+        $cupons = Cupon::where("code","like","%".$search."%")->orderBy("id","desc")->get();
+        return response()->json([
+            "message"=>200,
+            "cupons"=>$cupons,
+        ]);
     }
 
     /**
@@ -26,6 +34,22 @@ class CuponController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    public function config_all()
+     {
+        $categories= Categories::orderBy("id", "desc")->get();
+        $products= Product::orderBy("id", "desc")->get();
+
+        return response()->json([
+            "message"=>200,
+            "categories"=>$categories,
+            "products"=>$products,
+
+        ]);
+        
+
+     }
+
     public function store(Request $request)
     {
         //
@@ -36,7 +60,12 @@ class CuponController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cupon = Cupon::findOrFail($id);
+        
+        return response()->json([
+            "message"=>200,
+            "cupon" =>$cupon
+        ]);
     }
 
     /**

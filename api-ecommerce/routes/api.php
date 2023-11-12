@@ -9,6 +9,7 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\ProductImagesContoller;
 use App\Http\Controllers\Product\ProductSizeColorController;
 use App\Http\Controllers\Extra\SliderController;
+use App\Http\Controllers\Cupon\CuponController;
 
 Route::post("register", [ApiController::class, "register"]);
 Route::post("login", [ApiController::class, "login"]);
@@ -77,4 +78,11 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("slider/update/{id}", [SliderController::class, "update"]);
     Route::get("slider/detail/{id}", [SliderController::class, "getSlider"]);
 
+});
+
+
+Route::group(["middleware" => ["api"]], function(){
+    Route::get("cupons/all", [CuponController::class, "index"]);
+    Route::get("cupons/config-all", [CuponController::class, "config_all"]);
+    Route::get("cupons/show/{id}", [CuponController::class, "show"]);
 });
