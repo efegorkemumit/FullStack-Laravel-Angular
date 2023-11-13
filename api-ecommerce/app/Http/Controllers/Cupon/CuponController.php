@@ -109,7 +109,36 @@ class CuponController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $IS_VALID = Cupon::where("id","<>,$id")->where("code", $request->code)->first();
+        if($IS_VALID){
+            return response()->json(["message"=>403, "message_text"=>"Cupon dont use "]);
+        }
+
+    if($request->type_cupon==1)
+    {
+        $products=[];
+        foreach($request->products_selected as $key =>$product){
+            array_push($products,$product["id"]);
+        }
+        // [2,3,4 ] => 2,3,4
+        $request->request->add(["products"=>implode(",",$products)]);
+
+    }
+
+    if($request->type_cupon==2)
+    {
+        $categories=[];
+        foreach($request->categories_selected as $key =>$categorie){
+            array_push($categories,$categorie["id"]);
+        }
+        // [2,3,4 ] => 2,3,4
+        $request->request->add(["categories"=>implode(",",$categories)]);
+
+    }
+
+    $cupon = Cupon::findOrFail($id);
+    $cupon->update($request->all());
+    return response()->json(["message"=>200]);
     }
 
     /**

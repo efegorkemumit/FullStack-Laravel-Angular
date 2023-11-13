@@ -97,6 +97,8 @@ Route::group(["middleware" => ["api"]], function(){
 
 Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("cupons/add", [CuponController::class, "store"]);
+    Route::post("cupons/update/{id}", [CuponController::class, "update"]);
+
     Route::delete("cupons/delete/{id}", [CuponController::class, "destroy"]);
 
 

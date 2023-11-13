@@ -163,7 +163,7 @@ export class EditCuponComponent {
 
     }
 
-    this.cuponService.create(data).subscribe((resp:any)=>{
+    this.cuponService.update(this.cupone.id, data).subscribe((resp:any)=>{
       console.log(resp);
       if(resp.message==403){
         this.errorMessage = resp.message_text;

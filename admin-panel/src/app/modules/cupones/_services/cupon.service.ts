@@ -38,6 +38,23 @@ export class CuponService {
       
   }
 
+  update(id:number, data:any):Observable<any>{
+    let URL = URL_SERVICE + '/cupons/update/' +id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.post<any>(URL, data,  {headers});
+      
+  }
+
   create(data:any):Observable<any>{
     let URL = URL_SERVICE + '/cupons/add';
 
