@@ -57,7 +57,7 @@
                 <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
                     <div class="flex">
                         <label class="w-1/4 text-lg">Code</label>
-                        <input type="text" [(ngModel)]="code" class="w-3/4 p-2 rounded-lg">
+                        <input type="text" [(ngModel)]="code" class="w-3/4 p-2 rounded-lg  text-black">
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                 <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
                     <div class="flex">
                         <label class="w-1/4 text-lg">Discount</label>
-                        <input type="number" [(ngModel)]="discount" class="w-3/4 p-2 rounded-lg">
+                        <input type="number" [(ngModel)]="discount" class="w-3/4 p-2 rounded-lg text-black">
                     </div>
                 </div>
 
@@ -108,17 +108,21 @@
 
              
 
-                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                <div *ngIf="numusekt==1" class="lg:col-span-4 col-span-4 flex flex-col mb-8">
                     <div class="flex">
                     <label class="w-1/4 text-lg">Num use</label>
-                    <input type="number" [(ngModel)]="num_use" class="w-3/4 p-2 rounded-lg">
+                    <input type="number" [(ngModel)]="num_use" class="w-3/4 p-2 rounded-lg  text-black">
                 </div>
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                  
                 </div>
 
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
                     <div class="flex">
-                        <input type="radio" [checked]="type_cupon==1" name="radiosPc" (click)="checkedType(1)" class="w-full p-2 rounded-lg mr-2">
+                        <input type="radio" [checked]="type_cupon==1" name="radiosPc" (click)="checkedType(1)" class="w-full p-2 rounded-lg mr-2  text-black">
                         <label class="text-lg">Product</label>
 
                     </div>
@@ -127,7 +131,7 @@
 
                 <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
                     <div class="flex">
-                        <input type="radio" [checked]="type_cupon==2" name="radiosPc" (click)="checkedType(2)" class="w-full p-2 rounded-lg mr-2">
+                        <input type="radio" [checked]="type_cupon==2" name="radiosPc" (click)="checkedType(2)" class="w-full p-2 rounded-lg mr-2  text-black">
                         <label class="text-lg">Category</label>
 
                     </div>
@@ -167,9 +171,23 @@
                 
 
                 <div class="lg:col-span-4 col-span-4 flex flex-col mt-20">
-                    <button type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                    <button (click)="saveall()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
                         Save All
                     </button>
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                    <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{successMessage}}
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationError">
+                    <div class="bg-red-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{errorMessage}}
+                    </div>
+
                 </div>
 
 

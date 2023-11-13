@@ -20,9 +20,15 @@ export class AddNewCuponComponent {
 
   categories:any = [];
   products:any=[];
+  numusekt:any=1;
 
   products_selected:any = [];
   categories_selected:any = [];
+
+  registrationSuccess = false;
+  successMessage= "Registtration Successful";
+  registrationError=false;
+  errorMessage="Error ";
 
   constructor(
     public cuponService: CuponService
@@ -31,6 +37,41 @@ export class AddNewCuponComponent {
 
   ngOnInit(): void{
     this.configall();
+
+  }
+  saveall()
+  {
+    if(!this.code){
+      this.errorMessage="code is problem";
+      this.registrationError=true;
+      setTimeout(()=>{this.registrationError=false;}, 2000);return;
+    }
+
+    if(this.discount<=0){
+      this.errorMessage="Discount it is problem";
+      this.registrationError=true;
+      setTimeout(()=>{this.registrationError=false;}, 2000);return;
+    }
+
+    
+    if(this.type_count===1 && this.num_use<=0){
+      this.errorMessage="User at least";
+      this.registrationError=true;
+      setTimeout(()=>{this.registrationError=false;}, 2000);return;
+    }
+    if(this.type_cupon===1 && this.products_selected.length===0)
+    {
+      this.errorMessage="Product add required";
+      this.registrationError=true;
+      setTimeout(()=>{this.registrationError=false;}, 2000);return;
+    }
+
+    if(this.type_cupon===2 && this.categories_selected.length===0)
+    {
+      this.errorMessage="Category add required";
+      this.registrationError=true;
+      setTimeout(()=>{this.registrationError=false;}, 2000);return;
+    }
 
   }
 
@@ -59,6 +100,15 @@ export class AddNewCuponComponent {
 
  checkTypeC(value:any){
   this.type_count=value;
+  if(this.type_count==2)
+  {
+    this.numusekt=2;
+
+  }
+  else
+  {
+    this.numusekt=1;
+  }
  }
  addObject()
  {
