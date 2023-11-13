@@ -1,1 +1,283 @@
-<p>edit-cupon works!</p>
+<div class="container  mx-auto lg:p-4 p-0">
+
+    <div class="bg-primary-900 text-white p-4 rounded-xl">
+
+        <nav class="text-base mb-1 rounded-xl p-0">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="dashboard.html">          <i class="fa-solid fa-gauge"></i> 
+                       <span class="ml-1 mr-4">Dashboard</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">         <i class="fa-solid fa-users"></i>
+                       <span class="ml-1 mr-4">Users</span> 
+                    </a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </li>
+
+                <li class="flex items-center ml-4">
+                    <a href="#">       
+                       <span class="ml-1 mr-4">Settings</span> 
+                    </a>
+                 
+                </li>
+
+            </ol>
+
+
+
+
+        </nav>
+
+     
+
+
+
+    </div>
+
+ </div>
+ 
+ <div class="container mx-auto lg:p-4 p-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
+     
+
+
+
+
+        <div class=" shadow-md">
+        <div class="bg-primary-900 rounded-lg text-white lg p-4">
+            <div class="w-full grid grid-cols-4 lg:grid-cols-4 gap-4">
+          
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="w-1/4 text-lg">Code</label>
+                        <input type="text" [(ngModel)]="code" class="w-3/4 p-2 rounded-lg  text-black">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+
+                    <div class="mb-4 ml-44">
+                    <div class="flex items-center">
+                        <input type="radio" name="radiosC" [checked]="type_discount == 1" value="1" (click)="checkTypeD(1)" class="mr-2">
+                        <label class="text-lg">Percent</label>
+
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" name="radiosC" [checked]="type_discount==2" value="2" (click)="checkTypeD(2)"  class="mr-2">
+                        <label class="text-lg">Money</label>
+
+                    </div>
+
+                </div>
+                   
+                </div>
+
+              
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="w-1/4 text-lg">Discount</label>
+                        <input type="number" [(ngModel)]="discount" class="w-3/4 p-2 rounded-lg text-black">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+
+                    <div class="mb-4 ml-44">
+                    <div class="flex items-center">
+                        <input type="radio" name="radiosT" [checked]="type_count==1" (click)="checkTypeC(1)"  class="mr-2">
+                        <label class="text-lg">Limited</label>
+
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="radio" name="radiosT" [checked]="type_count==2" (click)="checkTypeC(2)"  class="mr-2">
+                        <label class="text-lg">Unlimited</label>
+
+                    </div>
+                    </div>
+                   
+                </div>
+
+             
+
+                <div *ngIf="numusekt==1" class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                    <label class="w-1/4 text-lg">Num use</label>
+                    <input type="number" [(ngModel)]="num_use" class="w-3/4 p-2 rounded-lg  text-black">
+                </div>
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                  
+                </div>
+
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <input type="radio" [checked]="type_cupon==1" name="radiosPc" (click)="checkedType(1)" class="w-full p-2 rounded-lg mr-2  text-black">
+                        <label class="text-lg">Product</label>
+
+                    </div>
+                   
+                </div>
+
+                <div class="lg:col-span-2 col-span-2 flex flex-col mb-8">
+                    <div class="flex">
+                        <input type="radio" [checked]="type_cupon==2" name="radiosPc" (click)="checkedType(2)" class="w-full p-2 rounded-lg mr-2  text-black">
+                        <label class="text-lg">Category</label>
+
+                    </div>
+                </div>
+
+                <div *ngIf="type_cupon==2"  class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="w-1/4 text-lg">Category</label>
+                       <select  class="w-3/4 p-2 rounded-lg text-primary-900" [(ngModel)]="category_id">
+                        <option value="">Select</option>
+                        <ng-container *ngFor="let categorie of categories">
+                            <option [value]="categorie.id">{{categorie.name}}</option>
+                        </ng-container>
+                       </select>
+                    </div>
+                </div>
+
+                <div *ngIf="type_cupon==1" class="lg:col-span-4 col-span-4 flex flex-col mb-8">
+                    <div class="flex">
+                        <label class="w-1/4 text-lg">Product</label>
+                       <select  class="w-3/4 p-2 rounded-lg text-primary-900" [(ngModel)]="product_id">
+                        <option value="">Select</option>
+                        <ng-container *ngFor="let product of products">
+                            <option [value]="product.id">{{product.title}}</option>
+                        </ng-container>
+                       </select>
+                    </div>
+                </div>
+
+
+                <div class="lg:col-span-1 col-span-1 flex flex-col mb-20">
+                    <button type="submit" (click)="addObject()" class="text-white font-semibold bg-orange-600 p-2 rounded-xl">
+                        +
+                    </button>
+                </div>
+
+                
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col mt-20">
+                    <button (click)="saveall()" type="submit" class="text-primary-900 font-semibold bg-second-900 p-2 rounded-xl hover:bg-second-700">
+                        Save All
+                    </button>
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                    <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{successMessage}}
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationError">
+                    <div class="bg-red-600 px-5 py-5 rounded-xl text-slate-950">
+                        <i class="fa-solid fa-check"></i>  {{errorMessage}}
+                    </div>
+
+                </div>
+
+
+            </div>
+       
+
+
+
+
+        </div>
+      
+       
+    </div>
+
+    <div  class=" shadow-md">
+
+        <div class="bg-primary-900 rounded-lg text-white lg p-4">
+
+            <div class="overflow-x-auto">
+
+                <div>
+                <div>Product</div>
+                <table class="min-w-full divide-y divide-second-900">
+                    <thead>
+                        <tr>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Name</th>
+                         <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">#</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="bg-primary-400 divide-y divide-second-900">
+                        <tr *ngFor="let productS of products_selected">
+
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">{{productS.name}}</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
+                                <button (click)="productD(productS)" class="bg-red-900 border border-red-900  text-primary-900 px-1 py-1 rounded-xl ">
+                                   Remove
+                                </button>
+                            </th>
+                            
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div>
+                <div>Categories</div>
+                <table class="min-w-full divide-y divide-second-900">
+                    <thead>
+                        <tr>
+                            <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">Name</th>
+                         <th class="uppercase text-second-900 font-medium text-xs bg-primary-700 px-6 py-3">#</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="bg-primary-400 divide-y divide-second-900">
+                        <tr *ngFor="let categorieS of categories_selected">
+
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">{{categorieS.name}}</th>
+                            <th class="px-6 py-3 whitespace-nowrap text-sm text-white">
+
+                                <button (click)="categorieD(categorieS)" class="bg-red-900 border border-red-900  text-primary-900 px-1 py-1 rounded-xl ">
+                                    Remove
+                                 </button>
+
+
+                            </th>
+                            
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            </div>
+         
+        
+        
+        </div>
+
+
+        
+    </div>
+       
+
+
+    </div>
+</div>
