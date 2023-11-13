@@ -55,7 +55,7 @@ export class CuponService {
       
   }
 
-  deletecategory(id:number):Observable<any>{
+  deletecupon(id:number):Observable<any>{
     let URL = URL_SERVICE + '/cupons/delete/' +id;
 
     const token = localStorage.getItem('token');

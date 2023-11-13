@@ -47,8 +47,7 @@
                                  <th class="p-4 text-left text-xs font-medium uppercase text-white">CODE</th>
                                  <th class="p-4 text-left text-xs font-medium uppercase text-white">TYPE Discount</th>
                                  <th class="p-4 text-left text-xs font-medium uppercase text-white">num use</th>
-                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">categories</th>
-                                 <th class="p-4 text-left text-xs font-medium uppercase text-white">product</th>
+                               
                                  <th class="p-4 text-right text-xs font-medium uppercase text-white ml-auto"></th>
 
 
@@ -57,36 +56,31 @@
 
                          </thead>
                          <tbody>
-                             <tr class="hover:bg-primary-800 hover:text-second-800" *ngFor="let category of categories">
+                             <tr class="hover:bg-primary-800 hover:text-second-800" *ngFor="let cupon of cupons">
                                 <td class="p-4 w-4">
-                                    {{category.id}}
+                                    {{cupon.id}}
                                     </td>
                                 <td class="p-4 w-4">
-                                {{category.name}}
+                                {{cupon.code}}
                                 </td>
-                                <td class="p-4 w-4">
-                                    {{category.name}}
-                                    </td>
+                              
                                     <td class="p-4 w-4">
-                                        {{category.name}}
+                                        {{cupon.discount}}
                                         </td>
+                                        <td class="p-4 w-4">
+                                            {{cupon.num_use}}
+                                            </td>
                                 
-                                 <td class="p-4 w-4">
-                                    {{category.icon}}
-                                 </td>
-
-                                 <td class="p-4 w-4">
-                                   <img src="{{URL}}storage/{{category.images}}" class="w-20 rounded-full"/>
-                                 </td>
+                              
                                  
                                
                                  <td class="p-4 w-4 ml-auto text-right">
-                                    <a [routerLink]="['/cupon/edit-cupon/',category.id]"
+                                    <a [routerLink]="['/cupon/edit-cupon/',cupon.id]"
                                      class="px-2 py-2  bg-second-900 rounded-xl text-primary-900">
                                      <i class="fa-solid fa-pen-to-square"></i>
                                       Edit
                                     </a>
-                                    <button (click)="deleteCategory(category.id)"  class="px-2 py-2  bg-red-950 rounded-xl text-white"><i class="fa-solid  fa-trash"></i> Remove</button>
+                                    <button (click)="deleteCupon(cupon.id)"  class="px-2 py-2  bg-red-950 rounded-xl text-white"><i class="fa-solid  fa-trash"></i> Remove</button>
 
                                  </td>
 

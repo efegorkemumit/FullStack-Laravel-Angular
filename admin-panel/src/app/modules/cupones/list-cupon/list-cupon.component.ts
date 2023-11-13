@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { URL_BACKEND } from 'src/config/config';
-import { EccomerceService } from '../../eccommerce/_services/eccomerce.service';
+import { CuponService } from '../_services/cupon.service';
 
 @Component({
   selector: 'app-list-cupon',
@@ -8,35 +8,45 @@ import { EccomerceService } from '../../eccommerce/_services/eccomerce.service';
   styleUrls: ['./list-cupon.component.css']
 })
 export class ListCuponComponent {
-  categories:any[] =[];
-  orginalcategories:any[] =[];
+  cupons:any[] =[];
+  orginalcupons:any[] =[];
   searchText:string = '';
   userId:number|undefined;
   URL=URL_BACKEND
   
 
   constructor(
-    public EccommerceService:EccomerceService
+    public cuponService:CuponService
   ){}
 
   ngOnInit(){
-    this.EccommerceService.getCategory().subscribe((data:any)=>{
-      this.categories = data['categories'];
-      this.orginalcategories= data['categories'];
+    this.cuponService.getCupon().subscribe((data:any)=>{
+      this.cupons = data['cupons'];
+      this.orginalcupons= data['cupons'];
     })
   }
   onSearch(){
     if(this.searchText===''){
-      this.categories = this.orginalcategories;
+      this.cupons = this.orginalcupons;
     }
     else{
-      this.categories=this.orginalcategories.filter(category=>{
-        return category.name.toLowerCase().includes(this.searchText.toLowerCase()) 
+      this.cupons=this.orginalcupons.filter(cupons=>{
+        return cupons.name.toLowerCase().includes(this.searchText.toLowerCase()) 
             
       })
     }
   }
-  deleteCategory(id:number){
+  deleteCupon(id:number){
+    this.cuponService.deletecupon(id).subscribe(response=>{
+
+      this.cuponService.getCupon().subscribe((data:any)=>{
+        this.cupons = data['cupons'];
+        this.orginalcupons= data['cupons'];
+      });
+
+    },error=>{
+      console.error("User Delete Failed", error);
+    })
   
   }
   
