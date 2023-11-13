@@ -208,7 +208,7 @@
 
             <div class="overflow-x-auto">
 
-                <div>
+                <div *ngIf="type_cupon==1">
                 <div>Product</div>
                 <table class="min-w-full divide-y divide-second-900">
                     <thead>
@@ -236,7 +236,7 @@
                 </table>
             </div>
 
-            <div>
+            <div *ngIf="type_cupon==2">
                 <div>Categories</div>
                 <table class="min-w-full divide-y divide-second-900">
                     <thead>
