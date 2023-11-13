@@ -73,6 +73,46 @@ export class AddNewCuponComponent {
       setTimeout(()=>{this.registrationError=false;}, 2000);return;
     }
 
+    let data = {
+
+      code:this.code,
+      type_discount:this.type_discount,
+      discount:this.discount,
+      type_count:this.type_count,
+      num_use:this.num_use,
+      type_cupon:this.type_cupon,
+      products_selected:this.products_selected,
+      categories_selected:this.categories_selected
+ 
+
+    }
+
+    this.cuponService.create(data).subscribe((resp:any)=>{
+      console.log(resp);
+      if(resp.message==403){
+        this.errorMessage = resp.message_text;
+        this.registrationError=true;
+        setTimeout(()=>{this.registrationError=false;}, 2000);return;
+      }
+      else{
+
+      this.code=null;
+      this.type_discount =1;
+      this.discount =null;
+      this.type_count =1;
+      this.num_use = 0;
+      this.type_cupon = 1;
+      this.products_selected =[];
+      this.categories_selected =[];
+
+        this.registrationSuccess=true;
+  
+        setTimeout(()=>{
+          this.registrationSuccess=false;
+        }, 5000);
+      }
+    })
+
   }
 
   configall(){
@@ -103,11 +143,13 @@ export class AddNewCuponComponent {
   if(this.type_count==2)
   {
     this.numusekt=2;
+    this.num_use=0;
 
   }
   else
   {
     this.numusekt=1;
+    this.num_use=null;
   }
  }
  addObject()
