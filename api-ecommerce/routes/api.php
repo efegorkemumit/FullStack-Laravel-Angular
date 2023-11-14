@@ -116,5 +116,6 @@ Route::group(["middleware" => ["api"]], function(){
 Route::group(["middleware" => ["auth:api"]], function(){
     Route::delete("discount/delete/{id}", [DiscountController::class, "destroy"]);
     Route::post("discount/add", [DiscountController::class, "store"]);
+    Route::post("discount/update/{id}", [DiscountController::class, "update"]);
 
 });

@@ -118,7 +118,59 @@ class DiscountController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product_array=[];
+        $categorie_array=[];
+        if($request->type==1){
+            foreach($request->product_selected as $key =>$product)
+            {
+                array_push($product_array, $product["id"]);
+            }
+        }
+        if($request->type==2){
+            foreach($request->categorie_selected as $key =>$categorie)
+            {
+                array_push($categorie_array, $categorie["id"]);
+            }
+        }
+        $IS_EXISTE_START_DATE = Discount::ValidateDiscount($request, $product_array, $categorie_array)->whereBetween("start_date", [$request->start_date, $request->end_date])->first();
+        $IS_EXISTE_END_DATE = Discount::ValidateDiscount($request, $product_array, $categorie_array)->whereBetween("end_date", [$request->start_date, $request->end_date])->first();
+
+        if($IS_EXISTE_START_DATE ||  $IS_EXISTE_END_DATE)
+        {
+            return response()->json([
+                "message"=>403,
+                "message_text"=> "No register discount date"
+              ]);
+
+        }
+
+          $DISCOUNT = Discount::findOrFail($id);
+          $DISCOUNT->update($request->all());
+
+          if($request->type == 1){
+
+            foreach($product_array as $key => $product)
+            {
+                DiscountProduct::create([
+                    "discount_id" => $DISCOUNT->id,
+                    "product_id" => $product
+                ]);
+
+            }
+          }
+          if($request->type == 2){
+
+            foreach($categorie_array as $key => $categorie)
+            {
+                DiscountCategorie::create([
+                    "discount_id" => $DISCOUNT->id,
+                    "categorie_id" => $categorie
+                ]);
+
+            }
+          }
+
+          return response()->json(["messaga"=>200, "discount" => $DISCOUNT]);
     }
 
     /**
