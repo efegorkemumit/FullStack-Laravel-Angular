@@ -10,6 +10,7 @@ use App\Http\Controllers\Product\ProductImagesContoller;
 use App\Http\Controllers\Product\ProductSizeColorController;
 use App\Http\Controllers\Extra\SliderController;
 use App\Http\Controllers\Cupon\CuponController;
+use App\Http\Controllers\Discount\DiscountController;
 
 Route::post("register", [ApiController::class, "register"]);
 Route::post("login", [ApiController::class, "login"]);
@@ -101,5 +102,11 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
     Route::delete("cupons/delete/{id}", [CuponController::class, "destroy"]);
 
+
+});
+
+// CUPON
+Route::group(["middleware" => ["api"]], function(){
+    Route::get("discount/all", [DiscountController::class, "index"]);
 
 });
