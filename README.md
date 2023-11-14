@@ -23,7 +23,6 @@ Contributions are not being accepted at this time as the project is still in its
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). See the license file for details.
 
 ---
 © 2023 E-Commerce Project. All rights reserved.
