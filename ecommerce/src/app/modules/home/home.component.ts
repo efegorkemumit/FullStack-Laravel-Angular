@@ -10,19 +10,7 @@ import { URL_BACKEND } from 'src/config/config';
 })
 export class HomeComponent {
 
-  categories:any[] =[];
-  URL=URL_BACKEND;
   
-  constructor(
-    public router:Router,
-    public sharedService:SharedService
-  ){}
-
-  ngOnInit(){
-    this.sharedService.getCategory().subscribe((data:any)=>{
-      this.categories = data['categories'];
-    })
-  }
 
 
 
