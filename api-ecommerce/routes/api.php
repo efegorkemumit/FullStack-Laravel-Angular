@@ -105,8 +105,14 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
 });
 
-// CUPON
+// DISCOUNT
 Route::group(["middleware" => ["api"]], function(){
     Route::get("discount/all", [DiscountController::class, "index"]);
+    Route::get("discount/show_discount/{id}", [DiscountController::class, "show"]);
 
+
+});
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::delete("discount/delete/{id}", [DiscountController::class, "destroy"]);
 });

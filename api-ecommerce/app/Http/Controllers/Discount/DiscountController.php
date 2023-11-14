@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Discount\Discount;
 use App\Http\Resources\Discount\DiscountCollection;
+use App\Http\Resources\Discount\DiscountResource;
 
 class DiscountController extends Controller
 {
@@ -44,7 +45,11 @@ class DiscountController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $discount = Discount::findOrFail($id);
+        
+        return response()->json([
+            "discount" =>DiscountResource::make($discount)
+        ]);
     }
 
     /**
@@ -68,6 +73,9 @@ class DiscountController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $discount = Discount::findOrFail($id);
+      
+       $discount->delete();
+       return response()->json(["message"=>200]);
     }
 }
