@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Discount;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Discount\Discount;
+use App\Models\Discount\DiscountCategorie;
+use App\Models\Discount\DiscountProduct;
 use App\Http\Resources\Discount\DiscountCollection;
 use App\Http\Resources\Discount\DiscountResource;
 
@@ -40,13 +42,13 @@ class DiscountController extends Controller
         $product_array=[];
         $categorie_array=[];
         if($request->type==1){
-            foreach($request->product_selected as $key =>$product)
+            foreach($request->products_selected as $key =>$product)
             {
                 array_push($product_array, $product["id"]);
             }
         }
         if($request->type==2){
-            foreach($request->categorie_selected as $key =>$categorie)
+            foreach($request->categories_selected as $key =>$categorie)
             {
                 array_push($categorie_array, $categorie["id"]);
             }
@@ -121,13 +123,13 @@ class DiscountController extends Controller
         $product_array=[];
         $categorie_array=[];
         if($request->type==1){
-            foreach($request->product_selected as $key =>$product)
+            foreach($request->products_selected as $key =>$product)
             {
                 array_push($product_array, $product["id"]);
             }
         }
         if($request->type==2){
-            foreach($request->categorie_selected as $key =>$categorie)
+            foreach($request->categories_selected as $key =>$categorie)
             {
                 array_push($categorie_array, $categorie["id"]);
             }
@@ -135,14 +137,8 @@ class DiscountController extends Controller
         $IS_EXISTE_START_DATE = Discount::ValidateDiscount($request, $product_array, $categorie_array)->whereBetween("start_date", [$request->start_date, $request->end_date])->first();
         $IS_EXISTE_END_DATE = Discount::ValidateDiscount($request, $product_array, $categorie_array)->whereBetween("end_date", [$request->start_date, $request->end_date])->first();
 
-        if($IS_EXISTE_START_DATE ||  $IS_EXISTE_END_DATE)
-        {
-            return response()->json([
-                "message"=>403,
-                "message_text"=> "No register discount date"
-              ]);
 
-        }
+      
 
           $DISCOUNT = Discount::findOrFail($id);
           $DISCOUNT->update($request->all());
