@@ -19,7 +19,7 @@ class DiscountResource extends JsonResource
         [
             "id"=>$this->resource->id,
             "code"=>$this->resource->code,
-            "type_discount	"=>$this->resource->type_discount,
+            "type_discount"=>$this->resource->type_discount,
             "discount"=>$this->resource->discount,
             "state"=>$this->resource->state,
             "start_date"=>Carbon::parse($this->resource->start_date)->format("Y-m-d"),
