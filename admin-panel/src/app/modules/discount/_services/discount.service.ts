@@ -18,6 +18,15 @@ export class DiscountService {
     return this.http.get<any>(URL,);
       
   }
+  
+  configall():Observable<any>{
+    let URL = URL_SERVICE + '/cupons/config-all';
+
+   
+
+    return this.http.get<any>(URL,);
+      
+  }
 
   getShowDiscount(id:number):Observable<any>{
     let URL = URL_SERVICE + '/discount/show_discount/' +id;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CuponService } from '../../cupones/_services/cupon.service';
+import { DiscountService } from '../_services/discount.service';
 
 @Component({
   selector: 'app-add-discount',
@@ -34,7 +35,7 @@ export class AddDiscountComponent {
   errorMessage="Error ";
 
   constructor(
-    public cuponService: CuponService
+    public disCountService: DiscountService
   ){}
 
 
@@ -44,12 +45,7 @@ export class AddDiscountComponent {
   }
   saveall()
   {
-    if(!this.code){
-      this.errorMessage="code is problem";
-      this.registrationError=true;
-      setTimeout(()=>{this.registrationError=false;}, 2000);return;
-    }
-
+    
     if(this.discount<=0){
       this.errorMessage="Discount it is problem";
       this.registrationError=true;
@@ -72,20 +68,28 @@ export class AddDiscountComponent {
       setTimeout(()=>{this.registrationError=false;}, 2000);return;
     }
 
+    if(!this.start_date || !this.end_date)
+    {
+      this.errorMessage="Empty date";
+      this.registrationError=true;
+      setTimeout(()=>{this.registrationError=false;}, 2000);return;
+    }
+
     let data = {
 
-      code:this.code,
       type_discount:this.type_discount,
       discount:this.discount,
-      type_count:this.type_count,
-      type_cupon:this.type_cupon,
+      state:this.type_count,
+      start_date:this.start_date,
+      end_date:this.end_date,
       products_selected:this.products_selected,
-      categories_selected:this.categories_selected
+      categories_selected:this.categories_selected,
+      type:this.type_cupon,
  
 
     }
 
-    this.cuponService.create(data).subscribe((resp:any)=>{
+    this.disCountService.create(data).subscribe((resp:any)=>{
       console.log(resp);
       if(resp.message==403){
         this.errorMessage = resp.message_text;
@@ -113,7 +117,7 @@ export class AddDiscountComponent {
   }
 
   configall(){
-    this.cuponService.configall().subscribe((resp:any)=>{
+    this.disCountService.configall().subscribe((resp:any)=>{
       this.categories = resp.categories,
       this.products = resp.products
     })
