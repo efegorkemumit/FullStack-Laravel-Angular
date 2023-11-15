@@ -28,5 +28,14 @@ export class HomeService {
       
   }
 
+  getShow(id:number):Observable<any>{
+    let URL = URL_SERVICE + '/show_product/'+id;
+
+   
+
+    return this.http.get<any>(URL,);
+      
+  }
+
   
 }
