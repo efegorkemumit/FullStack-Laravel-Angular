@@ -21,6 +21,9 @@ export class ProductDetailComponent {
   images:any=[];
   products:any=[];
   categoryname:any=null;
+  selectedSize:any;
+  quantity:number = 1;
+
 
   constructor(
     public homeService:HomeService,
@@ -28,6 +31,24 @@ export class ProductDetailComponent {
 
 
   ){}
+
+  decrement():void{
+
+    if(this.quantity>1)
+    {
+      this.quantity--;
+    }
+  }
+  increment():void
+  {
+    this.quantity++;
+  }
+
+  onSizeChange(selectedSize:any)
+  {
+    this.selectedSize = selectedSize;
+
+  }
 
   ngOnInit():void
   {
@@ -52,6 +73,9 @@ export class ProductDetailComponent {
     })
 
 
+  }
+  changeMainImage(newImage:string):void{
+    this.imageEcommerce=newImage;
   }
 
 }

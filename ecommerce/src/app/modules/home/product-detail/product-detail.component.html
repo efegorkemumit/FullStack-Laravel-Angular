@@ -34,21 +34,10 @@
         </div>
 
         <div class="grid grid-cols-5 gap-4 mt-4">
-            <div>
-                <img src="img/product/shoes-1.png" class="single-img cursor-pointer border border-primary w-full" />
+            <div *ngFor="let image of images">
+                <img [src]="image.images" class="single-img cursor-pointer border  w-full" (click)="changeMainImage(image.images)" />
             </div>
-            <div>
-                <img src="img/product/shoes-2.png" class="single-img cursor-pointer border  w-full" />
-            </div>
-            <div>
-                <img src="img/product/shoes-3.png" class="single-img cursor-pointer border  w-full" />
-            </div>
-            <div>
-                <img src="img/product/shoes-4.png" class="single-img cursor-pointer border  w-full" />
-            </div>
-            <div>
-                <img src="img/product/shoes-5.png" class="single-img cursor-pointer border  w-full" />
-            </div>
+            
     
 
 
@@ -107,46 +96,13 @@
             <div class="flex items-center gap-2">
         
            
-            <div class="size-selector">
+            <div *ngFor="let size of sizes" class="size-selector">
 
-                <input type="radio" name="size" class="hidden" id="size-xs">
-                <label for="size-xs" class="text-xs border border-gray-200  rounded-sm h-7 w-7 flex 
-                items-center justify-center cursor-pointer shadow-sm text-gray-900" >XS</label>
-
-            </div>
-
-            <div class="size-selector">
-
-                <input type="radio" name="size" class="hidden" id="size-s">
-                <label for="size-s" class="text-xs border border-gray-200  rounded-sm h-7 w-7 flex 
-                items-center justify-center cursor-pointer shadow-sm text-gray-900" >S</label>
+                <input type="radio" name="size" class="hidden" id="{{size.name}}" (change)="onSizeChange(size)">
+                <label for="{{size.name}}" class="text-xs border border-gray-200  rounded-sm h-7 w-7 flex  items-center justify-center cursor-pointer shadow-sm text-gray-900" >{{size.name}}</label>
 
             </div>
 
-            <div class="size-selector">
-
-                <input type="radio" name="size" class="hidden" id="size-m">
-                <label for="size-m" class="text-xs border border-gray-200  rounded-sm h-7 w-7 flex 
-                items-center justify-center cursor-pointer shadow-sm text-gray-900" >M</label>
-
-            </div>
-
-            <div class="size-selector">
-
-                <input type="radio" name="size" class="hidden" id="size-l">
-                <label for="size-l" class="text-xs border border-gray-200  rounded-sm h-7 w-7 flex 
-                items-center justify-center cursor-pointer shadow-sm text-gray-900" >L</label>
-
-            </div>
-
-
-            <div class="size-selector">
-
-                <input type="radio" name="size" class="hidden" id="size-xl">
-                <label for="size-xl" class="text-xs border border-gray-200  rounded-sm h-7 w-7 flex 
-                items-center justify-center cursor-pointer shadow-sm text-gray-900" >XL</label>
-
-            </div>
 
         </div>
         </div>
@@ -156,77 +112,16 @@
             <div class="flex flex-wrap items-center gap-2 ">
 
 
-                <div class="color-selector">
+                <div *ngIf="selectedSize && selectedSize.variant.length >0 " >
+                <div *ngFor="let variant of selectedSize.variant" class="color-selector">
 
-                    <input type="radio" name="size" class="hidden" id="color-black">
-                    <label for="color-black"  style="background-color: black;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-yellow">
-                    <label for="color-yellow"  style="background-color: yellow;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
+                    <input type="radio" name="size" class="hidden" id="{{variant.product_color.name}}">
+                    <label for="{{variant.product_color.name}}"   class="text-xs border border-gray-200  rounded-full h-12 w-12 flex 
+                    items-center justify-center cursor-pointer shadow-sm text-gray-900" >{{variant.product_color.name}}</label>
 
                 </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-white">
-                    <label for="color-white"  style="background-color: white;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-blue">
-                    <label for="color-blue"  style="background-color: blue;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-green">
-                    <label for="color-green"  style="background-color: green;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-pink">
-                    <label for="color-pink"  style="background-color: pink;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-orange">
-                    <label for="color-orange"  style="background-color: orange;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-red">
-                    <label for="color-red"  style="background-color: red;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
-
-                <div class="color-selector">
-
-                    <input type="radio" name="size" class="hidden" id="color-purple">
-                    <label for="color-purple"  style="background-color: purple;" class="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                    items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-
-                </div>
+            </div>
+              
         
            
            
@@ -249,9 +144,9 @@
         <div class="mt-4">
             <h3 class="text-gray-700 mb-2 text-lg">Quantity</h3>
             <div class="flex border border-gray-500 text-gray-600 divide-x divide-gray-500 w-max">
-                <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" onclick="decr()" > - </div>
-                <div class="h-7 w-7 text-2xl flex items-center justify-center " id="quantity"> 1 </div>
-                <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" onclick="incr()"> + </div>
+                <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" (click)="decrement()"> - </div>
+                <div class="h-7 w-7 text-2xl flex items-center justify-center " >{{quantity}}</div>
+                <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" (click)="increment()"> + </div>
 
             </div>
 
