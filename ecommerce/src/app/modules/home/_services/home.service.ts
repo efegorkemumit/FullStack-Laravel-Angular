@@ -19,5 +19,14 @@ export class HomeService {
       
   }
 
+  getProduct():Observable<any>{
+    let URL = URL_SERVICE + '/product/all';
+
+   
+
+    return this.http.get<any>(URL,);
+      
+  }
+
   
 }
