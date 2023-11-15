@@ -41,6 +41,7 @@ class ProductResource extends JsonResource
             "state"=>$this->resource->state,
             "interview"=>$this->resource->interview,
             "image"=>$this->resource->images,
+            "imageEcommerce"=>env("APP_URL")."/storage/".$this->resource->images,
             "images"=> $imageCollection->map(function($img){
                 return[
                     "id"=>$img['id'],
