@@ -8,7 +8,7 @@
         <span class="text-sm text-gray-600"> <i class="fa-solid fa-angle-right fa-lg"></i></span>
         <p class="text-primary  text-base  uppercase">Shop</p>
         <span class="text-sm text-gray-600"> <i class="fa-solid fa-angle-right fa-lg"></i></span>
-        <p class="text-gray-900 font-medium uppercase">COMPUTER ONE</p>
+        <p class="text-gray-900 font-medium uppercase">{{title}}</p>
 
 
 
@@ -30,7 +30,7 @@
     <div>
 
         <div>
-            <img id="main-img" src="img/product/shoes-1.png" class="w-full" />
+            <img id="main-img" [src]="imageEcommerce" class="w-full" />
         </div>
 
         <div class="grid grid-cols-5 gap-4 mt-4">
@@ -62,8 +62,8 @@
 
 <!------start Product Detail  -->
 <div>
-    <h2 class="uppercase md:text-3xl text-2xl font-medium mb-2">Itailan Shoes </h2>
-    <div class="flex items-center">
+    <h2 class="uppercase md:text-3xl text-2xl font-medium mb-2">{{title}} </h2>
+ <!------   <div class="flex items-center">
         <div class="flex gap-1 text-sm text-yellow-500">
             <span><i class="fa-solid fa-star"></i></span>
             <span><i class="fa-solid fa-star"></i></span>
@@ -77,33 +77,28 @@
 
 
 
-    </div>
+    </div>  -->
     <div class="space-y-3">
         <p class="space-x-4 mt-2">
             <span class="text-xl">Avaible : </span>
-            <span class="text-xl text-green-600 font-semibold" >Stock</span>
+            <span class="text-xl text-green-600 font-semibold" >{{stock}}</span>
 
         </p>
-        <p class="space-x-4 mt-2">
-            <span class="text-xl">Brand : </span>
-            <span class="text-xl " >Juss</span>
-
-        </p>
-
+      
         <p class="space-x-4 mt-2">
             <span class="text-xl">Category : </span>
-            <span class="text-xl " >Shoes</span>
+            <span class="text-xl " >{{categoryname}}</span>
 
         </p>
 
         <p class="space-x-4 mt-2">
             <span class="text-xl"> ID : </span>
-            <span class="text-xl " > #161665656 </span>
+            <span class="text-xl " > #{{id}} </span>
 
         </p>
         <div class="mt-4 flex items-center gap-3">
-            <span class="text-xl text-primary font-semibold"> $250.00 </span>
-            <span class="text-sm line-through " > $350.00 </span>
+            <span class="text-xl text-primary font-semibold"> ${{price_usd}}.00 </span>
+            <span class="text-sm line-through " > ${{price_dsc}}.00 </span>
 
         </div>
 
@@ -248,8 +243,7 @@
 
 
         <p class="pt-7">
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati nam reiciendis molestias quasi vitae cum.
-
+{{summary}}
 </p>
 
         <div class="mt-4">
@@ -330,13 +324,9 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati nam reiciend
 
 
     <div class="lg:w-5/5 xl:5/5 pt-6 pb-6">
-        <p class="text-gray-500 mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta ipsam veritatis cumque, cupiditate quam mollitia, ex, totam autem voluptas quae hic magnam. Ipsum numquam ullam ratione exercitationem eaque, fuga atque veritatis. Quam officia deleniti assumenda illo beatae? Et, asperiores similique.
-        </p>
-        <p class="text-gray-500 mb-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque expedita aut quisquam ipsa? Fuga reprehenderit eveniet molestiae optio velit quibusdam, numquam, vero iste ut libero distinctio nesciunt vitae officiis iusto eaque quo, cupiditate quisquam nihil debitis dicta magnam. Expedita, atque itaque veritatis, ut magnam autem ratione obcaecati, deleniti molestiae similique sit! Mollitia corporis soluta facilis nemo quam similique! Eos laboriosam iure totam odio corrupti, eligendi soluta iusto suscipit excepturi voluptas deserunt non, minus error aut officia officiis laudantium doloribus quisquam vitae adipisci. Commodi laboriosam ipsa quod sunt laborum vitae deserunt atque accusantium voluptatem dolorem amet tenetur facere, autem doloribus impedit consequuntur aspernatur alias illum. Libero laboriosam numquam autem praesentium repellat quidem rerum debitis, tempore ad veritatis accusantium, iste error? Dolor provident tempora quas consectetur ipsum neque impedit maiores maxime officiis, temporibus excepturi esse consequatur dolore, molestiae libero dignissimos dicta modi. Atque quae eaque officiis illum ducimus. Rerum earum praesentium deleniti?</p>
-        <p class="text-gray-500 mb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto atque non, at sit voluptatibus asperiores dicta. Est vitae eius modi? Voluptates doloribus atque repellat, provident cumque voluptatum assumenda officia aliquid odit commodi, similique dolore corrupti veritatis alias autem? Voluptate qui nisi in sint aliquam, voluptates dolores itaque non culpa deleniti?</p>
-
-
-        
+        <p class="text-gray-500 mb-2">
+            {{description}}
+            </p>
 
 
     </div>
