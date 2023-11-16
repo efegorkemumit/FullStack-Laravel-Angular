@@ -5,6 +5,9 @@ namespace App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Discount\DiscountProduct;
+
+
 
 
 class Product extends Model
@@ -52,6 +55,11 @@ class Product extends Model
 
         }
         return $query;
+    }
+
+    public function discountproducts()
+    {
+        return $this->hasMany(DiscountProduct::class);
     }
 
 }

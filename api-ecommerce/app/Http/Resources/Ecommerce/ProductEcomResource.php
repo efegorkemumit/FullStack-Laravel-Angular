@@ -16,7 +16,7 @@ class ProductEcomResource extends JsonResource
     {
         $imageCollection = collect(json_decode($this->resource->imagess, true));
         $sizesCollection =$this->resource->sizes;
-
+        $discountproducts = collect(json_decode($this->resource->discountproducts, true));
 
 
         return[
@@ -29,6 +29,16 @@ class ProductEcomResource extends JsonResource
                 "icon"=>$this->resource->category->icon,
                 "images"=>$this->resource->category->images,
             ],
+
+            "discount_p"=>$discountproducts->map(function($disco){
+                return[
+                    "id"=>$disco['id'],
+                    "product_id"=>$disco['product_id'],
+                    "discount_id"=>$disco['discount_id'],
+                 
+                ];
+
+            }),
             "slug"=>$this->resource->slug,
             "sku"=>$this->resource->sku,
             "price_dsc"=>$this->resource->price_dsc,
