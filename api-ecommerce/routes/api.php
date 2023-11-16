@@ -11,6 +11,20 @@ use App\Http\Controllers\Product\ProductSizeColorController;
 use App\Http\Controllers\Extra\SliderController;
 use App\Http\Controllers\Cupon\CuponController;
 use App\Http\Controllers\Discount\DiscountController;
+use App\Http\Controllers\Ecommerce\EcommerceController;
+
+
+// ECOMMERCE START
+
+Route::get("home", [EcommerceController::class, "home"]);
+
+
+
+
+
+
+
+// ECOMMERCE END
 
 Route::post("register", [ApiController::class, "register"]);
 Route::post("login", [ApiController::class, "login"]);
