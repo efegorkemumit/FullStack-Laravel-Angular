@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart\CartShop;
 use App\Http\Resources\Cart\CartshopCollection;
+use App\Http\Resources\Cart\CartshopResource;
+use App\Models\Product\ProductColorSize;
+
 
 
 class CartController extends Controller
@@ -32,7 +35,54 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if($request->product_color_size_id)
+        {
+            $validate_cart_shop= CartShop::where("product_id", $request->product_id)
+                                          ->where("product_size_id", $request->product_size_id)
+                                          ->where("product_color_size_id", $request->product_color_size_id)
+                                          ->first();
+            if($validate_cart_shop)
+            {
+                return response()->json(["message"=>403,
+                                         "message_text"=>" Product error"]);
+            }
+
+        }else
+        {
+            $validate_cart_shop= CartShop::where("product_id", $request->product_id)-first();
+            if($validate_cart_shop)
+            {
+                return response()->json(["message"=>403,
+                                         "message_text"=>" Product error 2"]);
+            }
+        }
+
+        if($request->product_color_size_id)
+        {
+            $color_size = ProductColorSize::findOrFail($request->product_color_size_id);
+            if($color_size->stock < $request->quantity)
+            {
+                return response()->json(["message"=>403,
+                              "message_text"=>" Product quantitiy error"]);
+            }
+
+        }
+        else
+        {
+            $product = Product::findOrFail($request->product_id);
+            if($product->stock < $request->quantity)
+            {
+                return response()->json(["message"=>403,
+                              "message_text"=>" Product quantitiy error 2"]);
+            }
+
+        }
+
+        $cart_shop = CartShop::create($request->all());
+        return response()->json(["message"=>200, "cart_shop"=>CartshopResource::make($cart_shop)]);
+
+
     }
 
     /**
@@ -56,7 +106,52 @@ class CartController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if($request->product_color_size_id)
+        {
+            $validate_cart_shop= CartShop::where("product_id", $request->product_id)
+                                          ->where("product_size_id", $request->product_size_id)
+                                          ->where("product_color_size_id", $request->product_color_size_id)
+                                          ->first();
+            if($validate_cart_shop)
+            {
+                return response()->json(["message"=>403,
+                                         "message_text"=>" Product error"]);
+            }
+
+        }else
+        {
+            $validate_cart_shop= CartShop::where("product_id", $request->product_id)-first();
+            if($validate_cart_shop)
+            {
+                return response()->json(["message"=>403,
+                                         "message_text"=>" Product error 2"]);
+            }
+        }
+
+        if($request->product_color_size_id)
+        {
+            $color_size = ProductColorSize::findOrFail($request->product_color_size_id);
+            if($color_size->stock < $request->quantity)
+            {
+                return response()->json(["message"=>403,
+                              "message_text"=>" Product quantitiy error"]);
+            }
+
+        }
+        else
+        {
+            $product = Product::findOrFail($request->product_id);
+            if($product->stock < $request->quantity)
+            {
+                return response()->json(["message"=>403,
+                              "message_text"=>" Product quantitiy error 2"]);
+            }
+
+        }
+
+        $cart_shop = CartShop::findOrFail($id);
+        $cart_shop-> update($request->all());
+        return response()->json(["message"=>200, "cart_shop"=>CartshopResource::make($cart_shop)]);
     }
 
     /**
@@ -64,6 +159,9 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cart_shop = CartShop::findOrFail($id);
+        $cart_shop-> delete();
+        return response()->json(["message"=>200,]);
+
     }
 }

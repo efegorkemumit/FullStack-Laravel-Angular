@@ -23,6 +23,9 @@ Route::get("detail/{id}", [EcommerceController::class, "pdetail"]);
 Route::group(["middleware" => ["auth:api"]], function(){
 
     Route::get("Ecommerce/cart", [CartController::class, "index"]);
+    Route::post("Ecommerce/cart/add", [CartController::class, "store"]);
+    Route::post("Ecommerce/cart/update/{id}", [CartController::class, "update"]);
+    Route::delete("Ecommerce/cart/delete/{id}", [CartController::class, "destroy"]);
 
 });
 
