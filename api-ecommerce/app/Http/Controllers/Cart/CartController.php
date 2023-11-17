@@ -108,7 +108,8 @@ class CartController extends Controller
     {
         if($request->product_color_size_id)
         {
-            $validate_cart_shop= CartShop::where("product_id", $request->product_id)
+            $validate_cart_shop= CartShop::where("id","<>", $id)
+                                          ->where("product_id", $request->product_id)
                                           ->where("product_size_id", $request->product_size_id)
                                           ->where("product_color_size_id", $request->product_color_size_id)
                                           ->first();

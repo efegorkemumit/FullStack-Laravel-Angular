@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren:() => import("./modules/auth-profile/auth-profile.module").then(m => m.AuthProfileModule)
   },
 
+  { 
+    path: '',
+    loadChildren:() => import("./modules/ecommerce-auth/ecommerce-auth.module").then(m => m.EcommerceAuthModule)
+  },
+
   {
     path:'',
     redirectTo:'/',
