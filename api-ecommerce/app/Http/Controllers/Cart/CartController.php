@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Cart\CartShop;
+use App\Http\Resources\Cart\CartshopCollection;
+
 
 class CartController extends Controller
 {
@@ -12,7 +15,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $carts = CartShop::where("user_id",auth('api')->user()->id)->orderBy("id","desc")->get();
+        return response()->json(["carts"=>CartshopCollection::make($carts)]);
     }
 
     /**

@@ -12,13 +12,15 @@ use App\Http\Controllers\Extra\SliderController;
 use App\Http\Controllers\Cupon\CuponController;
 use App\Http\Controllers\Discount\DiscountController;
 use App\Http\Controllers\Ecommerce\EcommerceController;
+use App\Http\Controllers\Cart\CartController;
+
 
 
 // ECOMMERCE START
 
 Route::get("home", [EcommerceController::class, "home"]);
 Route::get("detail/{id}", [EcommerceController::class, "pdetail"]);
-
+Route::get("Ecommerce/cart", [CartController::class, "index"]);
 
 
 
