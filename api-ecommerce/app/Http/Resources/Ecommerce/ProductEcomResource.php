@@ -4,6 +4,7 @@ namespace App\Http\Resources\Ecommerce;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Discount\Discount;
 
 class ProductEcomResource extends JsonResource
 {
@@ -31,10 +32,28 @@ class ProductEcomResource extends JsonResource
             ],
 
             "discount_p"=>$discountproducts->map(function($disco){
+                $discountInfo=null;
+                if($disco["discount_id"]){
+                    $discount = Discount::find($disco['discount_id']);
+
+                    if($discount){
+                        $discountInfo= [
+                            "id"=>$discount->id,
+                            "type_discount"=>$discount->type_discount,
+                            "discount"=>$discount->discount,
+                            "start_date"=>$discount->start_date,
+                            "end_date"=>$discount->end_date,
+                            "type"=>$discount->type,
+                        ];
+                    }
+                }
+
+
                 return[
                     "id"=>$disco['id'],
                     "product_id"=>$disco['product_id'],
                     "discount_id"=>$disco['discount_id'],
+                    "discount_info"=>$discountInfo,
                  
                 ];
 
