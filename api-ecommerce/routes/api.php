@@ -17,7 +17,7 @@ use App\Http\Controllers\Ecommerce\EcommerceController;
 // ECOMMERCE START
 
 Route::get("home", [EcommerceController::class, "home"]);
-
+Route::get("detail/{id}", [EcommerceController::class, "pdetail"]);
 
 
 

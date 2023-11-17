@@ -28,8 +28,8 @@ export class HomeService {
       
   }
 
-  getShow(id:number):Observable<any>{
-    let URL = URL_SERVICE + '/product/show_product/'+id;
+  productdetail(id:number):Observable<any>{
+    let URL = URL_SERVICE + '/detail/'+id;
 
    
 

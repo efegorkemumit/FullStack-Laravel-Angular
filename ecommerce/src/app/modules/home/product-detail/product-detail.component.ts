@@ -23,6 +23,8 @@ export class ProductDetailComponent {
   categoryname:any=null;
   selectedSize:any;
   quantity:number = 1;
+  productsb:any=[];
+  discount_p:any;
 
 
   constructor(
@@ -56,7 +58,7 @@ export class ProductDetailComponent {
       this.id = + params['id']
       console.log(this.id);
 
-      this.homeService.getShow(this.id).subscribe((resp:any)=>{
+      this.homeService.productdetail(this.id).subscribe((resp:any)=>{
         console.log(resp);
         this.title = resp.product.title
         this.stock = resp.product.stock
@@ -68,7 +70,11 @@ export class ProductDetailComponent {
         this.sizes = resp.product.sizes
         this.images = resp.product.images
         this.categoryname = resp.product.category.name
+        this.productsb = resp['product_a'];
+
       
+
+
       })
     })
 
