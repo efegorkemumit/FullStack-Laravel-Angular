@@ -39,7 +39,7 @@ class CartShop extends Model
     {
         return $this->belongsTo(ProductSize::class);
     }
-    public function product_color()
+    public function product_color_size()
     {
         return $this->belongsTo(ProductColorSize::class);
     }
