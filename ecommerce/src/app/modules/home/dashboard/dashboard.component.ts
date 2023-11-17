@@ -14,22 +14,23 @@ export class DashboardComponent {
   categories:any[] =[];
   URL=URL_BACKEND;
   products:any;
+  productsb:any;
   
   constructor(
     public router:Router,
-    public sharedService:SharedService,
     public homeService:HomeService
   ){}
 
   ngOnInit(){
-    this.sharedService.getCategory().subscribe((data:any)=>{
-      this.categories = data['categories'];
+    this.homeService.home().subscribe((resp:any)=>{
+      console.log(resp);
+      this.categories = resp['categories'];
+      this.products = resp['product_a'];
+      this.productsb = resp['product_b'];
+
     })
 
-    this.homeService.getProduct().subscribe((resp:any)=>{
-      console.log(resp);
-      this.products = resp.products.data
-    })
+  
   }
 
 }

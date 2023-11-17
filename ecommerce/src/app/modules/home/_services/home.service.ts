@@ -19,8 +19,8 @@ export class HomeService {
       
   }
 
-  getProduct():Observable<any>{
-    let URL = URL_SERVICE + '/product/all';
+  home():Observable<any>{
+    let URL = URL_SERVICE + '/home';
 
    
 
