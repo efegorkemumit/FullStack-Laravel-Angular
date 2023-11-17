@@ -25,6 +25,7 @@ export class ProductDetailComponent {
   quantity:number = 1;
   productsb:any=[];
   discount_p:any;
+  SizeVisible:any=1;
 
 
   constructor(
@@ -63,7 +64,17 @@ export class ProductDetailComponent {
         this.title = resp.product.title
         this.stock = resp.product.stock
         this.price_dsc = resp.product.price_dsc
-        this.price_usd = resp.product.price_usd
+
+        const lastIndex= resp.product.discount_p.length - 1;
+        if(lastIndex>=0){
+          this.price_usd = resp.product.discount_p[lastIndex].newPrice
+        }
+        else
+        {
+          this.price_usd = resp.product.price_usd
+
+        }
+       
         this.summary = resp.product.summary
         this.description = resp.product.description
         this.imageEcommerce = resp.product.imageEcommerce
@@ -71,6 +82,11 @@ export class ProductDetailComponent {
         this.images = resp.product.images
         this.categoryname = resp.product.category.name
         this.productsb = resp['product_a'];
+
+        if(resp.product.sizes.length === 0)
+        {
+          this.SizeVisible=0;
+        }
 
       
 

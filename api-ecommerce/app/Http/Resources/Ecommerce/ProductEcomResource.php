@@ -18,8 +18,8 @@ class ProductEcomResource extends JsonResource
         $imageCollection = collect(json_decode($this->resource->imagess, true));
         $sizesCollection =$this->resource->sizes;
         $discountproducts = collect(json_decode($this->resource->discountproducts, true));
-
-
+        $price_usd = $this->resource->price_usd;
+        $newPrice=null;
         return[
             "id"=>$this->id,
             "title"=>$this->resource->title,
@@ -31,8 +31,10 @@ class ProductEcomResource extends JsonResource
                 "images"=>$this->resource->category->images,
             ],
 
-            "discount_p"=>$discountproducts->map(function($disco){
+            "discount_p"=>$discountproducts->map(function($disco) use ($price_usd){
                 $discountInfo=null;
+                $type_dc = null;
+                $discountvalue= null;
                 if($disco["discount_id"]){
                     $discount = Discount::find($disco['discount_id']);
 
@@ -48,8 +50,31 @@ class ProductEcomResource extends JsonResource
                     }
                 }
 
+                $type_dc = $discount->type_discount;
+                $discountvalue= $discount->discount;
+
+               
+                if($type_dc==1)
+                {
+                    $newPrice = $price_usd - (($price_usd*$discountvalue)/100);
+
+                    
+                }
+                else if($type_dc==2)
+                {    
+                     $newPrice = $price_usd - $discountvalue;
+                     if($newPrice<0)
+                     {
+                        $newPrice = $price_usd;
+                     }
+
+                }
+
 
                 return[
+                    "type_dc"=>$type_dc,
+                    "discountvalue"=>$discountvalue,
+                    "newPrice"=>$newPrice,
                     "id"=>$disco['id'],
                     "product_id"=>$disco['product_id'],
                     "discount_id"=>$disco['discount_id'],
