@@ -20,8 +20,11 @@ use App\Http\Controllers\Cart\CartController;
 
 Route::get("home", [EcommerceController::class, "home"]);
 Route::get("detail/{id}", [EcommerceController::class, "pdetail"]);
-Route::get("Ecommerce/cart", [CartController::class, "index"]);
+Route::group(["middleware" => ["auth:api"]], function(){
 
+    Route::get("Ecommerce/cart", [CartController::class, "index"]);
+
+});
 
 
 

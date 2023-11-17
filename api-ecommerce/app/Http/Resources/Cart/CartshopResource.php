@@ -34,7 +34,7 @@ class CartshopResource extends JsonResource
             ],
             "type_discount	"=>$this->resource->type_discount,
             "discount"=>$this->resource->discount,
-            "cprice"=>$this->resource->cprice,
+            "quantity"=>$this->resource->quantity,
             "product_size_id"=>$this->resource->product_size_id,
             "product_size"=> $this->resource->product_size ? 
             [
@@ -50,7 +50,7 @@ class CartshopResource extends JsonResource
             ]:NULL,
             "code_cupon"=>$this->resource->code_cupon,
             "code_discount"=>$this->resource->code_discount,
-            "pricebrm"=>$this->resource->pricebrm,
+            "unit_price"=>$this->resource->unit_price,
             "subtotal"=>$this->resource->subtotal,
             "total"=>$this->resource->total,
 
