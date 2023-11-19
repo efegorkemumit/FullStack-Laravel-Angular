@@ -18,7 +18,7 @@ class CartShop extends Model
         'discount',
         'quantity',
         'product_size_id',
-        'product_size_color_id',
+        'product_color_size_id',
         'code_cupon',
         'code_discount',
         'unit_price',

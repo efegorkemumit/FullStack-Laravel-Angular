@@ -31,6 +31,8 @@ export class ProductDetailComponent {
   SizeVisible:any=1;
   type_discount:any= null;
   unit_price:any=0;
+  product_size_id	:any=0;
+  product_color_size_id	:any=0;
 
   constructor(
     public homeService:HomeService,
@@ -56,12 +58,14 @@ export class ProductDetailComponent {
   onSizeChange(selectedSize:any)
   {
     this.selectedSize = selectedSize;
+    this.product_size_id=selectedSize.id
 
   }
 
   onColorChange(SelectedColor:any)
   {
     this.selectedColor = SelectedColor;
+    this.product_color_size_id=SelectedColor;
   }
 
   ngOnInit():void
@@ -130,8 +134,8 @@ export class ProductDetailComponent {
       type_discount:this.type_discount,
       discount:this.price_usd,
       quantity:this.quantity,
-      product_size_id: this.selectedSize ? this.selectedSize :null,
-      product_color_size_id: this.selectedColor ? this.selectedColor :null,
+      product_size_id: this.product_size_id ? this.product_size_id :null,
+      product_color_size_id: this.product_color_size_id ? this.product_color_size_id :null,
       code_cupon:null,
       code_discount:null,
       unit_price:this.unit_price,
@@ -139,6 +143,8 @@ export class ProductDetailComponent {
       total:this.price_usd*this.quantity,
  
     }
+
+    console.log(data);
 
     this.cartService.create(data).subscribe((resp:any)=>{
       console.log(resp);
