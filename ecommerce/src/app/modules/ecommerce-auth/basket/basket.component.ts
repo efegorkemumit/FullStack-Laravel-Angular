@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartServicesService } from '../_services/cart-services.service';
 import { AuthService } from '../../auth-profile/_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',
@@ -19,6 +20,7 @@ export class BasketComponent {
 
     public cartService:CartServicesService,
     public auth:AuthService,
+    public router:Router
   ){}
 
   calculeteTotal():number{
@@ -38,8 +40,8 @@ export class BasketComponent {
   ngOnInit():void{
 
     if(!this.auth.user){
-      console.log("user not authenticated");
-      return;
+      this.router.navigate(['/login'])
+
     }
 
     this.cartService.basketlist().subscribe((resp:any)=>{
@@ -61,8 +63,8 @@ export class BasketComponent {
   decrement(cart:any):void
   {
     if(!this.auth.user){
-      console.log("user not authenticated");
-      return;
+      this.router.navigate(['/login'])
+
     }
 
     if(cart.quantity > 1){
@@ -83,8 +85,7 @@ export class BasketComponent {
   increment(cart:any):void
   {
     if(!this.auth.user){
-      console.log("user not authenticated");
-      return;
+       this.router.navigate(['/login'])
     }
 
     cart.quantity ++;
@@ -141,8 +142,24 @@ export class BasketComponent {
     }
     console.log(this.cupones)
     this.cartService.applycupon(this.cupones).subscribe((resp:any)=>{
+      
 
-      console.log(resp);
+      
+    })
+
+    this.cartService.basketlist().subscribe((resp:any)=>{
+
+      if(resp && resp.carts && resp.carts.data)
+      {
+        this.listCarts=resp.carts.data;
+      }
+      else
+      {
+        console.log("Invalid", resp);
+      }
+
+      
+
     })
 
   }

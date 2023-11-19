@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeService } from '../_services/home.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../auth-profile/_services/auth.service';
 import { CartServicesService } from '../../ecommerce-auth/_services/cart-services.service';
 
@@ -38,7 +38,8 @@ export class ProductDetailComponent {
     public homeService:HomeService,
     public route : ActivatedRoute,
     public auth : AuthService,
-    public cartService: CartServicesService
+    public cartService: CartServicesService,
+    public router : Router
 
 
   ){}
@@ -124,8 +125,7 @@ export class ProductDetailComponent {
   addCart()
   {
     if(!this.auth.user){
-      console.log("User not authenticated")
-      return;
+      this.router.navigate(['/login'])
     }
 
     let data= {

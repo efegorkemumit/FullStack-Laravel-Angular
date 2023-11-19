@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EcommerceAuthComponent } from './ecommerce-auth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasketComponent } from './basket/basket.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { 
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path:'cart-basket',
         component:BasketComponent
+      },
+      {
+        path:'checkout',
+        component:CheckoutComponent
       },
      
     ]

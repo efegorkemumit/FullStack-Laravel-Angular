@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 import { BasketComponent } from './basket/basket.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
   declarations: [
     EcommerceAuthComponent,
     BasketComponent,
-    ProfileComponent
+    ProfileComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
