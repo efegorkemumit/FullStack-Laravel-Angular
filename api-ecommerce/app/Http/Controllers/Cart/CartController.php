@@ -121,7 +121,8 @@ class CartController extends Controller
 
         }else
         {
-            $validate_cart_shop= CartShop::where("product_id", $request->product_id)-first();
+            $validate_cart_shop= CartShop::where("id","<>", $id)
+                                         ->where("product_id", $request->product_id)->first();
             if($validate_cart_shop)
             {
                 return response()->json(["message"=>403,

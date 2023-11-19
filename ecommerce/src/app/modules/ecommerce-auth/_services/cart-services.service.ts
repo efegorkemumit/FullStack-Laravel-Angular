@@ -83,7 +83,7 @@ export class CartServicesService {
     );
 
 
-    return this.http.post<any>(URL, {headers});
+    return this.http.delete<any>(URL, {headers});
       
   }
 }

@@ -49,9 +49,9 @@
                 </div>
 
                 <div class="flex border border-gray-500 text-gray-600 divide-x divide-gray-500 w-max">
-                    <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" onclick="decr()" > - </div>
+                    <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" (click)="decrement(cart)"  > - </div>
                     <div class="h-7 w-7 text-2xl flex items-center justify-center " id="quantity"> {{cart.quantity}} </div>
-                    <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" onclick="incr()"> + </div>
+                    <div class="h-7 w-7 text-xl flex items-center justify-center cursor-pointer" (click)="increment(cart)" > + </div>
     
                 </div>
 
@@ -61,7 +61,7 @@
 
 
                 </div>
-                <div class="text-second hover:text-primary cursor-pointer ">
+                <div (click)="deleteItem(cart)" class="text-second hover:text-primary cursor-pointer ">
                     <i class="fa-solid fa-trash"></i>
                 </div>
 
