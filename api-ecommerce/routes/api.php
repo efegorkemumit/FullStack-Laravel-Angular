@@ -13,7 +13,7 @@ use App\Http\Controllers\Cupon\CuponController;
 use App\Http\Controllers\Discount\DiscountController;
 use App\Http\Controllers\Ecommerce\EcommerceController;
 use App\Http\Controllers\Cart\CartController;
-
+use App\Http\Controllers\Client\AddressUserController;
 
 
 // ECOMMERCE START
@@ -27,6 +27,14 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("Ecommerce/cart/update/{id}", [CartController::class, "update"]);
     Route::delete("Ecommerce/cart/delete/{id}", [CartController::class, "destroy"]);
     Route::get("Ecommerce/applycupon/{cupon}", [CartController::class, "apply_cupon"]);
+
+// Client START
+    Route::get("Client/address", [AddressUserController::class, "index"]);
+    Route::post("Client/address/add", [AddressUserController::class, "store"]);
+    Route::post("Client/address/update/{id}", [AddressUserController::class, "update"]);
+    Route::delete("Client/address/delete/{id}", [AddressUserController::class, "destroy"]);
+
+
 
 });
 

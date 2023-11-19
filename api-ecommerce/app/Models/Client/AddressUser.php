@@ -2,6 +2,7 @@
 
 namespace App\Models\Client;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,6 +21,12 @@ class AddressUser extends Model
         'phone', 
         'email'
     ];
+
+    public function user()
+    {
+
+        return $this->belongsTo(User::class);
+    }
 
      
 }

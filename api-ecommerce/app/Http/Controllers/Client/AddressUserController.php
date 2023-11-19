@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Client\AddressUser;
 
 class AddressUserController extends Controller
 {
@@ -12,7 +13,10 @@ class AddressUserController extends Controller
      */
     public function index()
     {
-        //
+       $address= AddressUser::where("user_id", auth('api')->user()->id)->orderBy("id", "desc")->get();
+       return response()->json([
+        "address"=> $address
+       ]);
     }
 
     /**
@@ -28,7 +32,12 @@ class AddressUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(["user_id"=>auth("api")->user()->id]);
+        $address = AddressUser::create($request->all());
+        return response()->json([
+            "message"=>200,
+            "address"=> $address
+           ]);
     }
 
     /**
@@ -52,7 +61,13 @@ class AddressUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+      
+        $address = AddressUser::findOrFail($id);
+        $address->update($request->all());
+        return response()->json([
+            "message"=>200,
+            "address"=> $address
+           ]);
     }
 
     /**
@@ -60,6 +75,10 @@ class AddressUserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $address = AddressUser::findOrFail($id);
+        $address->delete();
+        return response()->json([
+            "message"=>200
+           ]);
     }
 }
