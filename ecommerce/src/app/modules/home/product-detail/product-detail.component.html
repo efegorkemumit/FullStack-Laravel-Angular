@@ -120,7 +120,7 @@
                 <div *ngIf="selectedSize && selectedSize.variant.length >0 " >
                 <div *ngFor="let variant of selectedSize.variant" class="color-selector">
 
-                    <input type="radio" name="size" class="hidden" id="{{variant.product_color.name}}">
+                    <input type="radio" name="color" class="hidden" id="{{variant.product_color.name}}" (change)="onColorChange(variant.id)">
                     <label for="{{variant.product_color.name}}"   class="text-xs border border-gray-200  rounded-full h-12 w-12 flex 
                     items-center justify-center cursor-pointer shadow-sm text-gray-900" >{{variant.product_color.name}}</label>
 

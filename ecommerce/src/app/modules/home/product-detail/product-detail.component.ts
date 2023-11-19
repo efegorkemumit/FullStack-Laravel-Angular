@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HomeService } from '../_services/home.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth-profile/_services/auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -22,15 +23,18 @@ export class ProductDetailComponent {
   products:any=[];
   categoryname:any=null;
   selectedSize:any;
+  selectedColor:any;
   quantity:number = 1;
   productsb:any=[];
   discount_p:any;
   SizeVisible:any=1;
-
+  type_discount:any= null;
+  unit_price:any=0;
 
   constructor(
     public homeService:HomeService,
-    public route : ActivatedRoute
+    public route : ActivatedRoute,
+    public auth : AuthService
 
 
   ){}
@@ -53,6 +57,11 @@ export class ProductDetailComponent {
 
   }
 
+  onColorChange(SelectedColor:any)
+  {
+    this.selectedColor = SelectedColor;
+  }
+
   ngOnInit():void
   {
     this.route.params.subscribe(params=>{
@@ -69,6 +78,8 @@ export class ProductDetailComponent {
         if(lastIndex>=0){
           this.price_usd = resp.product.discount_p[lastIndex].newPrice
           this.discount_p = resp.product.price_usd
+          this.type_discount= resp.product.discount_p[lastIndex].discount_info.type_discount
+          
         }
         else
         {
@@ -84,6 +95,8 @@ export class ProductDetailComponent {
         this.images = resp.product.images
         this.categoryname = resp.product.category.name
         this.productsb = resp['product_a'];
+
+        this.unit_price= resp.product.price_usd
 
         if(resp.product.sizes.length === 0)
         {
@@ -104,22 +117,28 @@ export class ProductDetailComponent {
 
   addCart()
   {
+    if(!this.auth.user){
+      console.log("User not authenticated")
+      return;
+    }
 
     let data= {
-      user_id:this.id,
+      user_id:this.auth.user.id,
       product_id:this.id,
-      type_discount:this.id,
-      discount:this.id,
-      quantity:this.id,
-      product_size_id:this.id,
-      product_color_size_id:this.id,
-      code_cupon:this.id,
-      code_discount:this.id,
-      unit_price:this.id,
-      subtotal:this.id,
-      total:this.id,
+      type_discount:this.type_discount,
+      discount:this.price_usd,
+      quantity:this.quantity,
+      product_size_id: this.selectedSize ? this.selectedSize :null,
+      product_color_size_id: this.selectedColor ? this.selectedColor :null,
+      code_cupon:null,
+      code_discount:null,
+      unit_price:this.unit_price,
+      subtotal:this.unit_price*this.quantity,
+      total:this.price_usd*this.quantity,
  
     }
+
+    console.log(data);
 
   }
 
