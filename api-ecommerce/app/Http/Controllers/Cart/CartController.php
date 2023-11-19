@@ -8,7 +8,7 @@ use App\Models\Cart\CartShop;
 use App\Http\Resources\Cart\CartshopCollection;
 use App\Http\Resources\Cart\CartshopResource;
 use App\Models\Product\ProductColorSize;
-
+use App\Models\Product\Product;
 
 
 class CartController extends Controller
@@ -50,7 +50,7 @@ class CartController extends Controller
 
         }else
         {
-            $validate_cart_shop= CartShop::where("product_id", $request->product_id)-first();
+            $validate_cart_shop= CartShop::where("product_id", $request->product_id)->first();
             if($validate_cart_shop)
             {
                 return response()->json(["message"=>403,

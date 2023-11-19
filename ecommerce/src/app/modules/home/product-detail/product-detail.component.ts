@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomeService } from '../_services/home.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../auth-profile/_services/auth.service';
+import { CartServicesService } from '../../ecommerce-auth/_services/cart-services.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -34,7 +35,8 @@ export class ProductDetailComponent {
   constructor(
     public homeService:HomeService,
     public route : ActivatedRoute,
-    public auth : AuthService
+    public auth : AuthService,
+    public cartService: CartServicesService
 
 
   ){}
@@ -137,6 +139,19 @@ export class ProductDetailComponent {
       total:this.price_usd*this.quantity,
  
     }
+
+    this.cartService.create(data).subscribe((resp:any)=>{
+      console.log(resp);
+
+      if(resp.message==403)
+      {
+        console.log(resp.message_text)
+        return;
+      }
+      else{
+        console.log("The product has beeen added to cart");
+      }
+    })
 
     console.log(data);
 
