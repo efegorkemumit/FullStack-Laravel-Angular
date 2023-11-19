@@ -9,6 +9,7 @@ use App\Http\Resources\Cart\CartshopCollection;
 use App\Http\Resources\Cart\CartshopResource;
 use App\Models\Product\ProductColorSize;
 use App\Models\Product\Product;
+use App\Models\Cupon\Cupon;
 
 
 class CartController extends Controller
@@ -29,6 +30,85 @@ class CartController extends Controller
     {
         //
     }
+
+
+    public function apply_cupon($cupon)
+    {
+
+        $cupone= Cupon::where("code", $cupon)->first();
+        if(!$cupone)
+        {
+            return response()->json(["message"=>403,
+            "message_text"=>" Cupone error"]);
+        }
+
+        $user = auth("api")->user();
+        $cartshops = CartShop::where("user_id", $user->id)->orderBy("id", "desc")->get();
+
+        foreach($cartshops as $key => $cart)
+        {
+            if($cupone->products)
+            {
+
+                $products = explode(",", $cupone->products);
+                if(in_array($cart->product_id, $products))
+                {
+                    $subtotal = 0;
+                    $total = 0;
+                    if($cupone->type_discount == 1)
+                    {
+                        $subtotal= $cart->unit_price - $cart->unit_price*($cupone->discount*0.01);
+                    }
+                    else{
+                        $subtotal = $cart->unit_price - $cupone->discount;
+                    }
+                    $total = $subtotal * $cart->quantity;
+
+                    $cart->update([
+                        "subtotal"=>$subtotal,
+                        "total"=>$total,
+                        "type_discount"=> $cupone->type_discount,
+                        "discount"=>$cupone->discount,
+                        "code_cupon"=>$cupone->code
+                    ]);
+
+                }
+
+               
+
+
+            }
+            if($cupone->categories)
+            {
+
+                $categories = explode(",", $cupone->categories);
+                if(in_array($cart->categorie_id, $categories))
+                {
+                    $subtotal = 0;
+                    $total = 0;
+                    if($cupone->type_discount == 1)
+                    {
+                        $subtotal= $cart->unit_price - $cart->unit_price*($cupone->discount*0.01);
+                    }
+                    else{
+                        $subtotal = $cart->unit_price - $cupone->discount;
+                    }
+                    $total = $subtotal * $cart->quantity;
+
+                    $cart->update([
+                        "subtotal"=>$subtotal,
+                        "total"=>$total,
+                        "type_discount"=> $cupone->type_discount,
+                        "discount"=>$cupone->discount,
+                        "code_cupon"=>$cupone->code
+                    ]);
+
+                }
+        }
+    }
+
+    }
+
 
     /**
      * Store a newly created resource in storage.

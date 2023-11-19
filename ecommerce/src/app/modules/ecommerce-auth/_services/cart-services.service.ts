@@ -86,4 +86,21 @@ export class CartServicesService {
     return this.http.delete<any>(URL, {headers});
       
   }
+  applycupon(cupon:any):Observable<any>{
+    let URL = URL_SERVICE + 'Ecommerce/applycupon/'+cupon;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+
+    return this.http.get<any>(URL, {headers});
+      
+  }
 }

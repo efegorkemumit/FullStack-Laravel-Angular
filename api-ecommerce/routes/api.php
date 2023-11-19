@@ -26,6 +26,7 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("Ecommerce/cart/add", [CartController::class, "store"]);
     Route::post("Ecommerce/cart/update/{id}", [CartController::class, "update"]);
     Route::delete("Ecommerce/cart/delete/{id}", [CartController::class, "destroy"]);
+    Route::get("Ecommerce/applycupon/{cupon}", [CartController::class, "apply_cupon"]);
 
 });
 
