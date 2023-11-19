@@ -10,6 +10,8 @@ import { AuthService } from '../../auth-profile/_services/auth.service';
 export class BasketComponent {
 
   listCarts:any = [];
+  Subtotal:any = 0;
+  TotalPrice:any=0;
 
 
   constructor(
@@ -17,6 +19,20 @@ export class BasketComponent {
     public cartService:CartServicesService,
     public auth:AuthService,
   ){}
+
+  calculeteTotal():number{
+    return this.listCarts.reduce((sum:number, item:any)=> sum +item.total,0 )
+  }
+
+  calculeteSubTotal():number{
+    return this.listCarts.reduce((sum:number, item:any)=> sum +item.subtotal,0 )
+  }
+
+  calculateTotalPrice():void
+  {
+    this.Subtotal = this.calculeteSubTotal();
+    this.TotalPrice = this.calculeteTotal();
+  }
 
   ngOnInit():void{
 
@@ -31,6 +47,7 @@ export class BasketComponent {
       if(resp && resp.carts && resp.carts.data)
       {
         this.listCarts=resp.carts.data;
+        this.calculateTotalPrice();
       }
       else
       {
@@ -55,7 +72,7 @@ export class BasketComponent {
 
       this.cartService.update(cart.id, cart).subscribe((resp:any)=>{
 
-        console.log(resp);
+        this.calculateTotalPrice();
       })
 
     }
@@ -76,7 +93,7 @@ export class BasketComponent {
 
     this.cartService.update(cart.id, cart).subscribe((resp:any)=>{
 
-      console.log(resp);
+      this.calculateTotalPrice();
       if(resp.message==403)
       {
         console.log(resp.message_text);
