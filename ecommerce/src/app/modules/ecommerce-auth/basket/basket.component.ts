@@ -12,6 +12,7 @@ export class BasketComponent {
   listCarts:any = [];
   Subtotal:any = 0;
   TotalPrice:any=0;
+  cupones:any;
 
 
   constructor(
@@ -129,6 +130,20 @@ export class BasketComponent {
 
     
 
+
+  }
+  applyCupon()
+  {
+    if(!this.cupones)
+    {
+      console.log("Input filed error")
+      return;
+    }
+    console.log(this.cupones)
+    this.cartService.applycupon(this.cupones).subscribe((resp:any)=>{
+
+      console.log(resp);
+    })
 
   }
 

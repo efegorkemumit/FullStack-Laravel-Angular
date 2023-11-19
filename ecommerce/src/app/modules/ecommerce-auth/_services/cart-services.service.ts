@@ -87,7 +87,7 @@ export class CartServicesService {
       
   }
   applycupon(cupon:any):Observable<any>{
-    let URL = URL_SERVICE + 'Ecommerce/applycupon/'+cupon;
+    let URL = URL_SERVICE + '/Ecommerce/applycupon/'+cupon;
 
     const token = localStorage.getItem('token');
 

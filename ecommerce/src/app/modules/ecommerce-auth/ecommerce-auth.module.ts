@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { BasketComponent } from './basket/basket.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
     CommonModule,
     EcommerceAuthRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class EcommerceAuthModule { }
