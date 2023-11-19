@@ -68,10 +68,12 @@ export class ProductDetailComponent {
         const lastIndex= resp.product.discount_p.length - 1;
         if(lastIndex>=0){
           this.price_usd = resp.product.discount_p[lastIndex].newPrice
+          this.discount_p = resp.product.price_usd
         }
         else
         {
           this.price_usd = resp.product.price_usd
+          this.discount_p = null;
 
         }
        
@@ -98,6 +100,27 @@ export class ProductDetailComponent {
   }
   changeMainImage(newImage:string):void{
     this.imageEcommerce=newImage;
+  }
+
+  addCart()
+  {
+
+    let data= {
+      user_id:this.id,
+      product_id:this.id,
+      type_discount:this.id,
+      discount:this.id,
+      quantity:this.id,
+      product_size_id:this.id,
+      product_color_size_id:this.id,
+      code_cupon:this.id,
+      code_discount:this.id,
+      unit_price:this.id,
+      subtotal:this.id,
+      total:this.id,
+ 
+    }
+
   }
 
 }

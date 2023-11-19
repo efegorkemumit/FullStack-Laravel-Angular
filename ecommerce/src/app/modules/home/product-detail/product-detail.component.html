@@ -87,7 +87,12 @@
         </p>
         <div class="mt-4 flex items-center gap-3">
             <span class="text-xl text-primary font-semibold"> ${{price_usd}}.00 </span>
-            <span class="text-sm line-through " > ${{price_dsc}}.00 </span>
+            <span class="text-sm line-through " *ngIf="discount_p != null" > ${{discount_p}}.00 </span>
+
+        </div>
+
+        <div class="mt-4 flex items-center gap-3">
+            <span class="text-sm line-through " > ( {{price_dsc}}.00 TL) </span>
 
         </div>
 
@@ -156,7 +161,7 @@
         </div>
 
         <div class="flex gap-3 border-b border-gray-200 pb-5 mt-6">
-            <a href="#" class="bg-primary border border-primary text-white px-10 py-4 
+            <a  (click)="addCart()" class="bg-primary border border-primary text-white px-10 py-4 
             hover:bg-transparent hover:text-primary transition flex items-center font-medium rounded-lg uppercase">
             <span class="mr-3"><i class="fa-solid fa-cart-shopping"></i> 
             </span> 
