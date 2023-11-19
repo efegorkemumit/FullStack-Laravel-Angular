@@ -103,4 +103,78 @@ export class CartServicesService {
     return this.http.get<any>(URL, {headers});
       
   }
+
+ clientaddress():Observable<any>{
+  let URL = URL_SERVICE + '/Client/address';
+
+  const token = localStorage.getItem('token');
+
+  if(!token)
+  {
+    return of(null);
+  }
+  const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,}
+  );
+
+
+  return this.http.get<any>(URL, {headers});
+    
+}
+
+createAddress(data:any):Observable<any>{
+  let URL = URL_SERVICE + '/Client/address/add';
+
+  const token = localStorage.getItem('token');
+
+  if(!token)
+  {
+    return of(null);
+  }
+  const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,}
+  );
+
+
+  return this.http.post<any>(URL, data, {headers});
+    
+}
+
+updateAddress(id:number, data:any):Observable<any>{
+  let URL = URL_SERVICE + '/Client/address/update/'+id;
+
+  const token = localStorage.getItem('token');
+
+  if(!token)
+  {
+    return of(null);
+  }
+  const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,}
+  );
+
+
+  return this.http.post<any>(URL, data, {headers});
+    
+}
+
+deleteAddress(id:number):Observable<any>{
+  let URL = URL_SERVICE + '/Client/address/delete/'+id;
+
+  const token = localStorage.getItem('token');
+
+  if(!token)
+  {
+    return of(null);
+  }
+  const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,}
+  );
+
+
+  return this.http.delete<any>(URL, {headers});
+    
+}
+
+
 }
