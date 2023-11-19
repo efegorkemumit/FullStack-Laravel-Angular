@@ -32,7 +32,7 @@ class CartshopResource extends JsonResource
                 "price_usd"=> $this->resource->product->price_usd,
                 "images"=> env("APP_URL")."/storage/".$this->resource->product->images,
             ],
-            "type_discount	"=>$this->resource->type_discount,
+            "type_discount"=>$this->resource->type_discount,
             "discount"=>$this->resource->discount,
             "quantity"=>$this->resource->quantity,
             "product_size_id"=>$this->resource->product_size_id,
@@ -46,6 +46,7 @@ class CartshopResource extends JsonResource
             "product_color_size"=> $this->resource->product_color_size ? 
             [
                 "id"=> $this->resource->product_color_size->id,
+               // "name"=> $this->resource->product_color_size->name,
 
             ]:NULL,
             "code_cupon"=>$this->resource->code_cupon,
