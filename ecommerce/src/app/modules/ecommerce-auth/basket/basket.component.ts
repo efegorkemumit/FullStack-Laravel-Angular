@@ -108,9 +108,9 @@ export class BasketComponent {
   deleteItem(cart:any)
   {
     if(!this.auth.user){
-      console.log("user not authenticated");
-      return;
-    }
+      this.router.navigate(['/login'])
+   }
+
 
     this.cartService.delete(cart.id).subscribe();
 
@@ -157,6 +157,8 @@ export class BasketComponent {
       {
         console.log("Invalid", resp);
       }
+
+      this.calculateTotalPrice();
 
       
 
