@@ -50,4 +50,40 @@ export class CartServicesService {
     return this.http.post<any>(URL, data, {headers});
       
   }
+
+  update(id:number, data:any):Observable<any>{
+    let URL = URL_SERVICE + '/Ecommerce/cart/update/'+id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+
+    return this.http.post<any>(URL, data, {headers});
+      
+  }
+
+  delete(id:number):Observable<any>{
+    let URL = URL_SERVICE + '/Ecommerce/cart/delete/'+id;
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+
+    return this.http.post<any>(URL, {headers});
+      
+  }
 }

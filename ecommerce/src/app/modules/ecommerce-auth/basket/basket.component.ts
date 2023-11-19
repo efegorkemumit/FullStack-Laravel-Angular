@@ -24,6 +24,20 @@ export class BasketComponent {
       console.log("user not authenticated");
       return;
     }
+
+    this.cartService.basketlist().subscribe((resp:any)=>{
+      console.log(resp);
+
+      if(resp && resp.carts && resp.carts.data)
+      {
+        this.listCarts=resp.carts.data;
+      }
+      else
+      {
+        console.log("Invalid", resp);
+      }
+
+    })
   }
 
 }
