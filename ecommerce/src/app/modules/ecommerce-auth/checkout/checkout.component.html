@@ -21,7 +21,7 @@
     <span (click)="resetAddress()" class="text-xl cursor-pointer"><i class="fa-regular fa-file"></i> NEW</span>
     </div>
     <div class="lg:col-span-2 border border-gray-600 bg-gray-300 rounded-lg px-4" *ngFor="let address of listAddress">
-        <h3 class="text-xl font-medium mb-2 mt-2 uppercase">Address     </h3>
+        <h3 class="text-xl font-medium mb-2 mt-2 uppercase">Address     <span (click)="delete(address.id)" class="text-xs cursor-pointer"><i class="fa-solid fa-trash"></i> </span>   </h3>
       
         <div class="space-y-0.5">
             <h5 class="font-medium">{{address.full_name}}</h5>

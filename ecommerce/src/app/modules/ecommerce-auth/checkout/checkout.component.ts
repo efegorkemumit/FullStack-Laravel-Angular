@@ -194,6 +194,22 @@ export class CheckoutComponent {
     })
 
   }
+  delete(id :number)
+  {
+    console.log(id);
+    this.cartService.deleteAddress(id).subscribe((resp:any)=>{
+      console.log(resp);
+
+      this.cartService.clientaddress().subscribe((resp:any)=>{
+        console.log(resp);
+        this.listAddress = resp.address
+      })
+
+    })
+
+   
+
+  }
 
   addAddress()
   {
