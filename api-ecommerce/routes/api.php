@@ -14,6 +14,7 @@ use App\Http\Controllers\Discount\DiscountController;
 use App\Http\Controllers\Ecommerce\EcommerceController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Client\AddressUserController;
+use App\Http\Controllers\Sale\SalesController;
 
 
 // ECOMMERCE START
@@ -34,6 +35,9 @@ Route::group(["middleware" => ["auth:api"]], function(){
     Route::post("Client/address/update/{id}", [AddressUserController::class, "update"]);
     Route::delete("Client/address/delete/{id}", [AddressUserController::class, "destroy"]);
 
+/// Sale
+
+    Route::post("Client/checkout", [AddressUserController::class, "store"]);
 
 
 });

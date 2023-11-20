@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Sale;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Sale\Sale;
+use App\Models\Sale\SaleAddress;
+use App\Models\Sale\SaleDetail;
+use App\Models\Cart\CartShop;
 
 class SalesController extends Controller
 {
@@ -28,7 +32,22 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sale = Sale::create($request->sale);
+        
+        $sale_address= $request->sale_address;
+        $sale_address["sale_id"]=$sale->id;
+        $sale_address=SaleAddress::create($sale_address);
+
+        $cartshop = CartShop::where("user_id",auth('api')->user()->id)-get();
+
+        foreach($cartshop as $key =>$cart){
+            $sale_detail = $cart->toArray();
+            $sale_detail["id"] = $sale->id;
+            SaleDetail::create($sale_detail);
+
+
+            //$cart->delete();
+        }
     }
 
     /**

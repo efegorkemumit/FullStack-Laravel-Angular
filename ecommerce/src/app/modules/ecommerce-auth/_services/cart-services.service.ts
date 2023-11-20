@@ -51,6 +51,25 @@ export class CartServicesService {
       
   }
 
+  
+  checkout(data:any):Observable<any>{
+    let URL = URL_SERVICE + '/Client/checkout';
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+
+    return this.http.post<any>(URL, data, {headers});
+      
+  }
+
   update(id:number, data:any):Observable<any>{
     let URL = URL_SERVICE + '/Ecommerce/cart/update/'+id;
 
