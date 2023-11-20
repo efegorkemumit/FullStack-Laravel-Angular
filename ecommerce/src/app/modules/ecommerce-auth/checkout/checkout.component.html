@@ -82,30 +82,22 @@
 
         <div class="space-y-7 mb-7">
 
-            <div class="flex justify-between">
+            <div class="flex justify-between" *ngFor="let cart of listCarts">
                 <div>
-                    <h5 class="font-medium uppercase">COMPUTER TWO</h5>
+                    <h5 class="font-medium uppercase">{{cart.product.title}}</h5>
 
                 </div>
-                    <p class="text-sm"> 3</p>
-                    <p class="font-medium">$300</p>
+                    <p class="text-sm"> {{cart.quantity}} </p>
+                    <p class="font-medium">${{cart.total}}</p>
                 
             </div>
 
-            <div class="flex justify-between">
-                <div>
-                    <h5 class="font-medium uppercase">COMPUTER Three</h5>
-
-                </div>
-                    <p class="text-sm"> 3</p>
-                    <p class="font-medium">$300</p>
-                
-            </div>
+          
 
         </div>
         <div class="flex justify-between">
            <h4 class="uppercase font-medium">subtotal</h4>
-           <p class="uppercase font-medium">$900</p> 
+           <p class="uppercase font-medium">${{Subtotal}}</p> 
         </div>
 
         <div class="flex justify-between">
@@ -115,7 +107,7 @@
 
          <div class="flex justify-between">
             <h4 class="uppercase font-medium">Total</h4>
-            <p class="uppercase font-medium">$900</p> 
+            <p class="uppercase font-medium">${{TotalPrice}}</p> 
          </div>
 
          <div class="flex items-center justify-between mt-6">
