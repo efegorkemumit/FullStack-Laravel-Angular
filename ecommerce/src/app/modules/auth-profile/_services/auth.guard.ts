@@ -18,14 +18,14 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot){
       if(!this.autService.user && !this.autService.token){
-        this.router.navigate(["auth/login"]);
+        this.router.navigate(["/auth/login"]);
         return false;
 
       }
       let token = this.autService.token;
       let expiracion = (JSON.parse(atob(token.split('.')[1]))).exp;
       if(Math.floor((new Date).getTime() /1000)>=expiracion){
-       // this.autService.logout();
+        this.autService.logout();
         return false;
 
       }

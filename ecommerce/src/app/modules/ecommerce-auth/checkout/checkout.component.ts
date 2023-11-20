@@ -20,8 +20,12 @@ export class CheckoutComponent {
   email:any = null;
   listCarts:any = [];
 
+  listAddress:any = [];
+
   Subtotal:any = 0;
   TotalPrice:any=0;
+  adress_selected:any=null;
+  
  
 
   constructor(
@@ -53,6 +57,11 @@ export class CheckoutComponent {
       }
 
     })
+
+    this.cartService.clientaddress().subscribe((resp:any)=>{
+      console.log(resp);
+      this.listAddress = resp.address
+    })
   }
 
   calculeteTotal():number{
@@ -67,6 +76,37 @@ export class CheckoutComponent {
   {
     this.Subtotal = this.calculeteSubTotal();
     this.TotalPrice = this.calculeteTotal();
+  }
+
+  selectAddress(address:any)
+  {
+
+    this.adress_selected = address;
+    this.full_name = address.full_name
+    this.full_surname= address.full_surname
+    this.company_name= address.company_name
+    this.country= address.country
+    this.city= address.city
+    this.zip_code= address.zip_code
+    this.phone= address.phone
+    this.email= address.email
+
+
+  }
+
+  resetAddress()
+  {
+
+    this.adress_selected = null;
+    this.full_name = null;
+    this.full_surname= null;
+    this.company_name= null;
+    this.country= null;
+    this.city= null;
+    this.zip_code= null;
+    this.phone= null;
+    this.email=null;
+
   }
 
 }

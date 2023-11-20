@@ -16,6 +16,45 @@
 <!------END Breadcurm -->
 
 <div class="container lg:grid grid-cols-12 gap-6 items-start pb-16 pt-4">
+    <div class="lg:col-span-3 border border-gray-600 bg-gray-300 rounded-lg px-4" *ngFor="let address of listAddress">
+        <h3 class="text-xl font-medium mb-2 mt-2 uppercase">Address      <span (click)="resetAddress()" class="text-sm"><i class="fa-solid fa-pen-to-square"></i></span></h3>
+      
+        <div class="space-y-0.5">
+            <h5 class="font-medium">{{address.full_name}}</h5>
+            <h5 class="font-medium">{{address.full_surname}}</h5>
+         
+            <h5 class="font-medium">{{address.company_name}}</h5>
+         
+            <h5 class="font-medium">{{address.country}}</h5>
+            <h5 class="font-medium">{{address.city}}</h5>
+            <h5 class="font-medium">{{address.zip_code}}</h5>
+            <h5 class="font-medium">{{address.phone}}</h5>
+            <h5 class="font-medium">{{address.email}}</h5>
+         
+
+          
+
+        </div>
+       
+      
+     
+        <div class="mt-4">
+            <button (click)="selectAddress(address)" class="block mb-4 w-full py-2 text-center text-white bg-primary border
+             border-primary rounded-xl uppercase hover:bg-transparent hover:text-primary transition ">SELECT</button>
+
+
+        </div>
+
+        
+
+    
+    
+    </div>
+
+
+</div>
+
+<div class="container lg:grid grid-cols-12 gap-6 items-start pb-16 pt-4">
 
     <div class="lg:col-span-8 border border-gray-600 bg-gray-300 rounded-lg px-4">
        
