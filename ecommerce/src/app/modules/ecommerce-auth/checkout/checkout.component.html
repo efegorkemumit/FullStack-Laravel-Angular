@@ -15,9 +15,13 @@
 
 <!------END Breadcurm -->
 
+
 <div class="container lg:grid grid-cols-12 gap-6 items-start pb-16 pt-4">
-    <div class="lg:col-span-3 border border-gray-600 bg-gray-300 rounded-lg px-4" *ngFor="let address of listAddress">
-        <h3 class="text-xl font-medium mb-2 mt-2 uppercase">Address      <span (click)="resetAddress()" class="text-sm"><i class="fa-solid fa-pen-to-square"></i></span></h3>
+    <div class="lg:col-span-1  px-4">
+    <span (click)="resetAddress()" class="text-xl cursor-pointer"><i class="fa-regular fa-file"></i> NEW</span>
+    </div>
+    <div class="lg:col-span-2 border border-gray-600 bg-gray-300 rounded-lg px-4" *ngFor="let address of listAddress">
+        <h3 class="text-xl font-medium mb-2 mt-2 uppercase">Address     </h3>
       
         <div class="space-y-0.5">
             <h5 class="font-medium">{{address.full_name}}</h5>
@@ -108,8 +112,25 @@
                         <input type="text" class="input-box"  [(ngModel)]="company_name" placeholder="name">
                     </div>
 
+                    <button (click)="save()" class="block mb-4 w-full py-2 text-center text-white bg-primary border
+                    border-primary rounded-xl uppercase hover:bg-transparent hover:text-primary transition ">SAVE</button>
+
                  
-            
+                    <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationSuccess">
+                        <div class="bg-green-600 px-5 py-5 rounded-xl text-slate-950">
+                            <i class="fa-solid fa-check"></i>  {{successMessage}}
+                        </div>
+    
+                    </div>
+
+                    <div class="lg:col-span-4 col-span-4 flex flex-col" *ngIf="registrationError">
+                        <div class="bg-red-600 px-5 py-5 rounded-xl text-slate-950">
+                            <i class="fa-solid fa-check"></i>  {{errorMessage}}
+                        </div>
+    
+                    </div>
+
+                    
              </div>
 
 

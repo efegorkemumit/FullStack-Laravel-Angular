@@ -25,6 +25,12 @@ export class CheckoutComponent {
   Subtotal:any = 0;
   TotalPrice:any=0;
   adress_selected:any=null;
+
+  registrationSuccess = false;
+  successMessage= "Registtration Successful"
+
+  registrationError= false;
+  errorMessage:any=null;
   
  
 
@@ -109,4 +115,121 @@ export class CheckoutComponent {
 
   }
 
+  save()
+  {
+
+    if(!this.full_name && !this.full_surname)
+    {
+      this.registrationError=true;
+      this.errorMessage="Full name and ful surname required"
+    
+      setTimeout(()=>{
+        this.registrationError=false;
+      }, 5000);
+
+    }
+
+    if(!this.country && !this.city)
+    {
+      this.registrationError=true;
+      this.errorMessage="Country and City required"
+    
+      setTimeout(()=>{
+        this.registrationError=false;
+      }, 5000);
+
+    }
+
+    if(!this.email && !this.phone)
+    {
+      this.registrationError=true;
+      this.errorMessage="Email and Phone required"
+    
+      setTimeout(()=>{
+        this.registrationError=false;
+      }, 5000);
+
+    }
+
+
+    if(this.adress_selected){
+      this.updateAddress();
+    }
+    else{
+      this.addAddress();
+    }
+
+  }
+
+  updateAddress()
+  {
+    let data = {
+
+
+      full_name:this.full_name,
+      full_surname:this.full_surname,
+      company_name:this.company_name,
+      country:this.country,
+      city:this.city,
+      zip_code:this.zip_code,
+      phone:this.phone,
+      email:this.email,
+
+
+    }
+
+    this.cartService.updateAddress(this.adress_selected.id, data).subscribe((resp:any)=>{
+      console.log(resp);
+      this.cartService.clientaddress().subscribe((resp:any)=>{
+        console.log(resp);
+        this.listAddress = resp.address
+      })
+      this.registrationSuccess=true;
+      this.successMessage="Update Successfull"
+    
+      setTimeout(()=>{
+        this.registrationSuccess=false;
+      }, 5000);
+
+    })
+
+  }
+
+  addAddress()
+  {
+
+   
+
+    let data = {
+
+
+      full_name:this.full_name,
+      full_surname:this.full_surname,
+      company_name:this.company_name,
+      country:this.country,
+      city:this.city,
+      zip_code:this.zip_code,
+      phone:this.phone,
+      email:this.email,
+
+
+    }
+
+    this.cartService.createAddress(data).subscribe((resp:any)=>{
+      console.log(resp);
+      this.cartService.clientaddress().subscribe((resp:any)=>{
+        console.log(resp);
+        this.listAddress = resp.address
+      })
+      this.registrationSuccess=true;
+      this.successMessage="Create Successfull"
+    
+      setTimeout(()=>{
+        this.registrationSuccess=false;
+      }, 5000);
+    })
+
+    
+
+  }
 }
