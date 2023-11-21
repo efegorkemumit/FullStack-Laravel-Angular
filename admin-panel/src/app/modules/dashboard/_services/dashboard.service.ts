@@ -60,4 +60,20 @@ export class DashboardService {
     return this.http.get<any>(URL, {headers});
       
   }
+  topfoursale():Observable<any>{
+    let URL = URL_SERVICE + '/topfoursale/all';
+
+    const token = localStorage.getItem('token');
+
+    if(!token)
+    {
+      return of(null);
+    }
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,}
+    );
+
+    return this.http.get<any>(URL, {headers});
+      
+  }
 }

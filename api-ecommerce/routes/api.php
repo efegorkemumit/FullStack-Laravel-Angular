@@ -39,6 +39,7 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
     Route::post("Client/checkout", [SalesController::class, "store"]);
     Route::get("orders/all", [SalesController::class, "index"]);
+    Route::get("topfoursale/all", [SalesController::class, "topfour"]);
 
 
 });

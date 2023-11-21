@@ -25,6 +25,22 @@ class SalesController extends Controller
        ]);
     }
 
+    public function topfour(Request $request)
+     {
+          /**
+      * /api/product/all?page=2
+      */
+
+      $orders = Sale::orderBy("id","desc")->limit(4)->get();
+
+       return response()->json([
+        "message"=>200,
+        "orders"=>new SaleCollection($orders)
+       ]);
+ 
+      
+     }
+
     /**
      * Show the form for creating a new resource.
      */
