@@ -9,6 +9,7 @@ import { BasketComponent } from './basket/basket.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderCompleteComponent } from './order-complete/order-complete.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     EcommerceAuthComponent,
     BasketComponent,
     ProfileComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderCompleteComponent
   ],
   imports: [
     CommonModule,

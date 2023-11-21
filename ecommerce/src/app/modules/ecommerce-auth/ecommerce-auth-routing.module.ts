@@ -4,6 +4,7 @@ import { EcommerceAuthComponent } from './ecommerce-auth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasketComponent } from './basket/basket.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderCompleteComponent } from './order-complete/order-complete.component';
 
 const routes: Routes = [
   { 
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path:'checkout',
         component:CheckoutComponent
+      },
+      {
+        path:'order-complete',
+        component:OrderCompleteComponent
       },
      
     ]
