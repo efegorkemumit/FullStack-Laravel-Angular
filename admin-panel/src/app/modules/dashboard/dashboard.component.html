@@ -17,10 +17,10 @@
                         <div [@slideIn] class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
                             
-                            <app-dashboard-widget value="10.500" title="New Products" percentage="16"></app-dashboard-widget>
+                            <app-dashboard-widget value="{{ProductCount}}" title="New Products" percentage="-"></app-dashboard-widget>
 
 
-                            <app-dashboard-widget value="12.500" title="User signups this week" percentage="16"></app-dashboard-widget>
+                            <app-dashboard-widget value="{{SaleCount}}" title="New Sale" percentage="-"></app-dashboard-widget>
 
                             <app-dashboard-widget value=" {{userCount}}" title="All User Count" percentage="-"></app-dashboard-widget>
                         </div>
@@ -39,11 +39,11 @@
             <app-last-customers></app-last-customers>
 
 
+            <app-shipping-customers></app-shipping-customers>
 
 
 
-                      <app-chart></app-chart>
-
+             
 
                     </div>
                 </div>

@@ -16,6 +16,8 @@ export class DashboardComponent {
   email:any = null;
   password:any = null;
   userCount:number=0;
+  ProductCount:number=0;
+  SaleCount:number=0;
 
 
   constructor(
@@ -32,6 +34,8 @@ export class DashboardComponent {
     this.dashboardService.getUsersCount().subscribe(data=>{
       if(data){
         this.userCount= data.userCount;
+        this.ProductCount= data.ProductCount;
+        this.SaleCount= data.SaleCount;
       }
     })
 

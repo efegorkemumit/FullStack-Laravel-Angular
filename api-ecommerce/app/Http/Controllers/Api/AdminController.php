@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Sale\Sale;
+use App\Models\Product\Product;
 
 class AdminController extends Controller
 {
@@ -176,7 +178,14 @@ class AdminController extends Controller
         if($userdata->is_admin == "1"){
            
             $userCount = User::count();
-            return response()->json(['userCount'=>$userCount]);
+            $ProductCount = Product::count();
+            $SaleCount = Sale::count();
+            return response()->json([
+                'userCount'=>$userCount,
+                'ProductCount'=>$ProductCount,
+                'SaleCount'=>$SaleCount,
+            
+            ]);
         }
         
     }
