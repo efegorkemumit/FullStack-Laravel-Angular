@@ -8,6 +8,7 @@ use App\Models\Sale\Sale;
 use App\Models\Sale\SaleAddress;
 use App\Models\Sale\SaleDetail;
 use App\Models\Cart\CartShop;
+use App\Http\Resources\Sale\SaleCollection;
 
 class SalesController extends Controller
 {
@@ -16,7 +17,12 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+       $orders = Sale::orderBy("id","desc")->get();
+
+       return response()->json([
+        "message"=>200,
+        "orders"=>new SaleCollection($orders)
+       ]);
     }
 
     /**
