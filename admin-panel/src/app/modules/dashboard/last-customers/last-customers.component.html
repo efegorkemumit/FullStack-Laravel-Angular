@@ -2,49 +2,16 @@
     <h2 class="text-2xl font-semibold text-white">Latest Customers</h2>
     <div class="mt-4 space-y-3">
         <!-------------Customers Single Start-->
-        <div class="flex items-center">
-            <img src="assets/img/users/1.png" class="w-10 h-10 rounded-full"/>
+        <div class="flex items-center" *ngFor="let product of products">
+            <img src="{{URL}}storage/{{product.image}}" class="w-10 h-10 rounded-full"/>
             <div class="ml-4">
-                <p class="text-lg font-semibold text-second-900">Efe Görkem Ümit</p>
-                <p class="text-white">email@youtube.com</p>
-                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta nihil hic voluptatem debitis omnis illum molestiae itaque ad beatae. Ducimus!</p>
+                <p class="text-lg font-semibold text-second-900"> {{product.title}}</p>
+                <p class="text-white"> {{product.stock}}</p>
+                <p class="text-white"> {{product.price_dsc}} TL  /  ${{product.price_usd}}</p>
+                <p class="text-white"> {{product.summary}}</p>
             </div>
         </div>
-        <!-------------Customers Single end-->
-
-        <!-------------Customers Single Start-->
-        <div class="flex items-center">
-            <img src="assets/img/users/2.png" class="w-10 h-10 rounded-full"/>
-            <div class="ml-4">
-                <p class="text-lg font-semibold text-second-900">Kate Jack</p>
-                <p class="text-white">email@youtube.com</p>
-                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit hic tempora nostrum eius nemo rem non dolores delectus? Id, ab.</p>
-            </div>
-        </div>
-        <!-------------Customers Single end-->
-
-        <!-------------Customers Single Start-->
-        <div class="flex items-center">
-            <img src="assets/img/users/3.png" class="w-10 h-10 rounded-full"/>
-            <div class="ml-4">
-                <p class="text-lg font-semibold text-second-900">John Wich</p>
-                <p class="text-white">email@youtube.com</p>
-                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti enim beatae eum, amet quisquam alias illo magni. At, voluptate?</p>
-            </div>
-        </div>
-        <!-------------Customers Single end-->
-
-        <!-------------Customers Single Start-->
-        <div class="flex items-center">
-            <img src="assets/img/users/4.png" class="w-10 h-10 rounded-full"/>
-            <div class="ml-4">
-                <p class="text-lg font-semibold text-second-900">Sam Winchester</p>
-                <p class="text-white">email@youtube.com</p>
-                <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates vel sequi id explicabo cum dignissimos in, inventore quam ex sunt?</p>
-            </div>
-        </div>
-        <!-------------Customers Single end-->
-
+      
 
 
     </div>

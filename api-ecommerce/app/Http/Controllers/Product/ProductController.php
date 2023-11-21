@@ -36,6 +36,24 @@ class ProductController extends Controller
         
 
      }
+
+     public function topfour(Request $request)
+     {
+          /**
+      * /api/product/all?page=2
+      */
+ 
+       $search= $request->search;
+       $category_id = $request->category_id;
+       $products = Product::filterProduct($search, $category_id)->orderBy("id", "desc")->paginate(4);
+ 
+       return response()->json([
+         "message"=>200,
+         "total"=>$products->total(),
+         "products"=>ProductCollection::make($products)
+       ]);
+     }
+
     public function index(Request $request)
     {
          /**
