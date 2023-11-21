@@ -32,6 +32,7 @@ export class CheckoutComponent {
   registrationError= false;
   errorMessage:any=null;
   
+  user:any=null;
  
 
   constructor(
@@ -246,6 +247,67 @@ export class CheckoutComponent {
     })
 
     
+
+  }
+  Ordercomplete()
+  {
+
+    if(!this.auth.user){
+      this.router.navigate(['/login'])
+
+    }
+
+    this.user = this.auth.user;
+
+    if(!this.adress_selected)
+    {
+      this.registrationError=true;
+      this.errorMessage="Select adress select"
+    
+      setTimeout(()=>{
+        this.registrationError=false;
+      }, 5000);
+
+    }
+
+
+
+    let orderData={
+      sale:{
+        user_id:this.user.id,
+        total:this.TotalPrice,
+        subtotal:this.Subtotal,
+
+      },
+      sale_address:{
+
+        full_name:this.adress_selected.full_name,
+        full_surname:this.adress_selected.full_surname,
+        company_name:this.adress_selected.company_name,
+        country:this.adress_selected.country,
+        city:this.adress_selected.city,
+        zip_code:this.adress_selected.zip_code,
+        phone:this.adress_selected.phone,
+        email:this.adress_selected.email,
+
+
+      }
+
+
+    }
+
+    this.cartService.checkout(orderData).subscribe((resp:any)=>{
+      console.log(resp);
+
+      this.registrationSuccess=true;
+      this.successMessage="Checkout Successfull"
+    
+      setTimeout(()=>{
+        this.registrationSuccess=false;
+      }, 5000);
+
+    })
+
 
   }
 }

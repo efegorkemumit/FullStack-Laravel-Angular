@@ -38,15 +38,15 @@ class SalesController extends Controller
         $sale_address["sale_id"]=$sale->id;
         $sale_address=SaleAddress::create($sale_address);
 
-        $cartshop = CartShop::where("user_id",auth('api')->user()->id)-get();
+        $cartshop = CartShop::where("user_id",auth('api')->user()->id)->get();
 
         foreach($cartshop as $key =>$cart){
             $sale_detail = $cart->toArray();
-            $sale_detail["id"] = $sale->id;
+            $sale_detail["sale_id"] = $sale->id;
             SaleDetail::create($sale_detail);
 
 
-            //$cart->delete();
+            $cart->delete();
         }
     }
 
