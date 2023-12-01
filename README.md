@@ -1,12 +1,11 @@
 <a href="https://www.udemy.com/your-course-url" target="_blank">
   <div style="position: relative; display: inline-block;">
     <img src="https://img.youtube.com/vi/rRYKIWMkUGQ/0.jpg" alt="Udemy Kurs vs" width="560" height="315">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 3em;">
-    
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <div style="width: 0; height: 0; border-style: solid; border-width: 20px 0 20px 40px; border-color: transparent transparent transparent #fff;"></div>
     </div>
   </div>
 </a>
-
 
     Tanıtım videosunu YouTube'dan izleyebilirsiniz.
 
