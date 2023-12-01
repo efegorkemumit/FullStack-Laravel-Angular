@@ -3,6 +3,15 @@
     <img src="https://img.youtube.com/vi/rRYKIWMkUGQ/0.jpg" alt="Udemy Kurs vs" width="560" height="315">
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 3em;">
       ▶️
+      
+      Tanıtım videosunu YouTube'dan izleyebilirsiniz.
+
+      Bu depo, Udemy için özel olarak hazırlanmıştır. 
+--------------------------------------------------------------
+
+      You can watch the introductory video on YouTube.
+
+      This repository has been specifically created for Udemy. T
     </div>
   </div>
 </a>
