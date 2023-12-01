@@ -1,10 +1,11 @@
-
-[![Alt text](https://img.youtube.com/vi/rRYKIWMkUGQ/0.jpg)](https://www.youtube.com/watch?v=rRYKIWMkUGQ)
-
-
-
-
-
+<a href="https://www.udemy.com/your-course-url" target="_blank">
+  <div style="position: relative; display: inline-block;">
+    <img src="https://img.youtube.com/vi/rRYKIWMkUGQ/0.jpg" alt="Udemy Kurs vs" width="560" height="315">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 3em;">
+      ▶️
+    </div>
+  </div>
+</a>
 
 
 
