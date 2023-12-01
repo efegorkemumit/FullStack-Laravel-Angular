@@ -1,6 +1,5 @@
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rRYKIWMkUGQ?si=Jccw8caNSZ8WaS4v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![Alt text](https://img.youtube.com/vi/rRYKIWMkUGQ/0.jpg)](https://www.youtube.com/watch?v=rRYKIWMkUGQ)
 
 
 
